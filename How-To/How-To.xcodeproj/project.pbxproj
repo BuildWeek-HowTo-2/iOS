@@ -19,6 +19,8 @@
 		13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */; };
 		13CCBEB024576B3800AE23BC /* CreateHowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */; };
 		13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */; };
+		13CCBEB52457809900AE23BC /* How-To.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */; };
+		13CCBEB8245780CC00AE23BC /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToCollectionViewCell.swift; sourceTree = "<group>"; };
 		13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHowToViewController.swift; sourceTree = "<group>"; };
 		13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHowToViewController.swift; sourceTree = "<group>"; };
+		13CCBEB42457809900AE23BC /* How-To.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "How-To.xcdatamodel"; sourceTree = "<group>"; };
+		13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 				1378E90F245747150032931E /* Storyboards */,
 				13CCBEAE24575F5B00AE23BC /* Views */,
 				13CCBEAB2457515800AE23BC /* View Controllers */,
+				13CCBEB62457809D00AE23BC /* CoreData */,
 			);
 			path = "How-To";
 			sourceTree = "<group>";
@@ -115,6 +120,15 @@
 				13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		13CCBEB62457809D00AE23BC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */,
+				13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,8 +230,10 @@
 				13CCBEB024576B3800AE23BC /* CreateHowToViewController.swift in Sources */,
 				1378E8FB245746520032931E /* AppDelegate.swift in Sources */,
 				13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */,
+				13CCBEB52457809900AE23BC /* How-To.xcdatamodeld in Sources */,
 				13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */,
 				1378E8FD245746520032931E /* SceneDelegate.swift in Sources */,
+				13CCBEB8245780CC00AE23BC /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +431,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				13CCBEB42457809900AE23BC /* How-To.xcdatamodel */,
+			);
+			currentVersion = 13CCBEB42457809900AE23BC /* How-To.xcdatamodel */;
+			path = "How-To.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1378E8EF245746520032931E /* Project object */;
 }
