@@ -29,6 +29,13 @@ class CreateHowToViewController: UIViewController {
         titleTextField.layer.cornerRadius = 8
         summaryTextView.layer.cornerRadius = 8
         categoryView.layer.cornerRadius = 8
+        
+        
+        
+        
+        
+        
+        
     }
 
     // MARK: - IBActions
