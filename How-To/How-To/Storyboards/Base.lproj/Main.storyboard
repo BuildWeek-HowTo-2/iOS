@@ -164,7 +164,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R7w-kA-Mb8">
-                                                <rect key="frame" x="20" y="10" width="374" height="244.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="273"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fOQ-b9-OG9">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
@@ -252,6 +252,12 @@
                                                             </textView>
                                                         </subviews>
                                                     </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ige-26-2jf">
+                                                        <rect key="frame" x="0.0" y="252.5" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -292,6 +298,8 @@
                     <connections>
                         <outlet property="categoryLabel" destination="1n4-o7-KY4" id="59c-Ss-cGp"/>
                         <outlet property="categoryView" destination="4lQ-xq-8GK" id="8Kw-Qu-SRX"/>
+                        <outlet property="contentView" destination="gGW-BX-BQr" id="Az1-f8-Fk3"/>
+                        <outlet property="detailStackView" destination="R7w-kA-Mb8" id="6Pc-ZW-2SR"/>
                         <outlet property="summaryTextView" destination="5yK-y0-lZ4" id="jGH-Z5-kcN"/>
                         <outlet property="titleTextField" destination="Ppe-k1-NSq" id="5FB-s1-MzU"/>
                     </connections>
