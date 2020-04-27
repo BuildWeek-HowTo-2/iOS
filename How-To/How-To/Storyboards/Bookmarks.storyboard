@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jrl-B7-wZO">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="MG5-ZO-NGn">
+            <objects>
+                <viewController id="mFx-yO-iP7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OqS-Lz-Gbb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="igR-sf-bDP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gFw-cb-vO1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zU3-ge-eu7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="124.55357142857142"/>
+        </scene>
+        <!--Bookmarks-->
+        <scene sceneID="ICe-o1-zp9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jrl-B7-wZO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="e8d-9F-HaL"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pJW-iZ-lcD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mFx-yO-iP7" kind="relationship" relationship="rootViewController" id="XLm-VA-daW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Pn-uw-YW4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289.85507246376812" y="124.55357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+    </resources>
+</document>
