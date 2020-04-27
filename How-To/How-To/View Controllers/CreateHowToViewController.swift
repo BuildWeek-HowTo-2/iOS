@@ -16,6 +16,7 @@ class CreateHowToViewController: UIViewController {
     @IBOutlet weak var stepOneTextField: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var createButton: UIButton!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -29,8 +30,13 @@ class CreateHowToViewController: UIViewController {
         summaryTextView.layer.cornerRadius = 8
         stepOneTextField.layer.cornerRadius = 8
         categoryView.layer.cornerRadius = 8
+        createButton.layer.cornerRadius = 8
     }
 
+    // MARK: - IBActions
+    @IBAction func createButtonTapped(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
