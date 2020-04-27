@@ -262,6 +262,13 @@
                         <viewLayoutGuide key="safeArea" id="3w8-P4-dvp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create a How-To" id="tYj-U6-mcK"/>
+                    <connections>
+                        <outlet property="categoryLabel" destination="1n4-o7-KY4" id="59c-Ss-cGp"/>
+                        <outlet property="categoryView" destination="4lQ-xq-8GK" id="8Kw-Qu-SRX"/>
+                        <outlet property="stepOneTextField" destination="8Db-dZ-KRN" id="rZ2-VL-04F"/>
+                        <outlet property="summaryTextView" destination="5yK-y0-lZ4" id="jGH-Z5-kcN"/>
+                        <outlet property="titleTextField" destination="Ppe-k1-NSq" id="5FB-s1-MzU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUE-jw-PVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

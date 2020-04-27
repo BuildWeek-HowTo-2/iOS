@@ -10,12 +10,26 @@ import UIKit
 
 class CreateHowToViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var summaryTextView: UITextView!
+    @IBOutlet weak var stepOneTextField: UITextField!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryView: UIView!
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupViews()
     }
     
+    // MARK: - Private Methods
+    private func setupViews() {
+        titleTextField.layer.cornerRadius = 8
+        summaryTextView.layer.cornerRadius = 8
+        stepOneTextField.layer.cornerRadius = 8
+        categoryView.layer.cornerRadius = 8
+    }
 
     /*
     // MARK: - Navigation
