@@ -98,9 +98,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="How-Tos" id="6kY-5e-DRx">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="28p-CJ-irV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="5pL-uD-Jih">
                             <connections>
-                                <segue destination="IUe-zG-m1k" kind="show" id="iHM-Fq-1M7"/>
+                                <segue destination="IUe-zG-m1k" kind="show" id="RMs-l9-z22"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
