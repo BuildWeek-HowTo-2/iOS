@@ -8,22 +8,13 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class FeedCollectionViewController: UICollectionViewController {
 
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
-
+    
     /*
     // MARK: - Navigation
 
@@ -34,27 +25,31 @@ class FeedCollectionViewController: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
+}
 
+extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
+    // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 2
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
     
-        // Configure the cell
-    
+        cell.titleLabel.text = "Hello"
+        cell.captionLabel.text = "Test"
+        cell.previewImage.image = UIImage(named: "calendar")
+        cell.layer.cornerRadius = 8
+        
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
 
     /*
@@ -85,5 +80,8 @@ class FeedCollectionViewController: UICollectionViewController {
     
     }
     */
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width - 16, height: 100)
+    }
 }

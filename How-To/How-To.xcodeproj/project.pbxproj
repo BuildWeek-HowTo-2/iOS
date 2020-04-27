@@ -16,6 +16,7 @@
 		13CCBEA62457500000AE23BC /* Bookmarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA52457500000AE23BC /* Bookmarks.storyboard */; };
 		13CCBEA8245750D300AE23BC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA7245750D300AE23BC /* Onboarding.storyboard */; };
 		13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */; };
+		13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		13CCBEA52457500000AE23BC /* Bookmarks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmarks.storyboard; sourceTree = "<group>"; };
 		13CCBEA7245750D300AE23BC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
+		13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				1378E90E245746CA0032931E /* Application */,
 				1378E90F245747150032931E /* Storyboards */,
+				13CCBEAE24575F5B00AE23BC /* Views */,
 				13CCBEAB2457515800AE23BC /* View Controllers */,
 			);
 			path = "How-To";
@@ -98,6 +101,14 @@
 				13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		13CCBEAE24575F5B00AE23BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */,
 				1378E8FB245746520032931E /* AppDelegate.swift in Sources */,
 				13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */,
 				1378E8FD245746520032931E /* SceneDelegate.swift in Sources */,
