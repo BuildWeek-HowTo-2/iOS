@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R7w-kA-Mb8">
-                                <rect key="frame" x="20" y="150" width="374" height="317"/>
+                                <rect key="frame" x="20" y="150" width="374" height="244.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fOQ-b9-OG9">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
@@ -226,56 +226,13 @@
                                             </textView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jvL-Qy-eZm">
-                                        <rect key="frame" x="0.0" y="252.5" width="374" height="64.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vn7-Up-fDf">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Db-dZ-KRN">
-                                                <rect key="frame" x="0.0" y="24.5" width="374" height="40"/>
-                                                <color key="backgroundColor" name="Text Field Background Color"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="2yM-hk-KyK"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4J-XR-OgG">
-                                <rect key="frame" x="20" y="475" width="374" height="30"/>
-                                <state key="normal" title="+ Add Step"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sye-kK-e36">
-                                <rect key="frame" x="20" y="753" width="374" height="50"/>
-                                <color key="backgroundColor" name="Primary Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Kf9-LL-HjT"/>
-                                </constraints>
-                                <state key="normal" title="Create">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="createButtonTapped:" destination="IUe-zG-m1k" eventType="touchUpInside" id="eyn-wE-uQ6"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
                         <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="R7w-kA-Mb8" firstAttribute="leading" secondItem="3w8-P4-dvp" secondAttribute="leading" constant="20" id="3C7-eh-zcg"/>
-                            <constraint firstItem="3w8-P4-dvp" firstAttribute="bottom" secondItem="sye-kK-e36" secondAttribute="bottom" constant="10" id="5fi-Pb-5f5"/>
-                            <constraint firstItem="sye-kK-e36" firstAttribute="leading" secondItem="3w8-P4-dvp" secondAttribute="leading" constant="20" id="Bpr-rS-tPx"/>
-                            <constraint firstItem="d4J-XR-OgG" firstAttribute="leading" secondItem="3w8-P4-dvp" secondAttribute="leading" constant="20" id="EMF-jK-40B"/>
-                            <constraint firstItem="3w8-P4-dvp" firstAttribute="trailing" secondItem="sye-kK-e36" secondAttribute="trailing" constant="20" id="HMn-R6-goh"/>
-                            <constraint firstItem="d4J-XR-OgG" firstAttribute="top" secondItem="R7w-kA-Mb8" secondAttribute="bottom" constant="8" id="IkQ-Ch-nfJ"/>
-                            <constraint firstItem="3w8-P4-dvp" firstAttribute="trailing" secondItem="d4J-XR-OgG" secondAttribute="trailing" constant="20" id="Okc-2s-GIN"/>
                             <constraint firstItem="3w8-P4-dvp" firstAttribute="trailing" secondItem="R7w-kA-Mb8" secondAttribute="trailing" constant="20" id="QJJ-4f-DiR"/>
                             <constraint firstItem="R7w-kA-Mb8" firstAttribute="top" secondItem="3w8-P4-dvp" secondAttribute="top" constant="10" id="eIp-SN-AdZ"/>
                         </constraints>
@@ -285,8 +242,6 @@
                     <connections>
                         <outlet property="categoryLabel" destination="1n4-o7-KY4" id="59c-Ss-cGp"/>
                         <outlet property="categoryView" destination="4lQ-xq-8GK" id="8Kw-Qu-SRX"/>
-                        <outlet property="createButton" destination="sye-kK-e36" id="bmY-aS-swy"/>
-                        <outlet property="stepOneTextField" destination="8Db-dZ-KRN" id="rZ2-VL-04F"/>
                         <outlet property="summaryTextView" destination="5yK-y0-lZ4" id="jGH-Z5-kcN"/>
                         <outlet property="titleTextField" destination="Ppe-k1-NSq" id="5FB-s1-MzU"/>
                     </connections>
