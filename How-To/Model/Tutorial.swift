@@ -11,7 +11,7 @@ import Foundation
 struct Tutorial: Codable {
     let id: Int
     let title: String
-    let summary: String
-    let likes: Int
+    let summary: String?
+    let likes: Int = 0
     let instructor_id: Int
 }
