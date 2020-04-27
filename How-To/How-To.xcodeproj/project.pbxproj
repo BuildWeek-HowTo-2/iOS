@@ -17,6 +17,8 @@
 		13CCBEA8245750D300AE23BC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA7245750D300AE23BC /* Onboarding.storyboard */; };
 		13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */; };
 		13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */; };
+		13CCBEB024576B3800AE23BC /* CreateHowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */; };
+		13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		13CCBEA7245750D300AE23BC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 		13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToCollectionViewCell.swift; sourceTree = "<group>"; };
+		13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHowToViewController.swift; sourceTree = "<group>"; };
+		13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHowToViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */,
+				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
+				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -207,7 +213,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */,
+				13CCBEB024576B3800AE23BC /* CreateHowToViewController.swift in Sources */,
 				1378E8FB245746520032931E /* AppDelegate.swift in Sources */,
+				13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */,
 				13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */,
 				1378E8FD245746520032931E /* SceneDelegate.swift in Sources */,
 			);

@@ -36,15 +36,14 @@ extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
     
-        cell.titleLabel.text = "Hello"
-        cell.captionLabel.text = "Test"
-        cell.previewImage.image = UIImage(named: "calendar")
+        cell.titleLabel.text = "Title: Quick detail about the How-To"
+        cell.captionLabel.text = "Description of the how-to. This will give the user more info."
         cell.layer.cornerRadius = 8
         
         return cell

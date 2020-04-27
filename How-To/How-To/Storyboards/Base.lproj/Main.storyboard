@@ -51,12 +51,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnD-z5-xZX">
-                                            <rect key="frame" x="108" y="8" width="249" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <rect key="frame" x="108" y="8" width="249" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-0L-0gk">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.preview" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-0L-0gk">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="MDe-aV-nhf"/>
@@ -64,8 +64,8 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNY-Gr-Kba">
-                                            <rect key="frame" x="108" y="28.5" width="249" height="14.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <rect key="frame" x="108" y="32" width="249" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -89,6 +89,7 @@
                                     <outlet property="captionLabel" destination="sNY-Gr-Kba" id="aNb-i6-gxl"/>
                                     <outlet property="previewImage" destination="ufa-0L-0gk" id="xT2-Xs-t1O"/>
                                     <outlet property="titleLabel" destination="jnD-z5-xZX" id="7YK-k6-JfF"/>
+                                    <segue destination="4iA-WF-aOQ" kind="show" id="0HY-vu-P1f"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -109,7 +110,23 @@
             </objects>
             <point key="canvasLocation" x="2071.0144927536235" y="22.767857142857142"/>
         </scene>
-        <!--New How-To-->
+        <!--View Controller-->
+        <scene sceneID="c10-bh-ghY">
+            <objects>
+                <viewController id="4iA-WF-aOQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nkF-GC-VXD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="G0z-g1-3FX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NAL-NX-VOu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf5-lF-63C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2812" y="373"/>
+        </scene>
+        <!--Create a How-To-->
         <scene sceneID="eXf-k6-nm4">
             <objects>
                 <viewController id="IUe-zG-m1k" sceneMemberID="viewController">
@@ -119,11 +136,11 @@
                         <color key="backgroundColor" name="Background Color"/>
                         <viewLayoutGuide key="safeArea" id="3w8-P4-dvp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New How-To" id="tYj-U6-mcK"/>
+                    <navigationItem key="navigationItem" title="Create a How-To" id="tYj-U6-mcK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUE-jw-PVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2812" y="-169"/>
+            <point key="canvasLocation" x="2812" y="-271"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="X2V-a5-7Eg">
@@ -168,6 +185,7 @@
     </scenes>
     <resources>
         <image name="line.horizontal.3.decrease.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="placeholder.preview" width="100" height="100"/>
         <namedColor name="Background Color">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
