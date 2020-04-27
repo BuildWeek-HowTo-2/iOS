@@ -12,6 +12,10 @@
 		1378E902245746520032931E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1378E900245746520032931E /* Main.storyboard */; };
 		1378E904245746560032931E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1378E903245746560032931E /* Assets.xcassets */; };
 		1378E907245746560032931E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1378E905245746560032931E /* LaunchScreen.storyboard */; };
+		13CCBEA424574FE600AE23BC /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA324574FE600AE23BC /* Profile.storyboard */; };
+		13CCBEA62457500000AE23BC /* Bookmarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA52457500000AE23BC /* Bookmarks.storyboard */; };
+		13CCBEA8245750D300AE23BC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA7245750D300AE23BC /* Onboarding.storyboard */; };
+		13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		1378E903245746560032931E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1378E906245746560032931E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1378E908245746560032931E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13CCBEA324574FE600AE23BC /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		13CCBEA52457500000AE23BC /* Bookmarks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmarks.storyboard; sourceTree = "<group>"; };
+		13CCBEA7245750D300AE23BC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			children = (
 				1378E90E245746CA0032931E /* Application */,
 				1378E90F245747150032931E /* Storyboards */,
+				13CCBEAB2457515800AE23BC /* View Controllers */,
 			);
 			path = "How-To";
 			sourceTree = "<group>";
@@ -76,8 +85,19 @@
 			isa = PBXGroup;
 			children = (
 				1378E900245746520032931E /* Main.storyboard */,
+				13CCBEA7245750D300AE23BC /* Onboarding.storyboard */,
+				13CCBEA324574FE600AE23BC /* Profile.storyboard */,
+				13CCBEA52457500000AE23BC /* Bookmarks.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		13CCBEAB2457515800AE23BC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +161,10 @@
 			files = (
 				1378E907245746560032931E /* LaunchScreen.storyboard in Resources */,
 				1378E904245746560032931E /* Assets.xcassets in Resources */,
+				13CCBEA424574FE600AE23BC /* Profile.storyboard in Resources */,
+				13CCBEA8245750D300AE23BC /* Onboarding.storyboard in Resources */,
 				1378E902245746520032931E /* Main.storyboard in Resources */,
+				13CCBEA62457500000AE23BC /* Bookmarks.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1378E8FB245746520032931E /* AppDelegate.swift in Sources */,
+				13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */,
 				1378E8FD245746520032931E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
