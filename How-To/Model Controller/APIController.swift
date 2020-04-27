@@ -27,6 +27,8 @@ enum NetworkError: Error {
 
 class APIController {
     
+    typealias CompletionHandlerTitles = (Result<[String], NetworkError>) -> Void
+    
     // TODO: fill in URL path and components
     private let baseURL = URL(string: "")! /// need url
     
@@ -107,7 +109,42 @@ class APIController {
     }
     
     // create fetching tutorials method
-    
+    func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
+        
+        guard let bearer = bearer else {
+            return completion(.failure(.noAuth))
+        }
+        
+        let allTutorialsURL = baseURL.appendingPathComponent("tutorials/all") /// need components
+        var request = URLRequest(url: allTutorialsURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error receiving tutorial title data: \(error)")
+                return completion(.failure(.otherError))
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 401 { /// need status codes
+                return completion(.failure(.badAuth))
+            }
+            
+            guard let data = data else {
+                return completion(.failure(.badData))
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let titles = try decoder.decode([String].self, from: data)
+                completion(.success(titles))
+            } catch {
+                NSLog("Error decoding title objects: \(error)")
+                completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
     
     // create tutorial directions?
 }
