@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum HTTPMethod: String {
     case get = "GET"
@@ -31,15 +30,15 @@ class APIController {
     typealias CompletionHandlerSummaries = (Result<Tutorial, NetworkError>) -> Void
     
     // TODO: fill in URL path and components
-    private let baseURL = URL(string: "")! /// need url
+    private let baseURL = URL(string: "https://how2s.herokuapp.com")!
     
     var bearer: Bearer?
     
     // create signUp
-    func signUp(with user: User, completion: @escaping (Error?) -> ()) {
+    func userSignUp(with user: User, completion: @escaping (Error?) -> ()) {
         
-        let signUpURL = baseURL.appendingPathComponent("") ///// need components
-        var request = URLRequest(url: signUpURL)
+        let userSignUpURL = baseURL.appendingPathComponent("/api/user/register")
+        var request = URLRequest(url: userSignUpURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -66,11 +65,11 @@ class APIController {
     }
     
     // create signIn
-    func signIn(with user: User, completion: @escaping (Error?) -> ()) {
+    func userLogin(with user: User, completion: @escaping (Error?) -> ()) {
         
-        let signInURL = baseURL.appendingPathComponent("") ///// need components
+        let userLoginURL = baseURL.appendingPathComponent("/api/user/login")
         
-        var request = URLRequest(url: signInURL)
+        var request = URLRequest(url: userLoginURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -138,8 +137,8 @@ class APIController {
         }.resume()
     }
     
-    // create tutorial directions?
-    func fetchTutorialSummary(for tutorialTitle: String, completion: @escaping CompletionHandlerSummaries = { _ in }) {
+    // create fetching tutorial Details
+    func fetchTutorialDetails(for tutorialTitle: String, completion: @escaping CompletionHandlerSummaries = { _ in }) {
         
         let tutorialURL = baseURL.appendingPathComponent("tutorials/\(tutorialTitle)")
         
@@ -168,4 +167,6 @@ class APIController {
             }
         }.resume()
     }
+    
+    // create createTutorial method
 }
