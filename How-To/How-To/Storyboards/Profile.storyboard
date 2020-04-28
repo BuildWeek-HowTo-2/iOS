@@ -29,7 +29,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Yh-lz-gP5"/>
                     <connections>
-                        <segue destination="F7b-VZ-7vl" kind="show" identifier="Onboarding" id="6wC-fu-VKN"/>
+                        <segue destination="F7b-VZ-7vl" kind="presentation" identifier="Onboarding" modalPresentationStyle="fullScreen" id="6wC-fu-VKN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCa-Ft-AyW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
