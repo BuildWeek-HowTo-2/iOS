@@ -22,10 +22,14 @@ enum NetworkError: Error {
     case badData
     case noDecode
     case badUrl
+    case noIdentifier
 }
 
 class APIController {
     
+   // TODO: Add CoreData code
+    
+    typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     typealias CompletionHandlerTitles = (Result<[String], NetworkError>) -> Void
     typealias CompletionHandlerSummaries = (Result<Tutorial, NetworkError>) -> Void
     
@@ -241,4 +245,46 @@ class APIController {
     }
     
     // create createTutorial method
+    func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
+        ///// guard let id code
+        
+        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension("json") //// need component
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put.rawValue /// using put rather than post??
+       
+        //// JSONEncoder with coredata
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error sending task to server: \(error)")
+                return completion(.failure(.otherError))
+            }
+            completion(.success(true))
+        }.resume()
+    }
+    
+    func deleteTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
+        ///// guard let id code
+        
+        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension("json") /// need component
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error deleting task from server: \(error)")
+                return completion(.failure(.otherError))
+            }
+            completion(.success(true))
+        }.resume()
+    }
+    
+    // TODO: build out CoreData methods
+    private func updateTutorials() {
+        
+    }
+    
+    private func update() {
+        
+    }
 }
