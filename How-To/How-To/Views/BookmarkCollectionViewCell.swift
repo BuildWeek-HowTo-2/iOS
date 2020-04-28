@@ -12,7 +12,6 @@ class BookmarkCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     
