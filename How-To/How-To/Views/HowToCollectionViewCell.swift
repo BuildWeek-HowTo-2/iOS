@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BookmarkCellDelegate: class {
+    func toggleBookmark(for cell: HowToCollectionViewCell)
+}
+
 class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
@@ -15,6 +19,9 @@ class HowToCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
+    
+    // MARK: - Properties
+    weak var delegate: BookmarkCellDelegate?
     
     /*
      PASS OBJECT HERE {
@@ -32,6 +39,9 @@ class HowToCollectionViewCell: UICollectionViewCell {
     // MARK: - IBActions
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
         // Add to CoreData here
+
+        delegate?.toggleBookmark(for: self)
+        //bookmarkButton.setImage(UIImage(named: "bookmark.fill"), for: .normal)
     }
     
 }

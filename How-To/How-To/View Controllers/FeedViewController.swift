@@ -89,3 +89,10 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+extension FeedViewController: BookmarkCellDelegate {
+    func toggleBookmark(for cell: HowToCollectionViewCell) {
+        //guard let item = cell.howto else { return }
+        //shoppingItemController.updateHasBeenAdded(for: item)
+        //collectionView?.reloadData()
+    }
+}
