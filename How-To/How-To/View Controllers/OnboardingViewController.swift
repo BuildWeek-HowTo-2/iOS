@@ -19,6 +19,7 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var verifyTextField: UITextField!
+    @IBOutlet weak var userTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var lineView: UIView!
@@ -76,9 +77,8 @@ class OnboardingViewController: UIViewController {
             loginButton.setTitle("Sign Up", for: .normal)
         } else {
             loginType = .login
-            verifyTextField.placeholder = nil
-            verifyTextField.isUserInteractionEnabled = false ///// is this the best way to get rid of the verify password field from view?
-            lineView.backgroundColor = view.backgroundColor
+            verifyTextField.isHidden = true
+            lineView.isHidden = true
             loginButton.setTitle("Login", for: .normal)
             // TODO: need to add forgotPassword label
         }
