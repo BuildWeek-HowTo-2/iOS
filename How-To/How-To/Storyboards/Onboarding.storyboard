@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Onboarding View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="g67-sk-BVL">
             <objects>
-                <viewController id="MSe-Z4-bkV" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MSe-Z4-bkV" customClass="LoginViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="964-1Z-71Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,9 +68,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="submit:" destination="MSe-Z4-bkV" eventType="touchUpInside" id="55l-VT-DEk"/>
-                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pPr-mH-IT1">
                                 <rect key="frame" x="126.5" y="305.5" width="161" height="32"/>
@@ -86,9 +83,6 @@
                                     <segment title="Login"/>
                                 </segments>
                                 <color key="tintColor" name="Primary Color"/>
-                                <connections>
-                                    <action selector="loginTypeChanged:" destination="MSe-Z4-bkV" eventType="valueChanged" id="1gW-QG-6Yn"/>
-                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -116,14 +110,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="WO7-Su-4zj"/>
                     <connections>
-                        <outlet property="emailTextField" destination="p9S-8Z-YZw" id="hWw-Af-5ud"/>
-                        <outlet property="imageView" destination="P7v-fu-fWE" id="Dzi-ei-4uJ"/>
-                        <outlet property="lineView" destination="H9t-3S-trO" id="2Bg-qW-ckS"/>
-                        <outlet property="loginButton" destination="ned-C2-uay" id="P5V-ME-hdY"/>
-                        <outlet property="loginTypeSegmentedControl" destination="ORb-Tu-b1q" id="vOe-Lz-NTx"/>
-                        <outlet property="passwordTextField" destination="osO-g9-WfI" id="7rC-Ht-0Yw"/>
-                        <outlet property="userTypeSegmentedControl" destination="pPr-mH-IT1" id="0Y8-g5-6Fi"/>
-                        <outlet property="verifyTextField" destination="I3m-kk-E1A" id="9Pd-fs-ngD"/>
+                        <outlet property="emailTextField" destination="p9S-8Z-YZw" id="RZx-L9-YYy"/>
+                        <outlet property="imageView" destination="P7v-fu-fWE" id="vFn-0L-ANf"/>
+                        <outlet property="lineView" destination="H9t-3S-trO" id="TyS-46-fRC"/>
+                        <outlet property="loginButton" destination="ned-C2-uay" id="a4B-xX-P8z"/>
+                        <outlet property="loginTypeSegmentedControl" destination="ORb-Tu-b1q" id="uBf-7g-o07"/>
+                        <outlet property="passwordTextField" destination="osO-g9-WfI" id="mq8-70-Tqp"/>
+                        <outlet property="userTypeSegmentedControl" destination="pPr-mH-IT1" id="M0e-kU-YJr"/>
+                        <outlet property="verifyTextField" destination="I3m-kk-E1A" id="p2G-YJ-5ac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIj-tc-RS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -131,9 +125,24 @@
             <point key="canvasLocation" x="908.69565217391312" y="134.59821428571428"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="CCQ-hz-0Sr">
+            <objects>
+                <viewController id="m03-nd-OR9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yPK-IY-xk3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="afy-x3-Ode"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uUV-O6-TQA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1651" y="129"/>
+        </scene>
+        <!--Onboarding View Controller-->
         <scene sceneID="ogZ-VU-4x9">
             <objects>
-                <viewController id="AMp-kA-VvQ" sceneMemberID="viewController">
+                <viewController id="AMp-kA-VvQ" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mQT-4k-kSg">
                         <rect key="frame" x="0.0" y="0.0" width="1242" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,8 +152,30 @@
                                 <color key="pageIndicatorTintColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" name="Primary Color"/>
                             </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyc-2E-YYt">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyc-2E-YYt">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="895"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-eC-dSg">
+                                        <rect key="frame" x="28" y="517" width="359" height="195"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J84-ka-OKg">
+                                        <rect key="frame" x="28" y="93" width="359" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdn-Yd-GU5">
+                                        <rect key="frame" x="40" y="282" width="330" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" name="Primary Color"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="dRb-WE-NfS"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="HnN-fQ-YzZ"/>
@@ -165,10 +196,14 @@
                         <viewLayoutGuide key="safeArea" id="Bl5-oK-P2j"/>
                     </view>
                     <size key="freeformSize" width="1242" height="896"/>
+                    <connections>
+                        <outlet property="pageControl" destination="P0B-oA-fS4" id="Euq-ob-ClN"/>
+                        <outlet property="scrollView" destination="Dyc-2E-YYt" id="DKB-kM-nA0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYJ-vk-Wtb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2304" y="135"/>
+            <point key="canvasLocation" x="2024.6376811594205" y="791.51785714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W1j-DZ-yCF">
