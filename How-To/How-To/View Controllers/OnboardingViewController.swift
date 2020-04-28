@@ -23,6 +23,7 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var loginTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var lineView: UIView!
+
     
     var apiController: APIController?
     var loginType = LoginType.signUp
@@ -30,6 +31,8 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.becomeFirstResponder()
         
     }
     
@@ -39,21 +42,23 @@ class OnboardingViewController: UIViewController {
             let password = passwordTextField.text,
             !password.isEmpty,
             let verifyPassword = verifyTextField.text,
-            !verifyPassword.isEmpty,
-            password == verifyPassword {
+            !verifyPassword.isEmpty {
             let user = User(username: email, password: password)
             
-            if loginType == .signUp {
+            if loginType == .signUp,
+                password == verifyPassword {
                 apiController?.userSignUp(with: user, completion: { error in
                     if let error = error {
                         NSLog("Error occurred during sign up: \(error)")
                     } else {
                         DispatchQueue.main.async {
-                            let alertController = UIAlertController(title: "Sign Up Successful", message: "", preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
                             
                             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                             alertController.addAction(alertAction)
                             self.present(alertController, animated: true)
+                            self.loginType = .login ////
+                            self.emailTextField.becomeFirstResponder() /////
                         }
                     }
                 })
