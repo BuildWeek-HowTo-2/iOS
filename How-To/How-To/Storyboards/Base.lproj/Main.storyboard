@@ -72,6 +72,13 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EM0-iT-Xcj">
+                                                    <rect key="frame" x="339" y="70" width="18" height="22"/>
+                                                    <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="bookmarkButtonTapped:" destination="0Pg-MY-VZS" eventType="touchUpInside" id="Cm7-3u-jnm"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8Tl-Vm-44t" firstAttribute="leading" secondItem="8YR-du-Hyd" secondAttribute="trailing" constant="8" id="8lR-bH-aty"/>
@@ -84,11 +91,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="8Tl-Vm-44t" secondAttribute="trailing" constant="8" id="Vbg-uj-g5g"/>
                                                 <constraint firstItem="qFU-UH-HlQ" firstAttribute="leading" secondItem="8YR-du-Hyd" secondAttribute="trailing" constant="8" id="gKs-bI-CEx"/>
                                                 <constraint firstItem="qFU-UH-HlQ" firstAttribute="top" secondItem="2wX-L6-9PZ" secondAttribute="top" constant="8" id="nyR-Mx-66V"/>
+                                                <constraint firstAttribute="trailing" secondItem="EM0-iT-Xcj" secondAttribute="trailing" constant="8" id="r1g-eh-iek"/>
+                                                <constraint firstAttribute="bottom" secondItem="EM0-iT-Xcj" secondAttribute="bottom" constant="8" id="uW8-x2-b3S"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="365" height="100"/>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="EM0-iT-Xcj" id="5j0-Hi-brS"/>
                                             <outlet property="captionLabel" destination="8Tl-Vm-44t" id="bDf-o9-Ey7"/>
                                             <outlet property="previewImage" destination="8YR-du-Hyd" id="q3L-5q-MzM"/>
                                             <outlet property="titleLabel" destination="qFU-UH-HlQ" id="UQv-j3-SFS"/>
@@ -107,6 +117,7 @@
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
+                        <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="Spv-sW-Tal" firstAttribute="leading" secondItem="UPM-zK-g17" secondAttribute="leading" id="5SZ-E9-jlh"/>
                             <constraint firstItem="UPM-zK-g17" firstAttribute="bottom" secondItem="br5-sg-3DH" secondAttribute="bottom" id="KWM-ub-qhd"/>
@@ -126,6 +137,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="Spv-sW-Tal" id="CjY-ti-6BY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJR-Hg-PLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -367,6 +381,7 @@
     </scenes>
     <resources>
         <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="placeholder.preview" width="100" height="100"/>
         <image name="text.alignleft" catalog="system" width="128" height="100"/>
         <namedColor name="Background Color">

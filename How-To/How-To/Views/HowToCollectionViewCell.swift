@@ -14,6 +14,7 @@ class HowToCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
     /*
      PASS OBJECT HERE {
@@ -27,4 +28,10 @@ class HowToCollectionViewCell: UICollectionViewCell {
     private func updateViews() {
         
     }
+    
+    // MARK: - IBActions
+    @IBAction func bookmarkButtonTapped(_ sender: Any) {
+        // Add to CoreData here
+    }
+    
 }

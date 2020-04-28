@@ -10,6 +10,10 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
