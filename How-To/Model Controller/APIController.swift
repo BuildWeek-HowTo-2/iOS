@@ -30,11 +30,12 @@ class APIController {
    // TODO: Add CoreData code
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    typealias CompletionHandlerTitles = (Result<[String], NetworkError>) -> Void
+    typealias CompletionHandlerTitles = (Result<[Tutorial], NetworkError>) -> Void
     typealias CompletionHandlerSummaries = (Result<Tutorial, NetworkError>) -> Void
     
     // TODO: fill in URL path and components
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
+    private(set) var tutorials: [Tutorial] = []
     
     var bearer: Bearer?
     
@@ -187,10 +188,9 @@ class APIController {
     // create fetching tutorials method
     func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
         
-        let allTutorialsURL = baseURL.appendingPathComponent("tutorials/all") /// need components
+        let allTutorialsURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: allTutorialsURL)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type") //// ??
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -204,7 +204,8 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                let titles = try decoder.decode([String].self, from: data)
+                let titles = try decoder.decode([Tutorial].self, from: data)
+                self.tutorials = titles
                 completion(.success(titles))
             } catch {
                 NSLog("Error decoding title objects: \(error)")

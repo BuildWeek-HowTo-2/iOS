@@ -13,7 +13,7 @@ struct Tutorial: Codable {
     let title: String
     let summary: String
 //    let tutorialSteps: TutorialSteps
-    let likes: Int = 0
+    let likes: Int
     let instructor_id: Int
 }
 
