@@ -21,6 +21,8 @@
 		13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */; };
 		13CCBEB52457809900AE23BC /* How-To.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */; };
 		13CCBEB8245780CC00AE23BC /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */; };
+		13CCBEBA2457A92C00AE23BC /* BookmarksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB92457A92C00AE23BC /* BookmarksCollectionViewController.swift */; };
+		13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHowToViewController.swift; sourceTree = "<group>"; };
 		13CCBEB42457809900AE23BC /* How-To.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "How-To.xcdatamodel"; sourceTree = "<group>"; };
 		13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		13CCBEB92457A92C00AE23BC /* BookmarksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCollectionViewController.swift; sourceTree = "<group>"; };
+		13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				13CCBEA92457515300AE23BC /* FeedCollectionViewController.swift */,
+				13CCBEB92457A92C00AE23BC /* BookmarksCollectionViewController.swift */,
 				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
 				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
 			);
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				13CCBEAC24575F5800AE23BC /* HowToCollectionViewCell.swift */,
+				13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,9 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CCBEBA2457A92C00AE23BC /* BookmarksCollectionViewController.swift in Sources */,
 				13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */,
 				13CCBEB024576B3800AE23BC /* CreateHowToViewController.swift in Sources */,
 				1378E8FB245746520032931E /* AppDelegate.swift in Sources */,
+				13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */,
 				13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */,
 				13CCBEB52457809900AE23BC /* How-To.xcdatamodeld in Sources */,
 				13CCBEAA2457515300AE23BC /* FeedCollectionViewController.swift in Sources */,

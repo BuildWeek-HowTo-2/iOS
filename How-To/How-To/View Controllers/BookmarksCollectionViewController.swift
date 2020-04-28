@@ -1,5 +1,5 @@
 //
-//  FeedCollectionViewController.swift
+//  BookmarksCollectionViewController.swift
 //  How-To
 //
 //  Created by Wyatt Harrell on 4/27/20.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class FeedCollectionViewController: UICollectionViewController {
+class BookmarksCollectionViewController: UICollectionViewController {
 
-    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -27,7 +26,7 @@ class FeedCollectionViewController: UICollectionViewController {
 
 }
 
-extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension BookmarksCollectionViewController: UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -38,7 +37,7 @@ extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookmarkCell", for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
     
         cell.titleLabel.text = "Title: Quick detail about the How-To"
         cell.captionLabel.text = "Description of the how-to. This will give the user more info."

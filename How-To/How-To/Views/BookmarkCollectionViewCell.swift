@@ -1,5 +1,5 @@
 //
-//  HowToCollectionViewCell.swift
+//  BookmarkCollectionViewCell.swift
 //  How-To
 //
 //  Created by Wyatt Harrell on 4/27/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HowToCollectionViewCell: UICollectionViewCell {
+class BookmarkCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
