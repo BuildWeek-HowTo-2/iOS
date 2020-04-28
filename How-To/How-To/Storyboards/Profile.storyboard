@@ -7,10 +7,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Onboarding-->
+        <scene sceneID="5pK-24-jze">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="F7b-VZ-7vl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="51S-hT-78f"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEX-dq-XxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="-393"/>
+        </scene>
+        <!--Profile View Controller-->
         <scene sceneID="5Lx-dX-6DV">
             <objects>
-                <viewController id="sHf-DH-hgl" sceneMemberID="viewController">
+                <viewController id="sHf-DH-hgl" customClass="ProfileViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FQp-7I-qM0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,6 +28,9 @@
                         <viewLayoutGuide key="safeArea" id="QvX-yR-J25"/>
                     </view>
                     <navigationItem key="navigationItem" id="7Yh-lz-gP5"/>
+                    <connections>
+                        <segue destination="F7b-VZ-7vl" kind="show" identifier="Onboarding" id="6wC-fu-VKN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCa-Ft-AyW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
