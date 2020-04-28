@@ -1,29 +1,22 @@
 //
-//  ViewHowToViewController.swift
+//  ViewBookmarkViewController.swift
 //  How-To
 //
-//  Created by Wyatt Harrell on 4/27/20.
+//  Created by Wyatt Harrell on 4/28/20.
 //  Copyright © 2020 Wyatt Harrell. All rights reserved.
 //
 
 import UIKit
 
-class ViewHowToViewController: UIViewController {
+class ViewBookmarkViewController: UIViewController {
 
-    // MARK: - IBOutlets
-    @IBOutlet weak var summaryTextView: UITextView!
-    @IBOutlet weak var detailStackView: UIStackView!
-    
-    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
     
-    // MARK: - Private Methods
-    private func updateViews() {
-        
-    }
-    
+
     /*
     // MARK: - Navigation
 
