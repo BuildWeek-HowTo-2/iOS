@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1651" y="129"/>
         </scene>
-        <!--Onboarding View Controller-->
+        <!--View Controller-->
         <scene sceneID="ogZ-VU-4x9">
             <objects>
-                <viewController id="AMp-kA-VvQ" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AMp-kA-VvQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mQT-4k-kSg">
                         <rect key="frame" x="0.0" y="0.0" width="1242" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
