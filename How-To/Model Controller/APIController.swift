@@ -41,7 +41,7 @@ class APIController {
     // create signUp
     func userSignUp(with user: User, completion: @escaping (Error?) -> ()) {
         
-        let userSignUpURL = baseURL.appendingPathComponent("/api/user/register")
+        let userSignUpURL = baseURL.appendingPathComponent("/api/users/register")
         var request = URLRequest(url: userSignUpURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -70,7 +70,7 @@ class APIController {
     
     func instructorSignUp(with user: User, completion: @escaping (Error?) -> ()) {
         
-        let userSignUpURL = baseURL.appendingPathComponent("/api/instructor/register")
+        let userSignUpURL = baseURL.appendingPathComponent("/api/instructors/register")
         var request = URLRequest(url: userSignUpURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -100,7 +100,7 @@ class APIController {
     // create signIn
     func userLogin(with user: User, completion: @escaping (Error?) -> ()) {
         
-        let userLoginURL = baseURL.appendingPathComponent("/api/user/login")
+        let userLoginURL = baseURL.appendingPathComponent("/api/users/login")
         
         var request = URLRequest(url: userLoginURL)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -143,7 +143,7 @@ class APIController {
     
     func instructorLogin(with user: User, completion: @escaping (Error?) -> ()) {
         
-        let userLoginURL = baseURL.appendingPathComponent("/api/instructor/login")
+        let userLoginURL = baseURL.appendingPathComponent("/api/instructors/login")
         
         var request = URLRequest(url: userLoginURL)
         request.httpMethod = HTTPMethod.post.rawValue
