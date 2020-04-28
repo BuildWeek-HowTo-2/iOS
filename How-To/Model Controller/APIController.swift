@@ -69,35 +69,6 @@ class APIController {
         }.resume()
     }
     
-//    func instructorSignUp(with user: User, completion: @escaping (Error?) -> ()) {
-//
-//        let userSignUpURL = baseURL.appendingPathComponent("/api/instructors/register")
-//        var request = URLRequest(url: userSignUpURL)
-//        request.httpMethod = HTTPMethod.post.rawValue
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        let jsonEncoder = JSONEncoder()
-//        do {
-//            let jsonData = try jsonEncoder.encode(user)
-//            request.httpBody = jsonData
-//        } catch {
-//            NSLog("Error encoding user object: \(error)")
-//            return completion(error)
-//        }
-//
-//        URLSession.shared.dataTask(with: request) { _, response, error in
-//            if let response = response as? HTTPURLResponse,
-//                response.statusCode != 200 {
-//                return completion(NSError(domain: response.description, code: response.statusCode, userInfo: nil))
-//            }
-//
-//            if let error = error {
-//                return completion(error)
-//            }
-//            completion(nil)
-//        }.resume()
-//    }
-    
     // create signIn
     func login(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
         
@@ -142,49 +113,6 @@ class APIController {
         }.resume()
     }
     
-//    func instructorLogin(with user: User, completion: @escaping (Error?) -> ()) {
-//
-//        let userLoginURL = baseURL.appendingPathComponent("/api/instructors/login")
-//
-//        var request = URLRequest(url: userLoginURL)
-//        request.httpMethod = HTTPMethod.post.rawValue
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        let jsonEncoder = JSONEncoder()
-//        do {
-//            let jsonData = try jsonEncoder.encode(user)
-//            request.httpBody = jsonData
-//        } catch {
-//            NSLog("Error encoding user object: \(error)")
-//            return completion(error)
-//        }
-//
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//
-//            if let response = response as? HTTPURLResponse,
-//                response.statusCode != 200 {
-//                return completion(NSError(domain: response.description, code: response.statusCode, userInfo: nil))
-//            }
-//
-//            if let error = error {
-//                return completion(error)
-//            }
-//
-//            guard let data = data else {
-//                return completion(NSError(domain: "Data not found", code: 99, userInfo: nil)) /// right code?
-//            }
-//
-//            let decoder = JSONDecoder()
-//            do {
-//                self.bearer = try decoder.decode(Bearer.self, from: data)
-//                completion(nil)
-//            } catch {
-//                NSLog("Error decoding bearer object: \(error)")
-//                return completion(error)
-//            }
-//        }.resume()
-//    }
-//
     // create fetching tutorials method
     func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
 
