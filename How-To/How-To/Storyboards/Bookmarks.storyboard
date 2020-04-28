@@ -3,26 +3,11 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="MG5-ZO-NGn">
-            <objects>
-                <viewController id="mFx-yO-iP7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OqS-Lz-Gbb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="igR-sf-bDP"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="gFw-cb-vO1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zU3-ge-eu7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1200" y="124.55357142857142"/>
-        </scene>
         <!--Bookmarks-->
         <scene sceneID="ICe-o1-zp9">
             <objects>
@@ -30,21 +15,100 @@
                     <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="e8d-9F-HaL"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pJW-iZ-lcD">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pJW-iZ-lcD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="mFx-yO-iP7" kind="relationship" relationship="rootViewController" id="XLm-VA-daW"/>
+                        <segue destination="m0P-Mg-xbv" kind="relationship" relationship="rootViewController" id="B6f-z5-WbP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pn-uw-YW4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289.85507246376812" y="124.55357142857142"/>
         </scene>
+        <!--Bookmarks-->
+        <scene sceneID="lqN-vp-ffA">
+            <objects>
+                <collectionViewController id="m0P-Mg-xbv" customClass="BookmarksCollectionViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hAI-0h-xAX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="Text Field Background Color"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="peG-lU-G5A">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookmarkCell" id="faG-2N-Fc1" customClass="BookmarkCollectionViewCell" customModule="How_To" customModuleProvider="target">
+                                <rect key="frame" x="24.5" y="8" width="365" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Whh-Ht-o6C">
+                                    <rect key="frame" x="0.0" y="0.0" width="365" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.preview" translatesAutoresizingMaskIntoConstraints="NO" id="SYs-4a-RSu">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="1Du-g0-J5q"/>
+                                                <constraint firstAttribute="width" secondItem="SYs-4a-RSu" secondAttribute="height" multiplier="1:1" id="7sc-ip-RIc"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yma-ky-pSm">
+                                            <rect key="frame" x="108" y="8" width="249" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfH-gE-tB4">
+                                            <rect key="frame" x="108" y="31" width="249" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OfH-gE-tB4" secondAttribute="bottom" constant="8" id="5d2-Jq-Uap"/>
+                                        <constraint firstItem="OfH-gE-tB4" firstAttribute="leading" secondItem="SYs-4a-RSu" secondAttribute="trailing" constant="8" id="9Uv-gf-CZ5"/>
+                                        <constraint firstItem="Yma-ky-pSm" firstAttribute="leading" secondItem="SYs-4a-RSu" secondAttribute="trailing" constant="8" id="E5Y-VB-JgV"/>
+                                        <constraint firstItem="Yma-ky-pSm" firstAttribute="top" secondItem="Whh-Ht-o6C" secondAttribute="top" constant="8" id="JdY-Lv-pXH"/>
+                                        <constraint firstItem="SYs-4a-RSu" firstAttribute="top" secondItem="Whh-Ht-o6C" secondAttribute="top" id="Vci-Is-lbN"/>
+                                        <constraint firstAttribute="trailing" secondItem="OfH-gE-tB4" secondAttribute="trailing" constant="8" id="YP8-rV-xva"/>
+                                        <constraint firstItem="OfH-gE-tB4" firstAttribute="top" secondItem="Yma-ky-pSm" secondAttribute="bottom" id="fVI-qi-yPB"/>
+                                        <constraint firstItem="SYs-4a-RSu" firstAttribute="leading" secondItem="Whh-Ht-o6C" secondAttribute="leading" id="jkP-1e-whR"/>
+                                        <constraint firstAttribute="bottom" secondItem="SYs-4a-RSu" secondAttribute="bottom" id="lFr-3f-8XD"/>
+                                        <constraint firstAttribute="trailing" secondItem="Yma-ky-pSm" secondAttribute="trailing" constant="8" id="vI0-aV-BJP"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="customSize" width="365" height="100"/>
+                                <connections>
+                                    <outlet property="captionLabel" destination="OfH-gE-tB4" id="00i-Jj-BNF"/>
+                                    <outlet property="previewImage" destination="SYs-4a-RSu" id="elu-E3-P2R"/>
+                                    <outlet property="titleLabel" destination="Yma-ky-pSm" id="MeA-6C-uBn"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="m0P-Mg-xbv" id="Vji-y4-eO4"/>
+                            <outlet property="delegate" destination="m0P-Mg-xbv" id="d4h-as-MDm"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="NxH-yr-0dK"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6q-1m-zhB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013.0434782608696" y="131.91964285714286"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="placeholder.preview" width="100" height="100"/>
+        <namedColor name="Text Field Background Color">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

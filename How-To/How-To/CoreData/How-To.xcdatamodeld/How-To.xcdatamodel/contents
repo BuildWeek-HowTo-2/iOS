@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Guide" representedClassName="Guide" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="instructorId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="likes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="guideSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GuideSteps" inverseName="guide" inverseEntity="GuideSteps"/>
+    </entity>
+    <entity name="GuideSteps" representedClassName="GuideSteps" syncable="YES" codeGenerationType="class">
+        <attribute name="stepInfo" optional="YES" attributeType="String"/>
+        <attribute name="stepNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stepTitle" optional="YES" attributeType="String"/>
+        <relationship name="guide" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Guide" inverseName="guideSteps" inverseEntity="Guide"/>
+    </entity>
+    <elements>
+        <element name="Guide" positionX="-187.1640625" positionY="-149.5546875" width="128" height="148"/>
+        <element name="GuideSteps" positionX="-36" positionY="45" width="128" height="103"/>
+    </elements>
+</model>
