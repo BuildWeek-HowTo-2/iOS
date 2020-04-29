@@ -192,15 +192,24 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
 extension BookmarksCollectionViewController: DeleteBookmarkDelegate {
     func deleteBookmark(for cell: BookmarkCollectionViewCell) {
         guard let bookmark = cell.tutorial else { return }
-        let context = CoreDataStack.shared.mainContext
-        context.delete(bookmark)
         
-        do {
-            try CoreDataStack.shared.save()
-        } catch {
-            context.reset()
-            NSLog("Error saving managed object context (deleting record): \(error)")
+        let alert = UIAlertController(title: "Remove Bookmark", message: "Are you sure you want to remove this How-To tutorial from your bookmarks?", preferredStyle: .actionSheet)
+        let addBookmarkAction = UIAlertAction(title: "Remove Bookmark", style: .destructive) { (_) in
+            let context = CoreDataStack.shared.mainContext
+            context.delete(bookmark)
+            
+            do {
+                try CoreDataStack.shared.save()
+            } catch {
+                context.reset()
+                NSLog("Error saving managed object context (deleting record): \(error)")
+            }
+            self.collectionView.reloadData()
         }
-        collectionView.reloadData()
+        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(addBookmarkAction)
+        alert.addAction(dismissAction)
+        present(alert, animated: true)
     }
 }

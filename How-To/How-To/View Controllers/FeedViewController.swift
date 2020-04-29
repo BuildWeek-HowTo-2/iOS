@@ -69,6 +69,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
         let tutorial = apiController.tutorials[indexPath.item]
         cell.tutorial = tutorial
+        cell.delegate = self
         cell.layer.cornerRadius = 8
         
         return cell
@@ -90,3 +91,27 @@ extension FeedViewController: UISearchBarDelegate {
         }
     }
 }
+
+extension FeedViewController: AddBookmarkDelegate {
+    func addBookmark(for cell: HowToCollectionViewCell) {
+        guard let tutorial = cell.tutorial else { return }
+
+        let alert = UIAlertController(title: "Add Bookmark", message: "Would you like to add this How-To tutorial to your bookmarks for offline viewing?", preferredStyle: .actionSheet)
+        let addBookmarkAction = UIAlertAction(title: "Add Bookmark", style: .default) { (_) in
+            Guide(tutorial: tutorial)
+            
+            do {
+                try CoreDataStack.shared.save()
+            } catch {
+                NSLog("Error saving managed object context: \(error)")
+            }
+        }
+        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(addBookmarkAction)
+        alert.addAction(dismissAction)
+        present(alert, animated: true)
+    }
+}
+
+
