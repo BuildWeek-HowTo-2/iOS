@@ -109,7 +109,7 @@ class LoginViewController: UIViewController {
             loginType = .login
             verifyStackView.isHidden = true
             loginButton.setTitle("Login", for: .normal)
-            // TODO: need to add forgotPassword label
+            // TODO: need to add forgotPassword label?
         }
     }
     

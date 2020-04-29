@@ -155,7 +155,6 @@
                         <outlet property="usernameTextField" destination="p9S-8Z-YZw" id="Gxz-4g-fLn"/>
                         <outlet property="verifyStackView" destination="L1o-xh-J9c" id="s1W-3D-mLO"/>
                         <outlet property="verifyTextField" destination="I3m-kk-E1A" id="p2G-YJ-5ac"/>
-                        <segue destination="AMp-kA-VvQ" kind="presentation" identifier="UserOnboardingSegue" id="SVx-oK-hlA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIj-tc-RS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,11 +182,11 @@
             <objects>
                 <viewController id="AMp-kA-VvQ" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mQT-4k-kSg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="Qzq-Jc-6QV">
-                                <rect key="frame" x="20" y="143" width="374" height="522"/>
+                                <rect key="frame" x="20" y="192" width="374" height="522"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to HowTo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J84-ka-OKg">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
@@ -207,7 +206,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2p-WP-JI9">
-                                <rect key="frame" x="160" y="703" width="94" height="54"/>
+                                <rect key="frame" x="160" y="752" width="94" height="59"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" red="0.1856933096392808" green="0.39430450320991328" blue="0.16777138102731726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="arrowshape.turn.up.right.fill" catalog="system">
@@ -215,7 +214,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="53" scale="default"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hf5-ds-2y4" kind="modal" modalPresentationStyle="fullScreen" id="1zH-io-UAc"/>
+                                    <action selector="welcomeNextTapped:" destination="AMp-kA-VvQ" eventType="touchUpInside" id="nOV-Il-cf4"/>
+                                    <segue destination="hf5-ds-2y4" kind="modal" identifier="DiscoverSegue" modalPresentationStyle="fullScreen" id="1zH-io-UAc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,6 +233,12 @@
                         <viewLayoutGuide key="safeArea" id="Bl5-oK-P2j"/>
                     </view>
                     <navigationItem key="navigationItem" id="hkc-PO-T6j"/>
+                    <connections>
+                        <outlet property="welcomeImage" destination="xdn-Yd-GU5" id="Fb8-hZ-bGD"/>
+                        <outlet property="welcomeLabel" destination="J84-ka-OKg" id="g9Y-TF-rS2"/>
+                        <outlet property="welcomeStackView" destination="Qzq-Jc-6QV" id="kcB-mV-3Pf"/>
+                        <outlet property="welcomeText" destination="7nW-TX-VbS" id="eyK-H6-W8I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYJ-vk-Wtb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -293,7 +299,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="53" scale="default"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JUN-qT-Su8" kind="presentation" modalPresentationStyle="fullScreen" id="YSd-kp-xHo"/>
+                                    <action selector="pageTwoTapped:" destination="hf5-ds-2y4" eventType="touchUpInside" id="zdy-1w-DTG"/>
+                                    <segue destination="JUN-qT-Su8" kind="presentation" identifier="UserBookmarkSegue" modalPresentationStyle="fullScreen" id="YSd-kp-xHo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -311,6 +318,11 @@
                         <viewLayoutGuide key="safeArea" id="YMD-1J-8jt"/>
                     </view>
                     <navigationItem key="navigationItem" id="DdD-MJ-J7G"/>
+                    <connections>
+                        <outlet property="pageTwoImage" destination="tSZ-D5-Bdi" id="nOU-tA-Znd"/>
+                        <outlet property="pageTwoLabel" destination="cHI-m2-cLQ" id="TcW-1r-ce6"/>
+                        <outlet property="pageTwoText" destination="xuC-lQ-e86" id="Cwt-yw-ixr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQU-NT-q03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,6 +365,9 @@
                                     <color key="titleColor" red="0.15397179799999999" green="0.32694647659999998" blue="0.13911142639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="68" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="getStartedTapped:" destination="JUN-qT-Su8" eventType="touchUpInside" id="fGU-mW-HHD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
@@ -369,16 +384,20 @@
                         <viewLayoutGuide key="safeArea" id="NdY-Ep-Blw"/>
                     </view>
                     <navigationItem key="navigationItem" id="4uc-CL-py7"/>
+                    <connections>
+                        <outlet property="pageThreeImage" destination="gL0-Pm-IN0" id="eG0-Hy-f0M"/>
+                        <outlet property="pageThreeLabel" destination="vfJ-2e-HiJ" id="PyN-Pe-Ri5"/>
+                        <outlet property="pageThreeText" destination="N5o-C6-ewS" id="VUH-HD-jZD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YK2-p6-cFX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3018.840579710145" y="868.52678571428567"/>
         </scene>
-        <!--Onboarding View Controller-->
+        <!--Instructor Onboarding View Controller-->
         <scene sceneID="4gP-nf-YJt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UW0-pc-5Ea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="YNK-0X-UsO" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YNK-0X-UsO" customClass="InstructorOnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6u-hk-WwI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -412,7 +431,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="53" scale="default"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6fx-TD-ycz" kind="modal" modalPresentationStyle="fullScreen" id="aG3-lP-YPh"/>
+                                    <action selector="welcomeNextTapped:" destination="YNK-0X-UsO" eventType="touchUpInside" id="UkO-ma-Fcy"/>
+                                    <segue destination="6fx-TD-ycz" kind="modal" identifier="ShareSegue" modalPresentationStyle="fullScreen" id="aG3-lP-YPh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -430,15 +450,20 @@
                         <viewLayoutGuide key="safeArea" id="DEc-da-X5t"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kde-me-qoa"/>
+                    <connections>
+                        <outlet property="welcomeImage" destination="VBy-k6-hmk" id="hI8-bp-aIO"/>
+                        <outlet property="welcomeLabel" destination="Vym-Qg-TZf" id="fkW-M8-uEG"/>
+                        <outlet property="welcomeText" destination="eoc-sa-zoC" id="31E-rd-l9w"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UW0-pc-5Ea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-717" y="913"/>
         </scene>
-        <!--Onboarding View Controller-->
+        <!--Instructor Onboarding View Controller-->
         <scene sceneID="y6j-hP-TTV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhf-Tq-zgM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="6fx-TD-ycz" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6fx-TD-ycz" customClass="InstructorOnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GuF-Ti-4Nc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -472,7 +497,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="53" scale="default"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ZfZ-Pm-geD" kind="presentation" modalPresentationStyle="fullScreen" id="70x-wh-Zim"/>
+                                    <action selector="pageTwoTapped:" destination="6fx-TD-ycz" eventType="touchUpInside" id="LII-mE-GrF"/>
+                                    <segue destination="ZfZ-Pm-geD" kind="presentation" identifier="GetInspiredSegue" modalPresentationStyle="fullScreen" id="70x-wh-Zim"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -490,14 +516,20 @@
                         <viewLayoutGuide key="safeArea" id="p6v-2X-mXe"/>
                     </view>
                     <navigationItem key="navigationItem" id="tKN-wv-3mN"/>
+                    <connections>
+                        <outlet property="pageTwoImage" destination="xCm-WW-WIJ" id="d0n-5t-IFA"/>
+                        <outlet property="pageTwoLabel" destination="VR4-ZC-652" id="CR2-wY-eXy"/>
+                        <outlet property="pageTwoText" destination="h0h-Wi-xY2" id="aqa-wS-DKx"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhf-Tq-zgM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="20" y="913"/>
         </scene>
-        <!--Onboarding View Controller-->
+        <!--Instructor Onboarding View Controller-->
         <scene sceneID="DB6-dk-uJ4">
             <objects>
-                <viewController id="ZfZ-Pm-geD" customClass="OnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZfZ-Pm-geD" customClass="InstructorOnboardingViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ki3-Z5-Vo5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -531,6 +563,9 @@
                                     <color key="titleColor" red="0.15397179799999999" green="0.32694647659999998" blue="0.13911142639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="68" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="getStartedTapped:" destination="ZfZ-Pm-geD" eventType="touchUpInside" id="WEI-ZP-u5j"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
@@ -547,6 +582,11 @@
                         <viewLayoutGuide key="safeArea" id="hQM-ra-wnz"/>
                     </view>
                     <navigationItem key="navigationItem" id="ttn-E6-oeS"/>
+                    <connections>
+                        <outlet property="pageThreeImage" destination="tfm-Ci-9ts" id="dnK-Y4-Q3u"/>
+                        <outlet property="pageThreeLabel" destination="UgU-kL-MDi" id="lt0-bh-j8V"/>
+                        <outlet property="pageThreeText" destination="fSm-cX-y3A" id="qIs-rq-poZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBS-pK-FRn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
