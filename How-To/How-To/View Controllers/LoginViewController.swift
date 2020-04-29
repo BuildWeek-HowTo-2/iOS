@@ -48,9 +48,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         verifyTextField.delegate = self
     }
     
-    func setUserDefaults(username: UITextField) {
-        guard let username = username.text else { return }
+    func setUserDefaults(username: UITextField) -> String {
+        var userString: String = ""
+        if let usernameString = username.text {
         UserDefaults.standard.set(username, forKey: "username")
+        userString = usernameString
+        }
+        return userString
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
@@ -90,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else if loginType == .login {
             guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else { return }
             guard let username = UserDefaults.standard.string(forKey: "username") else { return }
-            let user = User(username: username, password: password)
+            let user = User(username: email, password: password)
            
             apiController.login(with: user, userType: userType, completion: { error in
                 if let error = error {
@@ -105,12 +109,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                 } else {
                     DispatchQueue.main.async {
-                    
-                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "UnwindToProfile", sender: self)
+                        
                     }
                 }
             })
         }
+        
         
         if userTypeSegmentedControl.selectedSegmentIndex == 0,
             loginType == .signUp {
@@ -120,6 +125,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             performSegue(withIdentifier: "InstructorOnboardingSegue", sender: sender)
         }
     }
+    
+
     
     @IBAction func loginTypeChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {

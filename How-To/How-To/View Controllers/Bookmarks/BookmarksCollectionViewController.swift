@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BookmarksCollectionViewController: UICollectionViewController {
 
@@ -23,24 +24,45 @@ class BookmarksCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    var blockOperations: [BlockOperation] = []
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Guide> = {
+        let fetchRequest: NSFetchRequest<Guide> = Guide.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "likes", ascending: true),
+                                        NSSortDescriptor(key: "title", ascending: true)]
+        let context = CoreDataStack.shared.mainContext
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "likes", cacheName: nil)
+        frc.delegate = self
+        try! frc.performFetch()
+        return frc
+    }()
+
+    deinit {
+        for operation: BlockOperation in blockOperations {
+            operation.cancel()
+        }
+        
+        blockOperations.removeAll(keepingCapacity: false)
+    }
 
 }
 
 extension BookmarksCollectionViewController: UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return fetchedResultsController.sections?.count ?? 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookmarkCell", for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
     
-        cell.titleLabel.text = "Title: Quick detail about the How-To"
-        cell.captionLabel.text = "Description of the how-to. This will give the user more info."
+        cell.tutorial = fetchedResultsController.object(at: indexPath)
+        cell.delegate = self
         cell.layer.cornerRadius = 8
         
         return cell
@@ -79,5 +101,106 @@ extension BookmarksCollectionViewController: UICollectionViewDelegateFlowLayout 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width - 16, height: 100)
+    }
+}
+
+extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    
+        if type == NSFetchedResultsChangeType.insert {
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.insertItems(at: [newIndexPath!])
+                    }
+                    })
+            )
+        } else if type == NSFetchedResultsChangeType.update {
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.reloadItems(at: [indexPath!])
+                    }
+                    })
+            )
+        } else if type == NSFetchedResultsChangeType.move {
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.moveItem(at: indexPath!, to: newIndexPath!)
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.delete {
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.deleteItems(at: [indexPath!])
+                    }
+                    })
+            )
+        }
+    }
+    
+    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        if type == NSFetchedResultsChangeType.insert {
+            print("Insert Section: \(sectionIndex)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.insertSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                    }
+                    })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.update {
+            print("Update Section: \(sectionIndex)")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                    }
+                })
+            )
+        }
+        else if type == NSFetchedResultsChangeType.delete {
+            print("Delete Section: \(sectionIndex)")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        this.collectionView!.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                    }
+                    })
+            )
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView!.performBatchUpdates({ () -> Void in
+            for operation: BlockOperation in self.blockOperations {
+                operation.start()
+            }
+            }, completion: { (finished) -> Void in
+                self.blockOperations.removeAll(keepingCapacity: false)
+        })
+    }
+}
+
+extension BookmarksCollectionViewController: DeleteBookmarkDelegate {
+    func deleteBookmark(for cell: BookmarkCollectionViewCell) {
+        guard let bookmark = cell.tutorial else { return }
+        let context = CoreDataStack.shared.mainContext
+        context.delete(bookmark)
+        
+        do {
+            try CoreDataStack.shared.save()
+        } catch {
+            context.reset()
+            NSLog("Error saving managed object context (deleting record): \(error)")
+        }
+        collectionView.reloadData()
     }
 }
