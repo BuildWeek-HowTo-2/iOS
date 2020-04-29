@@ -11,7 +11,7 @@ import CoreData
 
 extension Guide {
 
-    convenience init?(tutorial: Tutorial, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(tutorial: Tutorial, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.id = Int16(tutorial.id)

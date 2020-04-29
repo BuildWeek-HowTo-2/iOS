@@ -42,7 +42,6 @@ class HowToCollectionViewCell: UICollectionViewCell {
         } catch {
             NSLog("Error saving managed object context: \(error)")
         }
-        
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {

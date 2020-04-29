@@ -37,7 +37,6 @@ class BookmarksCollectionViewController: UICollectionViewController {
         try! frc.performFetch()
         return frc
     }()
-    
 
     deinit {
         for operation: BlockOperation in blockOperations {
@@ -46,7 +45,6 @@ class BookmarksCollectionViewController: UICollectionViewController {
         
         blockOperations.removeAll(keepingCapacity: false)
     }
-
 
 }
 
@@ -64,6 +62,7 @@ extension BookmarksCollectionViewController: UICollectionViewDelegateFlowLayout 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookmarkCell", for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
     
         cell.tutorial = fetchedResultsController.object(at: indexPath)
+        cell.delegate = self
         cell.layer.cornerRadius = 8
         
         return cell
@@ -187,5 +186,21 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
             }, completion: { (finished) -> Void in
                 self.blockOperations.removeAll(keepingCapacity: false)
         })
+    }
+}
+
+extension BookmarksCollectionViewController: DeleteBookmarkDelegate {
+    func deleteBookmark(for cell: BookmarkCollectionViewCell) {
+        guard let bookmark = cell.tutorial else { return }
+        let context = CoreDataStack.shared.mainContext
+        context.delete(bookmark)
+        
+        do {
+            try CoreDataStack.shared.save()
+        } catch {
+            context.reset()
+            NSLog("Error saving managed object context (deleting record): \(error)")
+        }
+        collectionView.reloadData()
     }
 }

@@ -60,7 +60,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tl-Vm-44t">
-                                                    <rect key="frame" x="108" y="31" width="249" height="19.5"/>
+                                                    <rect key="frame" x="108" y="31" width="39.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -103,6 +103,9 @@
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfP-cl-N3O">
                                                     <rect key="frame" x="337.5" y="44" width="20.5" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20.5" id="M21-wt-Oae"/>
+                                                    </constraints>
                                                     <state key="normal" image="heart" catalog="system"/>
                                                     <connections>
                                                         <action selector="likeButtonTapped:" destination="0Pg-MY-VZS" eventType="touchUpInside" id="GcK-cg-oRG"/>
@@ -111,6 +114,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yzf-a2-0np" firstAttribute="top" secondItem="2wX-L6-9PZ" secondAttribute="top" id="3mt-u2-Da4"/>
+                                                <constraint firstItem="RfP-cl-N3O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Tl-Vm-44t" secondAttribute="trailing" constant="3" id="40H-4q-UOm"/>
                                                 <constraint firstItem="qFU-UH-HlQ" firstAttribute="leading" secondItem="yzf-a2-0np" secondAttribute="trailing" constant="8" id="5mg-qE-LYe"/>
                                                 <constraint firstItem="8Tl-Vm-44t" firstAttribute="leading" secondItem="yzf-a2-0np" secondAttribute="trailing" constant="8" id="A7u-zr-2cq"/>
                                                 <constraint firstItem="8Tl-Vm-44t" firstAttribute="top" secondItem="qFU-UH-HlQ" secondAttribute="bottom" id="Fpf-MA-5x3"/>
@@ -118,7 +122,6 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8Tl-Vm-44t" secondAttribute="bottom" constant="8" id="Mkr-v8-3ED"/>
                                                 <constraint firstItem="EM0-iT-Xcj" firstAttribute="top" secondItem="RfP-cl-N3O" secondAttribute="bottom" constant="4" id="Mpm-IX-Lxg"/>
                                                 <constraint firstAttribute="trailing" secondItem="qFU-UH-HlQ" secondAttribute="trailing" constant="8" id="Too-KN-BVP"/>
-                                                <constraint firstAttribute="trailing" secondItem="8Tl-Vm-44t" secondAttribute="trailing" constant="8" id="Vbg-uj-g5g"/>
                                                 <constraint firstItem="yzf-a2-0np" firstAttribute="leading" secondItem="2wX-L6-9PZ" secondAttribute="leading" id="e9N-7b-HaO"/>
                                                 <constraint firstItem="qFU-UH-HlQ" firstAttribute="top" secondItem="2wX-L6-9PZ" secondAttribute="top" constant="8" id="nyR-Mx-66V"/>
                                                 <constraint firstAttribute="trailing" secondItem="EM0-iT-Xcj" secondAttribute="trailing" constant="8" id="r1g-eh-iek"/>

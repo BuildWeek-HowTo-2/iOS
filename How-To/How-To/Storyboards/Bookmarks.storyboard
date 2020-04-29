@@ -121,6 +121,7 @@
                                 <connections>
                                     <outlet property="bookmarkButton" destination="bIZ-CY-z7B" id="wQL-IQ-PYD"/>
                                     <outlet property="captionLabel" destination="OfH-gE-tB4" id="00i-Jj-BNF"/>
+                                    <outlet property="likesLabel" destination="KgO-9v-0io" id="ibj-XD-c4K"/>
                                     <outlet property="titleLabel" destination="Yma-ky-pSm" id="MeA-6C-uBn"/>
                                     <segue destination="3aR-iZ-dIc" kind="show" id="rW7-3F-Q3h"/>
                                 </connections>
