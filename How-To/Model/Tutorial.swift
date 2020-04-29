@@ -12,12 +12,12 @@ struct Tutorial: Codable {
     let id: Int
     let title: String
     let summary: String
-//    let tutorialSteps: TutorialSteps
+    var tutorialSteps: [TutorialSteps]?
     let likes: Int
     let instructor_id: Int
 }
 
 struct TutorialSteps: Codable {
-    let stepTitle: String
-    let stepNumber: Int
+    let instructions: String
+    let step_number: Int
 }
