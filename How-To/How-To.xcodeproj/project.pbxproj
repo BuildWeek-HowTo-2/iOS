@@ -26,7 +26,11 @@
 		13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */; };
 		13D6F62E2458AA9500E63D71 /* ViewBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */; };
 		13D6F6332458FD5300E63D71 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6322458FD5300E63D71 /* LoginViewController.swift */; };
+<<<<<<< HEAD
 		154C239E2459DF940012752C /* InstructorOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */; };
+=======
+		13D6F6352459DF2A00E63D71 /* InstructorOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */; };
+>>>>>>> pre-deployment
 		1570556F2458C37700E4E625 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570556E2458C37700E4E625 /* OnboardingViewController.swift */; };
 		158AE607245914D700FDA0BC /* Tutorial+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */; };
 		158AE609245919A000FDA0BC /* tutorialRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE608245919A000FDA0BC /* tutorialRepresentation.swift */; };
@@ -58,7 +62,11 @@
 		13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBookmarkViewController.swift; sourceTree = "<group>"; };
 		13D6F6322458FD5300E63D71 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorOnboardingViewController.swift; sourceTree = "<group>"; };
+=======
+		13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorOnboardingViewController.swift; sourceTree = "<group>"; };
+>>>>>>> pre-deployment
 		1570556E2458C37700E4E625 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tutorial+Convenience.swift"; sourceTree = "<group>"; };
 		158AE608245919A000FDA0BC /* tutorialRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialRepresentation.swift; sourceTree = "<group>"; };
@@ -140,7 +148,11 @@
 				134E79D2245886C2002F3AE6 /* ProfileViewController.swift */,
 				13D6F6322458FD5300E63D71 /* LoginViewController.swift */,
 				1570556E2458C37700E4E625 /* OnboardingViewController.swift */,
+<<<<<<< HEAD
 				154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */,
+=======
+				13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */,
+>>>>>>> pre-deployment
 				13D6F62F2458ABAA00E63D71 /* Bookmarks */,
 				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
 				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
@@ -162,6 +174,7 @@
 			children = (
 				13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */,
 				13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */,
+				158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -196,7 +209,6 @@
 				15F70FB72457658F0087B428 /* User.swift */,
 				15F70FB9245765B10087B428 /* Bearer.swift */,
 				15F70FBB2457668C0087B428 /* Tutorial.swift */,
-				158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */,
 				158AE608245919A000FDA0BC /* tutorialRepresentation.swift */,
 			);
 			path = Model;
@@ -315,6 +327,7 @@
 				13CCBEB52457809900AE23BC /* How-To.xcdatamodeld in Sources */,
 				15F70FB82457658F0087B428 /* User.swift in Sources */,
 				15F70FBC2457668C0087B428 /* Tutorial.swift in Sources */,
+				13D6F6352459DF2A00E63D71 /* InstructorOnboardingViewController.swift in Sources */,
 				134E79D3245886C2002F3AE6 /* ProfileViewController.swift in Sources */,
 				1378E8FD245746520032931E /* SceneDelegate.swift in Sources */,
 				13CCBEB8245780CC00AE23BC /* CoreDataStack.swift in Sources */,
@@ -468,7 +481,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wyattharrell.How-To";
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wyattharrell.HowTo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -486,7 +500,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wyattharrell.How-To";
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wyattharrell.HowTo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
