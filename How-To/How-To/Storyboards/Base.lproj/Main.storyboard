@@ -13,7 +13,7 @@
         <scene sceneID="Z3Q-ak-glC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vky-Mj-K8F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tutorials" image="text.alignleft" catalog="system" id="BzM-jr-s55"/>
+                    <tabBarItem key="tabBarItem" title="Tutorials" image="doc.plaintext" catalog="system" id="BzM-jr-s55"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ltn-pl-yJy">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -484,9 +484,9 @@
     </scenes>
     <resources>
         <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="text.alignleft" catalog="system" width="128" height="100"/>
         <namedColor name="Background Color">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
