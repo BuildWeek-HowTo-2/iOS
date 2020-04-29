@@ -21,6 +21,10 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        
         apiController.fetchAllTutorialTitles { (_) in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -36,6 +40,16 @@ class FeedViewController: UIViewController {
             ViewHowToVC.tutorial = apiController.tutorials[selected[0].row]
             ViewHowToVC.apiController = apiController
         }
+    }
+    
+    // MARK: - Private Methods
+    @objc private func refreshCollectionView(refreshControl: UIRefreshControl) {
+        apiController.fetchAllTutorialTitles { (_) in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        refreshControl.endRefreshing()
     }
 
 }
