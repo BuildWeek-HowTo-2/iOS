@@ -35,7 +35,6 @@ class HowToCollectionViewCell: UICollectionViewCell {
         titleLabel.text = tutorial.title
         captionLabel.text = tutorial.summary
         likesLabel.text = "\(tutorial.likes)"
-        print(tutorial.likes)
     }
     
     // MARK: - IBActions

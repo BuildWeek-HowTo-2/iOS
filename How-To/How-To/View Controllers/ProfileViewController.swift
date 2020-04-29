@@ -17,9 +17,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if UserDefaults.standard.string(forKey: .bearerToken) == nil {
-            performSegue(withIdentifier: "Onboarding", sender: self)
-        }
+//        if UserDefaults.standard.string(forKey: .bearerToken) == nil {
+//            performSegue(withIdentifier: "Onboarding", sender: self)
+//        }
     }
     
     /*
