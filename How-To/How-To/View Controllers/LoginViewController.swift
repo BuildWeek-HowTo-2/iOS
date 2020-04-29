@@ -18,7 +18,7 @@ enum UserType: String {
     case instructors
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -35,11 +35,27 @@ class LoginViewController: UIViewController {
     
     var userType = UserType.users
     var loginType = LoginType.signUp
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         usernameTextField.becomeFirstResponder()
         loginButton.layer.cornerRadius = 8
+        self.hideKeyboardWhenTappedAround()
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        verifyTextField.delegate = self
+    }
+    
+    func setUserDefaults(username: UITextField) {
+        guard let username = username.text else { return }
+        UserDefaults.standard.set(username, forKey: "username")
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     @IBAction func submit(_ sender: UIButton) {
@@ -59,20 +75,23 @@ class LoginViewController: UIViewController {
                     
                 } else {
                     DispatchQueue.main.async {
-                        let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "Sign Up Successful", message: "Thank you!", preferredStyle: .alert)
                         
                         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                         alertController.addAction(alertAction)
                         self.present(alertController, animated: true)
                         self.loginType = .login
                         self.usernameTextField.becomeFirstResponder()
+                        self.setUserDefaults(username: self.usernameTextField)
+                       
                     }
                 }
             })
         } else if loginType == .login {
             guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else { return }
-            let user = User(username: email, password: password)
-            
+            guard let username = UserDefaults.standard.string(forKey: "username") else { return }
+            let user = User(username: username, password: password)
+           
             apiController.login(with: user, userType: userType, completion: { error in
                 if let error = error {
                     NSLog("Error occured during sign in: \(error)")
@@ -83,8 +102,10 @@ class LoginViewController: UIViewController {
                     alertController.addAction(alertAction)
                     self.present(alertController, animated: true)
                     
+                    
                 } else {
                     DispatchQueue.main.async {
+                    
                         self.dismiss(animated: true, completion: nil)
                     }
                 }

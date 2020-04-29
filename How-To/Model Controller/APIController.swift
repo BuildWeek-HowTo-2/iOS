@@ -37,7 +37,11 @@ class APIController {
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
     private(set) var tutorials: [Tutorial] = []
     
-    var bearer: Bearer?
+    var bearer: Bearer? {
+        didSet {
+            UserDefaults.standard.set(bearer, forKey: .bearerToken)
+        }
+    }
     
     // create signUp
     func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
@@ -105,6 +109,7 @@ class APIController {
             let decoder = JSONDecoder()
             do {
                 self.bearer = try decoder.decode(Bearer.self, from: data)
+                
                 completion(nil)
             } catch {
                 NSLog("Error decoding bearer object: \(error)")
@@ -176,10 +181,7 @@ class APIController {
     
     // create createTutorial method
     func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-//        guard let id = tutorial.id else {
-//            return completion(.failure(.noIdentifier))
-//        }
-        
+
         let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(tutorial.id)").appendingPathExtension("json") //// need component
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
