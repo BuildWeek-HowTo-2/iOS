@@ -31,7 +31,7 @@ class APIController {
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     typealias CompletionHandlerTitles = (Result<[Tutorial], NetworkError>) -> Void
-    typealias CompletionHandlerSummaries = (Result<Tutorial, NetworkError>) -> Void
+    typealias CompletionHandlerSummaries = (Result<[TutorialSteps], NetworkError>) -> Void
     
     // TODO: fill in URL path and components
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
@@ -144,10 +144,15 @@ class APIController {
     }
     
     // create fetching tutorial Details
+
     func fetchTutorialDetails(for tutorialTitle: String, completion: @escaping CompletionHandlerSummaries = { _ in }) {
 
         let tutorialURL = baseURL.appendingPathComponent("tutorials/\(tutorialTitle)")
+
+    func fetchTutorialSteps(for tutorial: Tutorial, completion: @escaping CompletionHandlerSummaries = { _ in }) {
+
         
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)/directions")
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
@@ -164,10 +169,10 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                let tutorial = try decoder.decode(Tutorial.self, from: data)
-                completion(.success(tutorial))
+                let tutorialSteps = try decoder.decode([TutorialSteps].self, from: data)
+                completion(.success(tutorialSteps))
             } catch {
-                NSLog("Error decoding tutorial object \(tutorialTitle): \(error)")
+                NSLog("Error decoding tutorial object \(tutorial.id): \(error)")
                 completion(.failure(.noDecode))
             }
         }.resume()

@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
+        <!--Tutorials-->
         <scene sceneID="Z3Q-ak-glC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vky-Mj-K8F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="text.alignleft" catalog="system" id="BzM-jr-s55"/>
+                    <tabBarItem key="tabBarItem" title="Tutorials" image="text.alignleft" catalog="system" id="BzM-jr-s55"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ltn-pl-yJy">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -134,7 +134,7 @@
                                             <outlet property="likeButton" destination="RfP-cl-N3O" id="T1x-oa-mut"/>
                                             <outlet property="likesLabel" destination="96l-Nh-YcK" id="fNT-0a-aWG"/>
                                             <outlet property="titleLabel" destination="qFU-UH-HlQ" id="UQv-j3-SFS"/>
-                                            <segue destination="sAw-Sh-O4q" kind="show" id="3G1-Dl-mlm"/>
+                                            <segue destination="sAw-Sh-O4q" kind="show" identifier="ShowTutorialSegue" id="3G1-Dl-mlm"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -363,6 +363,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Primary Color"/>
+                        <color key="selectedImageTintColor" name="Primary Color"/>
                     </tabBar>
                     <connections>
                         <segue destination="xft-1n-d8a" kind="relationship" relationship="viewControllers" id="V7v-av-spp"/>
@@ -421,7 +423,7 @@
                                                         <rect key="frame" x="0.0" y="28.5" width="374" height="75"/>
                                                         <color key="backgroundColor" name="Text Field Background Color"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="OzU-1G-fvq"/>
+                                                            <constraint firstAttribute="height" constant="75" id="vg7-2d-PL5"/>
                                                         </constraints>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -467,8 +469,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Name" id="Obl-ni-VzJ"/>
                     <connections>
+                        <outlet property="contentView" destination="lMv-4S-oSd" id="jFs-a1-LqH"/>
                         <outlet property="detailStackView" destination="1O7-VS-O1p" id="pkn-LX-NZC"/>
-                        <outlet property="summaryTextView" destination="JLU-UW-Kmh" id="Vfu-ex-usa"/>
+                        <outlet property="summaryTextView" destination="JLU-UW-Kmh" id="fcD-lK-PXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJW-Vq-dwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
