@@ -43,53 +43,61 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func submit(_ sender: UIButton) {
-            if loginType == .signUp {
-                guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty, let verifyPassword = verifyTextField.text, !verifyPassword.isEmpty else { return }
-                let user = User(username: email, password: password)
-                
-                apiController.signUp(with: user, userType: userType, completion: { error in
-                    if let error = error {
-                        NSLog("Error occurred during sign up: \(error)")
+        if loginType == .signUp {
+            guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty, let verifyPassword = verifyTextField.text, !verifyPassword.isEmpty else { return }
+            let user = User(username: email, password: password)
+            
+            apiController.signUp(with: user, userType: userType, completion: { error in
+                if let error = error {
+                    NSLog("Error occurred during sign up: \(error)")
+                    
+                    let alertController = UIAlertController(title: "Error Signing Up", message: "Please try again.", preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "Sign Up", style: .default, handler: nil)
+                    alertController.addAction(alertAction)
+                    self.present(alertController, animated: true)
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
                         
-                        /*
-                         
-                         SHOW ALERT FOR INVALID SIGNUP HERE
-                         
-                        */
-                        
-                    } else {
-                        DispatchQueue.main.async {
-                            let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
-                            
-                            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                            alertController.addAction(alertAction)
-                            self.present(alertController, animated: true)
-                            self.loginType = .login
-                            self.usernameTextField.becomeFirstResponder()
-                        }
+                        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(alertAction)
+                        self.present(alertController, animated: true)
+                        self.loginType = .login
+                        self.usernameTextField.becomeFirstResponder()
                     }
-                })
-            } else if loginType == .login {
-                guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else { return }
-                let user = User(username: email, password: password)
-                
-                apiController.login(with: user, userType: userType, completion: { error in
-                    if let error = error {
-                        NSLog("Error occured during sign in: \(error)")
-                        
-                        /*
-                         
-                         SHOW ALERT FOR INVALID LOGIN HERE
-                         
-                        */
-                        
-                    } else {
-                        DispatchQueue.main.async {
-                            self.dismiss(animated: true, completion: nil)
-                        }
+                }
+            })
+        } else if loginType == .login {
+            guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else { return }
+            let user = User(username: email, password: password)
+            
+            apiController.login(with: user, userType: userType, completion: { error in
+                if let error = error {
+                    NSLog("Error occured during sign in: \(error)")
+                    
+                    let alertController = UIAlertController(title: "Error Logging In", message: "Please try again.", preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "Login", style: .default, handler: nil)
+                    alertController.addAction(alertAction)
+                    self.present(alertController, animated: true)
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
                     }
-                })
-            }
+                }
+            })
+        }
+        
+        if userTypeSegmentedControl.selectedSegmentIndex == 0,
+            loginType == .signUp {
+            performSegue(withIdentifier: "UserOnboardingSegue", sender: sender)
+        } else if userTypeSegmentedControl.selectedSegmentIndex == 1,
+            loginType == .signUp {
+            performSegue(withIdentifier: "InstructorOnboardingSegue", sender: sender)
+        }
     }
     
     @IBAction func loginTypeChanged(_ sender: UISegmentedControl) {
@@ -101,7 +109,7 @@ class LoginViewController: UIViewController {
             loginType = .login
             verifyStackView.isHidden = true
             loginButton.setTitle("Login", for: .normal)
-            // TODO: need to add forgotPassword label
+            // TODO: need to add forgotPassword label?
         }
     }
     
@@ -110,6 +118,20 @@ class LoginViewController: UIViewController {
             userType = .users
         } else {
             userType = .instructors
+        }
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserOnboarding" {
+            if let userVC = segue.destination as? OnboardingViewController {
+                userVC.viewDidLoad()
+            }
+        } else if segue.identifier == "InstructorOnboarding" {
+            if let instructorVC = segue.destination as? InstructorOnboardingViewController  {
+                instructorVC.viewDidLoad()
+            }
         }
     }
 }
