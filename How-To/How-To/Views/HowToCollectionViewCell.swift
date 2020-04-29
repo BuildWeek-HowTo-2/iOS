@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol BookmarkCellDelegate: class {
-    func toggleBookmark(for cell: HowToCollectionViewCell)
-}
-
 class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
@@ -22,7 +18,6 @@ class HowToCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Properties
-    weak var delegate: BookmarkCellDelegate?
      var tutorial: Tutorial? {
         didSet {
             updateViews()
@@ -39,10 +34,15 @@ class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBActions
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
-        // Add to CoreData here
-
-        delegate?.toggleBookmark(for: self)
-        //bookmarkButton.setImage(UIImage(named: "bookmark.fill"), for: .normal)
+        guard let tutorial = tutorial else { return }
+        Guide(tutorial: tutorial)
+        
+        do {
+            try CoreDataStack.shared.save()
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
+        
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {

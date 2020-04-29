@@ -66,8 +66,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EM0-iT-Xcj">
-                                                    <rect key="frame" x="339.5" y="70" width="17.5" height="22"/>
-                                                    <state key="normal" image="bookmark" catalog="system"/>
+                                                    <rect key="frame" x="339" y="70" width="18" height="22"/>
+                                                    <state key="normal" image="plus" catalog="system"/>
                                                     <connections>
                                                         <action selector="bookmarkButtonTapped:" destination="0Pg-MY-VZS" eventType="touchUpInside" id="Cm7-3u-jnm"/>
                                                     </connections>
@@ -481,8 +481,8 @@
     </scenes>
     <resources>
         <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="text.alignleft" catalog="system" width="128" height="100"/>
         <namedColor name="Background Color">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

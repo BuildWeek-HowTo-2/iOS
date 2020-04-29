@@ -15,17 +15,17 @@ class BookmarkCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     
-    /*
-     PASS OBJECT HERE {
+    var tutorial: Guide? {
         didSet {
             updateViews()
         }
      }
-    */
     
     // MARK: - Private Methods
     private func updateViews() {
-        
+        guard let tutorial = tutorial else { return }
+        titleLabel.text = tutorial.title
+        captionLabel.text = tutorial.summary
     }
     
     // MARK: - IBActions

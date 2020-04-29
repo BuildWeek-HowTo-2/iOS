@@ -96,11 +96,3 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: self.view.frame.width - 16, height: 100)
     }
 }
-
-extension FeedViewController: BookmarkCellDelegate {
-    func toggleBookmark(for cell: HowToCollectionViewCell) {
-        //guard let item = cell.howto else { return }
-        //shoppingItemController.updateHasBeenAdded(for: item)
-        //collectionView?.reloadData()
-    }
-}
