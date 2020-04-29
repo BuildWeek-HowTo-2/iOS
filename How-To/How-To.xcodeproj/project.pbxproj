@@ -162,6 +162,7 @@
 			children = (
 				13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */,
 				13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */,
+				158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -196,7 +197,6 @@
 				15F70FB72457658F0087B428 /* User.swift */,
 				15F70FB9245765B10087B428 /* Bearer.swift */,
 				15F70FBB2457668C0087B428 /* Tutorial.swift */,
-				158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */,
 				158AE608245919A000FDA0BC /* tutorialRepresentation.swift */,
 			);
 			path = Model;
