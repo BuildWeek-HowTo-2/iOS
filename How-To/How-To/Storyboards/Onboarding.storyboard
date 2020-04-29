@@ -155,6 +155,8 @@
                         <outlet property="usernameTextField" destination="p9S-8Z-YZw" id="Gxz-4g-fLn"/>
                         <outlet property="verifyStackView" destination="L1o-xh-J9c" id="s1W-3D-mLO"/>
                         <outlet property="verifyTextField" destination="I3m-kk-E1A" id="p2G-YJ-5ac"/>
+                        <segue destination="AMp-kA-VvQ" kind="presentation" identifier="UserOnboardingSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="xxN-xY-nW6"/>
+                        <segue destination="YNK-0X-UsO" kind="presentation" identifier="InstructorOnboardingSegue" modalPresentationStyle="fullScreen" id="ofk-xY-5ZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIj-tc-RS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -186,19 +188,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="Qzq-Jc-6QV">
-                                <rect key="frame" x="20" y="192" width="374" height="522"/>
+                                <rect key="frame" x="20" y="193.5" width="374" height="519.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to HowTo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J84-ka-OKg">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="33"/>
                                         <color key="textColor" name="Primary Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="xdn-Yd-GU5">
-                                        <rect key="frame" x="0.0" y="95" width="374" height="315.5"/>
+                                        <rect key="frame" x="0.0" y="92.5" width="374" height="315.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The new world of community knowledge is here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nW-TX-VbS">
-                                        <rect key="frame" x="0.0" y="464.5" width="374" height="57.5"/>
+                                        <rect key="frame" x="0.0" y="462" width="374" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" white="0.18695597884794515" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -206,7 +208,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2p-WP-JI9">
-                                <rect key="frame" x="160" y="752" width="94" height="59"/>
+                                <rect key="frame" x="160" y="751" width="94" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" red="0.1856933096392808" green="0.39430450320991328" blue="0.16777138102731726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="arrowshape.turn.up.right.fill" catalog="system">
@@ -215,7 +217,7 @@
                                 </state>
                                 <connections>
                                     <action selector="welcomeNextTapped:" destination="AMp-kA-VvQ" eventType="touchUpInside" id="nOV-Il-cf4"/>
-                                    <segue destination="hf5-ds-2y4" kind="modal" identifier="DiscoverSegue" modalPresentationStyle="fullScreen" id="1zH-io-UAc"/>
+                                    <segue destination="hf5-ds-2y4" kind="presentation" identifier="DiscoverSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="1zH-io-UAc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -299,8 +301,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="53" scale="default"/>
                                 </state>
                                 <connections>
-                                    <action selector="pageTwoTapped:" destination="hf5-ds-2y4" eventType="touchUpInside" id="zdy-1w-DTG"/>
-                                    <segue destination="JUN-qT-Su8" kind="presentation" identifier="UserBookmarkSegue" modalPresentationStyle="fullScreen" id="YSd-kp-xHo"/>
+                                    <action selector="pageTwoNextTapped:" destination="hf5-ds-2y4" eventType="touchUpInside" id="h9l-Ja-WPr"/>
+                                    <segue destination="JUN-qT-Su8" kind="presentation" identifier="UserBookmarkSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="YSd-kp-xHo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -432,7 +434,7 @@
                                 </state>
                                 <connections>
                                     <action selector="welcomeNextTapped:" destination="YNK-0X-UsO" eventType="touchUpInside" id="UkO-ma-Fcy"/>
-                                    <segue destination="6fx-TD-ycz" kind="modal" identifier="ShareSegue" modalPresentationStyle="fullScreen" id="aG3-lP-YPh"/>
+                                    <segue destination="6fx-TD-ycz" kind="presentation" identifier="ShareSegue" modalPresentationStyle="fullScreen" id="aG3-lP-YPh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -469,7 +471,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="aAT-NQ-M60">
-                                <rect key="frame" x="20" y="173" width="374" height="560.5"/>
+                                <rect key="frame" x="20" y="192" width="374" height="522"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-ZC-652">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="51"/>
@@ -478,10 +480,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="xCm-WW-WIJ">
-                                        <rect key="frame" x="0.0" y="105" width="374" height="315.5"/>
+                                        <rect key="frame" x="0.0" y="105" width="374" height="277"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HowTo makes it easy to create and share your wisdom through HowTo guides!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-Wi-xY2">
-                                        <rect key="frame" x="0.0" y="474.5" width="374" height="86"/>
+                                        <rect key="frame" x="0.0" y="436" width="374" height="86"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" white="0.18695597880000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -489,7 +491,10 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkJ-lt-n1z">
-                                <rect key="frame" x="160" y="771.5" width="94" height="39.5"/>
+                                <rect key="frame" x="160" y="752" width="94" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="113-re-th3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" red="0.18569330959999999" green="0.39430450319999999" blue="0.167771381" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="arrowshape.turn.up.right.fill" catalog="system">
@@ -497,7 +502,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="53" scale="default"/>
                                 </state>
                                 <connections>
-                                    <action selector="pageTwoTapped:" destination="6fx-TD-ycz" eventType="touchUpInside" id="LII-mE-GrF"/>
+                                    <action selector="pageTwoNextTapped:" destination="6fx-TD-ycz" eventType="touchUpInside" id="8Ck-WV-yGi"/>
                                     <segue destination="ZfZ-Pm-geD" kind="presentation" identifier="GetInspiredSegue" modalPresentationStyle="fullScreen" id="70x-wh-Zim"/>
                                 </connections>
                             </button>
@@ -508,10 +513,10 @@
                             <constraint firstItem="p6v-2X-mXe" firstAttribute="bottom" secondItem="ZkJ-lt-n1z" secondAttribute="bottom" constant="51" id="4p2-4U-fTe"/>
                             <constraint firstItem="aAT-NQ-M60" firstAttribute="centerX" secondItem="p6v-2X-mXe" secondAttribute="centerX" id="67m-0n-uNj"/>
                             <constraint firstItem="ZkJ-lt-n1z" firstAttribute="leading" secondItem="p6v-2X-mXe" secondAttribute="leading" constant="160" id="8Ts-ki-aFe"/>
-                            <constraint firstItem="ZkJ-lt-n1z" firstAttribute="top" secondItem="aAT-NQ-M60" secondAttribute="bottom" constant="38" id="YGX-BW-RCh"/>
                             <constraint firstItem="aAT-NQ-M60" firstAttribute="centerY" secondItem="p6v-2X-mXe" secondAttribute="centerY" id="efu-ff-aL2"/>
                             <constraint firstAttribute="trailing" secondItem="aAT-NQ-M60" secondAttribute="trailing" constant="20" id="h5q-Qa-hr5"/>
                             <constraint firstItem="p6v-2X-mXe" firstAttribute="trailing" secondItem="ZkJ-lt-n1z" secondAttribute="trailing" constant="160" id="oOH-BJ-Ril"/>
+                            <constraint firstItem="ZkJ-lt-n1z" firstAttribute="top" secondItem="aAT-NQ-M60" secondAttribute="bottom" constant="38" id="xKa-C4-JCa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p6v-2X-mXe"/>
                     </view>

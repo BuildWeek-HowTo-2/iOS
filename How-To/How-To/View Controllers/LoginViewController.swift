@@ -93,10 +93,10 @@ class LoginViewController: UIViewController {
         
         if userTypeSegmentedControl.selectedSegmentIndex == 0,
             loginType == .signUp {
-            performSegue(withIdentifier: "UserOnboarding", sender: sender)
+            performSegue(withIdentifier: "UserOnboardingSegue", sender: sender)
         } else if userTypeSegmentedControl.selectedSegmentIndex == 1,
             loginType == .signUp {
-            performSegue(withIdentifier: "InstructorOnboarding", sender: sender)
+            performSegue(withIdentifier: "InstructorOnboardingSegue", sender: sender)
         }
     }
     
