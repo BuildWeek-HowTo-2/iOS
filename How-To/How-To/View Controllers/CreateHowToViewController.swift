@@ -13,8 +13,6 @@ class CreateHowToViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var summaryTextView: UITextView!
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var detailStackView: UIStackView!
     @IBOutlet weak var contentView: UIView!
     
@@ -33,7 +31,6 @@ class CreateHowToViewController: UIViewController {
     private func setupViews() {
         titleTextField.layer.cornerRadius = 8
         summaryTextView.layer.cornerRadius = 8
-        categoryView.layer.cornerRadius = 8
         
         textFieldsStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textFieldsStack)
@@ -79,15 +76,5 @@ class CreateHowToViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func createButtonTapped(_ sender: Any) {
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

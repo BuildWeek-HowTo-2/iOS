@@ -83,7 +83,6 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension FeedViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let search = searchBar.text else { return }
-        print("test")
         apiController.searchTutorialsByID(for: search) { (result) in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
