@@ -145,10 +145,6 @@ class APIController {
     
     // create fetching tutorial Details
 
-    func fetchTutorialDetails(for tutorialTitle: String, completion: @escaping CompletionHandlerSummaries = { _ in }) {
-
-        let tutorialURL = baseURL.appendingPathComponent("tutorials/\(tutorialTitle)")
-
     func fetchTutorialSteps(for tutorial: Tutorial, completion: @escaping CompletionHandlerSummaries = { _ in }) {
 
         
