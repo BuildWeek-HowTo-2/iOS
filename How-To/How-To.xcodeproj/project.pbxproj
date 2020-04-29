@@ -25,8 +25,10 @@
 		13CCBEBA2457A92C00AE23BC /* BookmarksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEB92457A92C00AE23BC /* BookmarksCollectionViewController.swift */; };
 		13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */; };
 		13D6F62E2458AA9500E63D71 /* ViewBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */; };
+
 		13D6F6332458FD5300E63D71 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6322458FD5300E63D71 /* LoginViewController.swift */; };
 		1570556F2458C37700E4E625 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570556E2458C37700E4E625 /* OnboardingViewController.swift */; };
+
 		15F70FB5245764670087B428 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB4245764670087B428 /* APIController.swift */; };
 		15F70FB82457658F0087B428 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB72457658F0087B428 /* User.swift */; };
 		15F70FBA245765B10087B428 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB9245765B10087B428 /* Bearer.swift */; };
@@ -54,8 +56,10 @@
 		13CCBEB92457A92C00AE23BC /* BookmarksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCollectionViewController.swift; sourceTree = "<group>"; };
 		13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBookmarkViewController.swift; sourceTree = "<group>"; };
+
 		13D6F6322458FD5300E63D71 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1570556E2458C37700E4E625 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+
 		15F70FB4245764670087B428 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		15F70FB72457658F0087B428 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15F70FB9245765B10087B428 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
@@ -132,8 +136,10 @@
 			children = (
 				134E79D42458989F002F3AE6 /* FeedViewController.swift */,
 				134E79D2245886C2002F3AE6 /* ProfileViewController.swift */,
+
 				13D6F6322458FD5300E63D71 /* LoginViewController.swift */,
 				1570556E2458C37700E4E625 /* OnboardingViewController.swift */,
+
 				13D6F62F2458ABAA00E63D71 /* Bookmarks */,
 				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
 				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
@@ -290,6 +296,7 @@
 			files = (
 				13D6F6332458FD5300E63D71 /* LoginViewController.swift in Sources */,
 				15F70FB5245764670087B428 /* APIController.swift in Sources */,
+				158AE6012458F6D700FDA0BC /* InstructorOnboardingViewController.swift in Sources */,
 				13D6F62E2458AA9500E63D71 /* ViewBookmarkViewController.swift in Sources */,
 				13CCBEBA2457A92C00AE23BC /* BookmarksCollectionViewController.swift in Sources */,
 				1570556F2458C37700E4E625 /* OnboardingViewController.swift in Sources */,
