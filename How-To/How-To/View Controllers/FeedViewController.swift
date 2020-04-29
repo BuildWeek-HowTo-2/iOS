@@ -12,12 +12,21 @@ class FeedViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Properties
+    let apiController = APIController()
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        apiController.fetchAllTutorialTitles { (_) in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
     }
     
 
@@ -40,14 +49,14 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return apiController.tutorials.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
     
-        cell.titleLabel.text = "Title: Quick detail about the How-To"
-        cell.captionLabel.text = "Description of the how-to. This will give the user more info."
+        let tutorial = apiController.tutorials[indexPath.item]
+        cell.tutorial = tutorial
         cell.layer.cornerRadius = 8
         
         return cell

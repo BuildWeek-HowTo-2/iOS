@@ -23,18 +23,19 @@ class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     weak var delegate: BookmarkCellDelegate?
-    
-    /*
-     PASS OBJECT HERE {
+     var tutorial: Tutorial? {
         didSet {
             updateViews()
         }
      }
-    */
     
     // MARK: - Private Methods
     private func updateViews() {
-        
+        guard let tutorial = tutorial else { return }
+        titleLabel.text = tutorial.title
+        captionLabel.text = tutorial.summary
+        likesLabel.text = "\(tutorial.likes)"
+        print(tutorial.likes)
     }
     
     // MARK: - IBActions

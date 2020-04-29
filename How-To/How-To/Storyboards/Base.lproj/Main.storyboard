@@ -170,6 +170,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="br5-sg-3DH" id="5vs-Ie-mPi"/>
                         <outlet property="searchBar" destination="Spv-sW-Tal" id="CjY-ti-6BY"/>
                     </connections>
                 </viewController>
