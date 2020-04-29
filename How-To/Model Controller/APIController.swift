@@ -115,10 +115,11 @@ class APIController {
     
     // create fetching tutorials method
     func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
-
+        
         let allTutorialsURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: allTutorialsURL)
         request.httpMethod = HTTPMethod.get.rawValue
+//        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -143,7 +144,13 @@ class APIController {
     }
     
     // create fetching tutorial Details
+
+    func fetchTutorialDetails(for tutorialTitle: String, completion: @escaping CompletionHandlerSummaries = { _ in }) {
+
+        let tutorialURL = baseURL.appendingPathComponent("tutorials/\(tutorialTitle)")
+
     func fetchTutorialSteps(for tutorial: Tutorial, completion: @escaping CompletionHandlerSummaries = { _ in }) {
+
         
         let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)/directions")
         var request = URLRequest(url: tutorialURL)
@@ -173,11 +180,13 @@ class APIController {
     
     // create createTutorial method
     func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-        ///// guard let id code
+        guard let id = tutorial.id else {
+            return completion(.failure(.noIdentifier))
+        }
         
-        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension("json") //// need component
+        let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(id)").appendingPathExtension("json") //// need component
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue /// using put rather than post??
+        request.httpMethod = HTTPMethod.post.rawValue
        
         //// JSONEncoder with coredata
         
