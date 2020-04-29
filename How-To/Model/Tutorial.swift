@@ -16,7 +16,7 @@ struct Tutorial: Codable {
 
     var tutorialSteps: [TutorialSteps]?
     var likes: Int
-    let instructor_id: Int
+    let instructor_id: Int?
 }
 
 struct TutorialSteps: Codable {
