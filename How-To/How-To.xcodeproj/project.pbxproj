@@ -27,6 +27,8 @@
 		13D6F62E2458AA9500E63D71 /* ViewBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */; };
 		13D6F6332458FD5300E63D71 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6322458FD5300E63D71 /* LoginViewController.swift */; };
 		13D6F6352459DF2A00E63D71 /* InstructorOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */; };
+		13D6F63D2459ED3000E63D71 /* How_ToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F63C2459ED3000E63D71 /* How_ToTests.swift */; };
+		13D6F64B2459ED3E00E63D71 /* How_ToUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F64A2459ED3E00E63D71 /* How_ToUITests.swift */; };
 		1570556F2458C37700E4E625 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570556E2458C37700E4E625 /* OnboardingViewController.swift */; };
 		158AE607245914D700FDA0BC /* Tutorial+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */; };
 		158AE609245919A000FDA0BC /* tutorialRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE608245919A000FDA0BC /* tutorialRepresentation.swift */; };
@@ -35,6 +37,23 @@
 		15F70FBA245765B10087B428 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB9245765B10087B428 /* Bearer.swift */; };
 		15F70FBC2457668C0087B428 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FBB2457668C0087B428 /* Tutorial.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		13D6F63F2459ED3000E63D71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1378E8EF245746520032931E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1378E8F6245746520032931E;
+			remoteInfo = "How-To";
+		};
+		13D6F64D2459ED3E00E63D71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1378E8EF245746520032931E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1378E8F6245746520032931E;
+			remoteInfo = "How-To";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		134E79D2245886C2002F3AE6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +78,12 @@
 		13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBookmarkViewController.swift; sourceTree = "<group>"; };
 		13D6F6322458FD5300E63D71 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorOnboardingViewController.swift; sourceTree = "<group>"; };
+		13D6F63A2459ED3000E63D71 /* How-ToTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "How-ToTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13D6F63C2459ED3000E63D71 /* How_ToTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = How_ToTests.swift; sourceTree = "<group>"; };
+		13D6F63E2459ED3000E63D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13D6F6482459ED3E00E63D71 /* How-ToUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "How-ToUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13D6F64A2459ED3E00E63D71 /* How_ToUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = How_ToUITests.swift; sourceTree = "<group>"; };
+		13D6F64C2459ED3E00E63D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1570556E2458C37700E4E625 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tutorial+Convenience.swift"; sourceTree = "<group>"; };
 		158AE608245919A000FDA0BC /* tutorialRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialRepresentation.swift; sourceTree = "<group>"; };
@@ -76,6 +101,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13D6F6372459ED3000E63D71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13D6F6452459ED3E00E63D71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +124,8 @@
 				1378E8F9245746520032931E /* How-To */,
 				15F70FB62457657C0087B428 /* Model */,
 				15F70FB3245764350087B428 /* Model Controller */,
+				13D6F63B2459ED3000E63D71 /* How-ToTests */,
+				13D6F6492459ED3E00E63D71 /* How-ToUITests */,
 				1378E8F8245746520032931E /* Products */,
 				15127A312458CCCA00E4504B /* Recovered References */,
 			);
@@ -94,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				1378E8F7245746520032931E /* How-To.app */,
+				13D6F63A2459ED3000E63D71 /* How-ToTests.xctest */,
+				13D6F6482459ED3E00E63D71 /* How-ToUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +219,24 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
+		13D6F63B2459ED3000E63D71 /* How-ToTests */ = {
+			isa = PBXGroup;
+			children = (
+				13D6F63C2459ED3000E63D71 /* How_ToTests.swift */,
+				13D6F63E2459ED3000E63D71 /* Info.plist */,
+			);
+			path = "How-ToTests";
+			sourceTree = "<group>";
+		};
+		13D6F6492459ED3E00E63D71 /* How-ToUITests */ = {
+			isa = PBXGroup;
+			children = (
+				13D6F64A2459ED3E00E63D71 /* How_ToUITests.swift */,
+				13D6F64C2459ED3E00E63D71 /* Info.plist */,
+			);
+			path = "How-ToUITests";
+			sourceTree = "<group>";
+		};
 		15127A312458CCCA00E4504B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +284,42 @@
 			productReference = 1378E8F7245746520032931E /* How-To.app */;
 			productType = "com.apple.product-type.application";
 		};
+		13D6F6392459ED3000E63D71 /* How-ToTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13D6F6432459ED3000E63D71 /* Build configuration list for PBXNativeTarget "How-ToTests" */;
+			buildPhases = (
+				13D6F6362459ED3000E63D71 /* Sources */,
+				13D6F6372459ED3000E63D71 /* Frameworks */,
+				13D6F6382459ED3000E63D71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13D6F6402459ED3000E63D71 /* PBXTargetDependency */,
+			);
+			name = "How-ToTests";
+			productName = "How-ToTests";
+			productReference = 13D6F63A2459ED3000E63D71 /* How-ToTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13D6F6472459ED3E00E63D71 /* How-ToUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13D6F64F2459ED3E00E63D71 /* Build configuration list for PBXNativeTarget "How-ToUITests" */;
+			buildPhases = (
+				13D6F6442459ED3E00E63D71 /* Sources */,
+				13D6F6452459ED3E00E63D71 /* Frameworks */,
+				13D6F6462459ED3E00E63D71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13D6F64E2459ED3E00E63D71 /* PBXTargetDependency */,
+			);
+			name = "How-ToUITests";
+			productName = "How-ToUITests";
+			productReference = 13D6F6482459ED3E00E63D71 /* How-ToUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -235,6 +332,14 @@
 				TargetAttributes = {
 					1378E8F6245746520032931E = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					13D6F6392459ED3000E63D71 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 1378E8F6245746520032931E;
+					};
+					13D6F6472459ED3E00E63D71 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 1378E8F6245746520032931E;
 					};
 				};
 			};
@@ -252,6 +357,8 @@
 			projectRoot = "";
 			targets = (
 				1378E8F6245746520032931E /* How-To */,
+				13D6F6392459ED3000E63D71 /* How-ToTests */,
+				13D6F6472459ED3E00E63D71 /* How-ToUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,6 +374,20 @@
 				13CCBEA8245750D300AE23BC /* Onboarding.storyboard in Resources */,
 				1378E902245746520032931E /* Main.storyboard in Resources */,
 				13CCBEA62457500000AE23BC /* Bookmarks.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13D6F6382459ED3000E63D71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13D6F6462459ED3E00E63D71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +442,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13D6F6362459ED3000E63D71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13D6F63D2459ED3000E63D71 /* How_ToTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13D6F6442459ED3E00E63D71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13D6F64B2459ED3E00E63D71 /* How_ToUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13D6F6402459ED3000E63D71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1378E8F6245746520032931E /* How-To */;
+			targetProxy = 13D6F63F2459ED3000E63D71 /* PBXContainerItemProxy */;
+		};
+		13D6F64E2459ED3E00E63D71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1378E8F6245746520032931E /* How-To */;
+			targetProxy = 13D6F64D2459ED3E00E63D71 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1378E900245746520032931E /* Main.storyboard */ = {
@@ -495,6 +645,84 @@
 			};
 			name = Release;
 		};
+		13D6F6412459ED3000E63D71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8TUR2W3V73;
+				INFOPLIST_FILE = "How-ToTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wyattharrell.How-ToTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/How-To.app/How-To";
+			};
+			name = Debug;
+		};
+		13D6F6422459ED3000E63D71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8TUR2W3V73;
+				INFOPLIST_FILE = "How-ToTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wyattharrell.How-ToTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/How-To.app/How-To";
+			};
+			name = Release;
+		};
+		13D6F6502459ED3E00E63D71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8TUR2W3V73;
+				INFOPLIST_FILE = "How-ToUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wyattharrell.How-ToUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "How-To";
+			};
+			name = Debug;
+		};
+		13D6F6512459ED3E00E63D71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8TUR2W3V73;
+				INFOPLIST_FILE = "How-ToUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wyattharrell.How-ToUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "How-To";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +740,24 @@
 			buildConfigurations = (
 				1378E90C245746560032931E /* Debug */,
 				1378E90D245746560032931E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13D6F6432459ED3000E63D71 /* Build configuration list for PBXNativeTarget "How-ToTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13D6F6412459ED3000E63D71 /* Debug */,
+				13D6F6422459ED3000E63D71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13D6F64F2459ED3E00E63D71 /* Build configuration list for PBXNativeTarget "How-ToUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13D6F6502459ED3E00E63D71 /* Debug */,
+				13D6F6512459ED3E00E63D71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
