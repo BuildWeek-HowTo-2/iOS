@@ -92,7 +92,12 @@ extension FeedViewController: UISearchBarDelegate {
     }
 }
 
-extension FeedViewController: AddBookmarkDelegate {
+extension FeedViewController: HowToCellDelegate {
+    func likeTutorial(for cell: HowToCollectionViewCell) {
+        guard let _ = cell.tutorial else { return }
+        print("LIKED")
+    }
+    
     func addBookmark(for cell: HowToCollectionViewCell) {
         guard let tutorial = cell.tutorial else { return }
 

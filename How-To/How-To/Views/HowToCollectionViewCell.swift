@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol AddBookmarkDelegate: class {
+protocol HowToCellDelegate: class {
     func addBookmark(for cell: HowToCollectionViewCell)
+    func likeTutorial(for cell: HowToCollectionViewCell)
 }
 
 class HowToCollectionViewCell: UICollectionViewCell {
@@ -22,7 +23,7 @@ class HowToCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Properties
-    weak var delegate: AddBookmarkDelegate?
+    weak var delegate: HowToCellDelegate?
      var tutorial: Tutorial? {
         didSet {
             updateViews()
@@ -43,5 +44,6 @@ class HowToCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
+        delegate?.likeTutorial(for: self)
     }
 }
