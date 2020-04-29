@@ -1,47 +1,62 @@
 //
-//  FeedCollectionViewController.swift
+//  FeedViewController.swift
 //  How-To
 //
-//  Created by Wyatt Harrell on 4/27/20.
+//  Created by Wyatt Harrell on 4/28/20.
 //  Copyright © 2020 Wyatt Harrell. All rights reserved.
 //
 
 import UIKit
 
-class FeedCollectionViewController: UICollectionViewController {
+class FeedViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Properties
+    let apiController = APIController()
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        apiController.fetchAllTutorialTitles { (_) in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
     }
     
+
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */
 
 }
 
-extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return apiController.tutorials.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
     
-        cell.titleLabel.text = "Title: Quick detail about the How-To"
-        cell.captionLabel.text = "Description of the how-to. This will give the user more info."
+        let tutorial = apiController.tutorials[indexPath.item]
+        cell.tutorial = tutorial
         cell.layer.cornerRadius = 8
         
         return cell
@@ -80,5 +95,13 @@ extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width - 16, height: 100)
+    }
+}
+
+extension FeedViewController: BookmarkCellDelegate {
+    func toggleBookmark(for cell: HowToCollectionViewCell) {
+        //guard let item = cell.howto else { return }
+        //shoppingItemController.updateHasBeenAdded(for: item)
+        //collectionView?.reloadData()
     }
 }
