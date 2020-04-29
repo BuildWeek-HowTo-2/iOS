@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Guide" representedClassName="Guide" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="instructorId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    <entity name="Tutorial" representedClassName="Tutorial" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="instructor_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="likes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="guideSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GuideSteps" inverseName="guide" inverseEntity="GuideSteps"/>
+        <relationship name="tutorialSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TutorialSteps" inverseName="tutorial" inverseEntity="TutorialSteps"/>
     </entity>
-    <entity name="GuideSteps" representedClassName="GuideSteps" syncable="YES" codeGenerationType="class">
+    <entity name="TutorialSteps" representedClassName="TutorialSteps" syncable="YES" codeGenerationType="class">
         <attribute name="instructions" optional="YES" attributeType="String"/>
         <attribute name="stepNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="guide" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Guide" inverseName="guideSteps" inverseEntity="Guide"/>
+        <relationship name="tutorial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tutorial" inverseName="tutorialSteps" inverseEntity="Tutorial"/>
     </entity>
     <elements>
-        <element name="Guide" positionX="-187.1640625" positionY="-149.5546875" width="128" height="133"/>
-        <element name="GuideSteps" positionX="-36" positionY="45" width="128" height="88"/>
+        <element name="Tutorial" positionX="-187.1640625" positionY="-149.5546875" width="128" height="133"/>
+        <element name="TutorialSteps" positionX="-36" positionY="45" width="128" height="88"/>
     </elements>
 </model>
