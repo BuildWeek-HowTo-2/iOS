@@ -51,11 +51,11 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     NSLog("Error occurred during sign up: \(error)")
                     
-                    /*
-                     
-                     SHOW ALERT FOR INVALID SIGNUP HERE
-                     
-                     */
+                    let alertController = UIAlertController(title: "Error Signing Up", message: "Please try again.", preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "Sign Up", style: .default, handler: nil)
+                    alertController.addAction(alertAction)
+                    self.present(alertController, animated: true)
                     
                 } else {
                     DispatchQueue.main.async {
@@ -77,11 +77,11 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     NSLog("Error occured during sign in: \(error)")
                     
-                    /*
-                     
-                     SHOW ALERT FOR INVALID LOGIN HERE
-                     
-                     */
+                    let alertController = UIAlertController(title: "Error Logging In", message: "Please try again.", preferredStyle: .alert)
+                    
+                    let alertAction = UIAlertAction(title: "Login", style: .default, handler: nil)
+                    alertController.addAction(alertAction)
+                    self.present(alertController, animated: true)
                     
                 } else {
                     DispatchQueue.main.async {
