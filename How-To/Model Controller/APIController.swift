@@ -176,10 +176,15 @@ class APIController {
     
     // create createTutorial method
     func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
+
+        
+        
+
 //        guard let id = tutorial.id else {
 //            return completion(.failure(.noIdentifier))
 //        }
         
+
         let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(tutorial.id)").appendingPathExtension("json") //// need component
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
