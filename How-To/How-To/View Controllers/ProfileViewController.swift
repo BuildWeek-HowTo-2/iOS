@@ -33,6 +33,10 @@ class ProfileViewController: UIViewController {
         }
     }
     
+     @IBAction func unwindToProfile(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
