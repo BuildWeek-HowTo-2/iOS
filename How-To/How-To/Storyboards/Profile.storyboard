@@ -62,12 +62,21 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.one" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-8J-V3h">
+                                <rect key="frame" x="214" y="613" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Lj8-vh-bSk"/>
+                                    <constraint firstAttribute="width" constant="250" id="pJ0-hd-Jmb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
                         <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="83H-6i-5fc" firstAttribute="leading" secondItem="QvX-yR-J25" secondAttribute="leading" constant="20" id="0jd-2q-DNM"/>
                             <constraint firstItem="83H-6i-5fc" firstAttribute="top" secondItem="QvX-yR-J25" secondAttribute="top" constant="20" id="WGt-Zv-ZzR"/>
+                            <constraint firstItem="QvX-yR-J25" firstAttribute="trailing" secondItem="kbr-8J-V3h" secondAttribute="trailing" constant="-50" id="d4f-RV-8Uw"/>
+                            <constraint firstItem="QvX-yR-J25" firstAttribute="bottom" secondItem="kbr-8J-V3h" secondAttribute="bottom" constant="-50" id="lsG-F2-T4V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QvX-yR-J25"/>
                     </view>
@@ -248,6 +257,7 @@
     </scenes>
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="profile.one" width="317" height="346"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <namedColor name="Background Color">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
