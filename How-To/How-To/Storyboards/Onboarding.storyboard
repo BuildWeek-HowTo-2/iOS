@@ -50,6 +50,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  USERNAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9S-8Z-YZw">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="backgroundColor" name="Text Field Background Color"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.UsernameTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="N74-9P-9Dj"/>
                                                 </constraints>
@@ -71,6 +72,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  PASSWORD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="osO-g9-WfI">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="backgroundColor" name="Text Field Background Color"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.PasswordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="ttm-xP-DDU"/>
                                                 </constraints>
@@ -92,6 +94,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  VERIFY PASSWORD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I3m-kk-E1A">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="backgroundColor" name="Text Field Background Color"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.VerifyPasswordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dFp-uk-cfT"/>
                                                 </constraints>
@@ -112,6 +115,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ned-C2-uay">
                                 <rect key="frame" x="100" y="762" width="214" height="50"/>
                                 <color key="backgroundColor" name="Primary Color"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.SignUpButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xGG-o3-ibe"/>
                                 </constraints>
