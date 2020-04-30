@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol HowToCellDelegate: class {
+    func addBookmark(for cell: HowToCollectionViewCell)
+    func likeTutorial(for cell: HowToCollectionViewCell)
+}
+
 class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
@@ -18,6 +23,7 @@ class HowToCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Properties
+    weak var delegate: HowToCellDelegate?
      var tutorial: Tutorial? {
         didSet {
             updateViews()
@@ -34,16 +40,10 @@ class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBActions
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
-        guard let tutorial = tutorial else { return }
-        Guide(tutorial: tutorial)
-        
-        do {
-            try CoreDataStack.shared.save()
-        } catch {
-            NSLog("Error saving managed object context: \(error)")
-        }
+        delegate?.addBookmark(for: self)
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
+        delegate?.likeTutorial(for: self)
     }
 }

@@ -9,13 +9,14 @@
 import Foundation
 
 struct Tutorial: Codable {
+    let username: String?
     let id: Int
     var title: String
     var summary: String
 
     var tutorialSteps: [TutorialSteps]?
     var likes: Int
-    let instructor_id: Int
+    let instructor_id: Int?
 }
 
 struct TutorialSteps: Codable {

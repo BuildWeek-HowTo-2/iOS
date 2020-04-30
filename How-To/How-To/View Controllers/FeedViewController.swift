@@ -20,13 +20,16 @@ class FeedViewController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchBar.delegate = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        
         apiController.fetchAllTutorialTitles { (_) in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
-        
     }
     
     // MARK: - Navigation
@@ -37,6 +40,16 @@ class FeedViewController: UIViewController {
             ViewHowToVC.tutorial = apiController.tutorials[selected[0].row]
             ViewHowToVC.apiController = apiController
         }
+    }
+    
+    // MARK: - Private Methods
+    @objc private func refreshCollectionView(refreshControl: UIRefreshControl) {
+        apiController.fetchAllTutorialTitles { (_) in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        refreshControl.endRefreshing()
     }
 
 }
@@ -56,43 +69,54 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
         let tutorial = apiController.tutorials[indexPath.item]
         cell.tutorial = tutorial
+        cell.delegate = self
         cell.layer.cornerRadius = 8
         
         return cell
     }
     
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width - 16, height: 100)
     }
 }
+
+extension FeedViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let search = searchBar.text else { return }
+        apiController.searchTutorialsByID(for: search) { (result) in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+}
+
+extension FeedViewController: HowToCellDelegate {
+    func likeTutorial(for cell: HowToCollectionViewCell) {
+        guard let _ = cell.tutorial else { return }
+        print("LIKED")
+    }
+    
+    func addBookmark(for cell: HowToCollectionViewCell) {
+        guard let tutorial = cell.tutorial else { return }
+
+        let alert = UIAlertController(title: "Add Bookmark", message: "Would you like to add this How-To tutorial to your bookmarks for offline viewing?", preferredStyle: .actionSheet)
+        let addBookmarkAction = UIAlertAction(title: "Add Bookmark", style: .default) { (_) in
+            Guide(tutorial: tutorial)
+            
+            do {
+                try CoreDataStack.shared.save()
+            } catch {
+                NSLog("Error saving managed object context: \(error)")
+            }
+        }
+        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(addBookmarkAction)
+        alert.addAction(dismissAction)
+        present(alert, animated: true)
+    }
+}
+
+

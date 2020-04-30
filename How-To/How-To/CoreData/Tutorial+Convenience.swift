@@ -15,7 +15,7 @@ extension Guide {
         self.init(context: context)
 
         self.id = Int16(tutorial.id)
-        self.instructor_id = Int16(tutorial.instructor_id)
+        self.instructor_id = Int16(tutorial.instructor_id ?? 0)
         self.likes = Int16(tutorial.likes)
         self.summary = tutorial.summary
         self.title = tutorial.title

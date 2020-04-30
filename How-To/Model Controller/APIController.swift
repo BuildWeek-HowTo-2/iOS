@@ -221,4 +221,33 @@ class APIController {
     private func update() {
         
     }
+    
+    
+    func searchTutorialsByID(for tutorialId: String, completion: @escaping CompletionHandlerTitles = { _ in }) {
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialId)")
+        var request = URLRequest(url: tutorialURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error receiving tutorial summary data: \(error)")
+                return completion(.failure(.otherError))
+            }
+            
+            guard let data = data else {
+                NSLog("Sever responded with no data to decode")
+                return completion(.failure(.badData))
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let titles = try decoder.decode([Tutorial].self, from: data)
+                self.tutorials = titles
+                completion(.success(titles))
+            } catch {
+                NSLog("Error decoding tutorial object \(tutorialId): \(error)")
+                completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
 }
