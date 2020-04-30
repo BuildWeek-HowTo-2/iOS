@@ -59,22 +59,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             apiController.signUp(with: user, userType: userType, completion: { error in
                 if let error = error {
                     NSLog("Error occurred during sign up: \(error)")
-                    
-                    let alertController = UIAlertController(title: "Error Signing Up", message: "Please try again.", preferredStyle: .alert)
-                    
-                    let alertAction = UIAlertAction(title: "Sign Up", style: .default, handler: nil)
-                    alertController.addAction(alertAction)
-                    self.present(alertController, animated: true)
-                    
-                } else {
                     DispatchQueue.main.async {
-                        let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
-                        
-                        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        let alertController = UIAlertController(title: "Error Signing Up", message: "Please try again.", preferredStyle: .alert)
+                        let alertAction = UIAlertAction(title: "Sign Up", style: .default, handler: nil)
                         alertController.addAction(alertAction)
                         self.present(alertController, animated: true)
-                        self.loginType = .login
-                        self.usernameTextField.becomeFirstResponder()
+                        
+                        //TODO: MISSING ALERT FOR NON-MATHCING PASSWORDS
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        
+//                        let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
+//                        let alertAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+//                        alertController.addAction(alertAction)
+//                        self.present(alertController, animated: true)
+                        
+                        
+                        if self.userType == .users {
+                            self.performSegue(withIdentifier: "UserOnboardingSegue", sender: self)
+                        } else {
+                            self.performSegue(withIdentifier: "InstructorOnboardingSegue", sender: self)
+                        }
+
                     }
                 }
             })
@@ -85,13 +92,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             apiController.login(with: user, userType: userType, completion: { error in
                 if let error = error {
                     NSLog("Error occured during sign in: \(error)")
-                    
-                    let alertController = UIAlertController(title: "Error Logging In", message: "Please try again.", preferredStyle: .alert)
-                    
-                    let alertAction = UIAlertAction(title: "Login", style: .default, handler: nil)
-                    alertController.addAction(alertAction)
-                    self.present(alertController, animated: true)
-                    
+                    DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "Error Logging In", message: "Please try again.", preferredStyle: .alert)
+                        
+                        let alertAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+                        alertController.addAction(alertAction)
+                        self.present(alertController, animated: true)
+                    }
                 } else {
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
@@ -126,13 +133,3 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
 }
-
-
-//TODO: NEED TO SHOW ONBOARDING
-//        if userTypeSegmentedControl.selectedSegmentIndex == 0,
-//            loginType == .signUp {
-//            performSegue(withIdentifier: "UserOnboardingSegue", sender: sender)
-//        } else if userTypeSegmentedControl.selectedSegmentIndex == 1,
-//            loginType == .signUp {
-//            performSegue(withIdentifier: "InstructorOnboardingSegue", sender: sender)
-//        }

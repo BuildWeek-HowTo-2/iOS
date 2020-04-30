@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,18 +18,40 @@
             </objects>
             <point key="canvasLocation" x="799" y="-393"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Welcome-->
         <scene sceneID="5Lx-dX-6DV">
             <objects>
                 <viewController id="sHf-DH-hgl" customClass="ProfileViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FQp-7I-qM0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4d-Lq-1xp">
+                                <rect key="frame" x="20" y="753" width="384" height="50"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BOQ-4s-sig"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="sHf-DH-hgl" eventType="touchUpInside" id="3Xh-ST-zCB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="tintColor" name="Primary Color"/>
+                        <constraints>
+                            <constraint firstItem="QvX-yR-J25" firstAttribute="trailing" secondItem="v4d-Lq-1xp" secondAttribute="trailing" constant="10" id="LjW-zg-HQG"/>
+                            <constraint firstItem="QvX-yR-J25" firstAttribute="bottom" secondItem="v4d-Lq-1xp" secondAttribute="bottom" constant="10" id="OW1-2D-28n"/>
+                            <constraint firstItem="v4d-Lq-1xp" firstAttribute="leading" secondItem="QvX-yR-J25" secondAttribute="leading" constant="20" id="iWC-qs-wHb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QvX-yR-J25"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7Yh-lz-gP5"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="7Yh-lz-gP5"/>
                     <connections>
+                        <outlet property="logoutButton" destination="v4d-Lq-1xp" id="8lc-X6-jRB"/>
                         <segue destination="F7b-VZ-7vl" kind="presentation" identifier="Onboarding" modalPresentationStyle="fullScreen" id="6wC-fu-VKN"/>
                     </connections>
                 </viewController>
@@ -43,8 +66,8 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="fZr-3n-al1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K42-Mi-LMh">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="K42-Mi-LMh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -59,5 +82,8 @@
     </scenes>
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="Primary Color">
+            <color red="0.27058823529411763" green="0.57647058823529407" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

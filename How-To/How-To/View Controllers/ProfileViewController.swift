@@ -20,23 +20,38 @@ extension UIViewController {
 }
 
 extension String {
-    static let bearerToken = "bearerToken" /// API documentation has it as "token"...??
+    static let bearerToken = "bearerToken"
+    static let username = "username"
 }
 
 class ProfileViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupViews()
         if UserDefaults.standard.string(forKey: .bearerToken) == nil {
             performSegue(withIdentifier: "Onboarding", sender: self)
+        } else {
+            if let username = UserDefaults.standard.string(forKey: .username) {
+                title = "Welcome, \(username.capitalized)"
+            }
         }
     }
     
-    @IBAction func unwindToProfile(unwindSegue: UIStoryboardSegue) {
-        
+    private func setupViews() {
+        logoutButton.layer.cornerRadius = 8
     }
     
+    // MARK: - IBActions
+    @IBAction func unwindFromUserOnboarding(_ sender: Any) {
+    }
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

@@ -10,24 +10,23 @@ import UIKit
 
 class InstructorOnboardingViewController: UIViewController {
     
-    var userType: UserType?
+    // MARK: - IBOutlets
+    @IBOutlet weak var getStartedButton: UIButton!
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
     }
     
-    @IBAction func welcomeNextTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "ShareSegue", sender: sender)
+    // MARK: - Private Methods
+    private func updateViews() {
+        getStartedButton.layer.cornerRadius = 8
     }
-    
-    @IBAction func pageTwoNextTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "GetInspiredSegue", sender: sender)
-    }
-    
     
     @IBAction func getStartedTapped(_ sender: UIButton) {
-        
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
     }
     
     

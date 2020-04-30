@@ -9,35 +9,19 @@
 import UIKit
 
 class UserOnboardingViewController: UIViewController {
+
+    // MARK: - IBOutlets
+    @IBOutlet weak var getStartedButton: UIButton!
     
-    var userType: UserType?
-    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getStartedButton.layer.cornerRadius = 8
     }
     
-    @IBAction func welcomeNextTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "DiscoverSegue", sender: sender)
+    // MARK: - IBActions
+    @IBAction func getStartedButtonTapped(_ sender: Any) {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func pageTwoNextTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "UserBookmarkSegue", sender: sender)
-    }
-    
-    
-    @IBAction func getStartedTapped(_ sender: UIButton) {
-        
-    }
-    
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
     
 }
