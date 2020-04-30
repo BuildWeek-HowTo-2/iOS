@@ -9,17 +9,6 @@
 import UIKit
 
 class InstructorOnboardingViewController: UIViewController {
-
-    @IBOutlet weak var welcomeStackView: UIStackView!
-     @IBOutlet weak var welcomeImage: UIImageView!
-     @IBOutlet weak var welcomeLabel: UILabel!
-     @IBOutlet weak var welcomeText: UILabel!
-     @IBOutlet weak var pageTwoImage: UIImageView!
-     @IBOutlet weak var pageTwoLabel: UILabel!
-     @IBOutlet weak var pageTwoText: UILabel!
-     @IBOutlet weak var pageThreeImage: UIImageView!
-     @IBOutlet weak var pageThreeLabel: UILabel!
-     @IBOutlet weak var pageThreeText: UILabel!
      
      var userType: UserType?
     
