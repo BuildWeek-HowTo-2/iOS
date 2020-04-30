@@ -71,6 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         
                         UserDefaults.standard.set(email, forKey: .username)
+                        UserDefaults.standard.set(self.userType.rawValue, forKey: .userType)
                         
                         if self.userType == .users {
                             self.performSegue(withIdentifier: "UserOnboardingSegue", sender: self)
@@ -99,7 +100,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         
                         UserDefaults.standard.set(email, forKey: .username)
-                        
+                        UserDefaults.standard.set(self.userType.rawValue, forKey: .userType)
+
                         self.dismiss(animated: true, completion: nil)
                     }
                 }

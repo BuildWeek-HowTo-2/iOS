@@ -22,12 +22,15 @@ extension UIViewController {
 extension String {
     static let bearerToken = "bearerToken"
     static let username = "username"
+    static let userType = "userType"
 }
 
 class ProfileViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
-    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var composeButton: UIButton!
+    @IBOutlet weak var iAmLabel: UILabel!
+    @IBOutlet weak var userTypeLabel: UILabel!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -42,13 +45,26 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupViews()
         if let username = UserDefaults.standard.string(forKey: .username) {
             self.navigationItem.title = "Welcome, \(username.capitalized)"
         }
     }
     
     private func setupViews() {
-        logoutButton.layer.cornerRadius = 8
+        composeButton.layer.cornerRadius = 8
+        if let userType = UserDefaults.standard.string(forKey: .userType) {
+            print(userType)
+            if userType == "users" {
+                iAmLabel.text = "I am a"
+                userTypeLabel.text = "User"
+                composeButton.isHidden = true
+            } else if userType == "instructors" {
+                iAmLabel.text = "I am an"
+                userTypeLabel.text = "Instructor"
+                composeButton.isHidden = false
+            }
+        }
     }
     
     // MARK: - IBActions
