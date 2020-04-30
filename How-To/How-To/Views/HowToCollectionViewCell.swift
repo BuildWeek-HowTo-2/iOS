@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol BookmarkCellDelegate: class {
-    func toggleBookmark(for cell: HowToCollectionViewCell)
+protocol HowToCellDelegate: class {
+    func addBookmark(for cell: HowToCollectionViewCell)
+    func likeTutorial(for cell: HowToCollectionViewCell)
 }
 
 class HowToCollectionViewCell: UICollectionViewCell {
@@ -22,7 +23,7 @@ class HowToCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Properties
-    weak var delegate: BookmarkCellDelegate?
+    weak var delegate: HowToCellDelegate?
      var tutorial: Tutorial? {
         didSet {
             updateViews()
@@ -35,17 +36,14 @@ class HowToCollectionViewCell: UICollectionViewCell {
         titleLabel.text = tutorial.title
         captionLabel.text = tutorial.summary
         likesLabel.text = "\(tutorial.likes)"
-        print(tutorial.likes)
     }
     
     // MARK: - IBActions
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
-        // Add to CoreData here
-
-        delegate?.toggleBookmark(for: self)
-        //bookmarkButton.setImage(UIImage(named: "bookmark.fill"), for: .normal)
+        delegate?.addBookmark(for: self)
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
+        delegate?.likeTutorial(for: self)
     }
 }
