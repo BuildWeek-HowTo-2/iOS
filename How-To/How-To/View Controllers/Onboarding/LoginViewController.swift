@@ -70,11 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     DispatchQueue.main.async {
                         
-//                        let alertController = UIAlertController(title: "Sign Up Successful", message: "Now please login", preferredStyle: .alert)
-//                        let alertAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
-//                        alertController.addAction(alertAction)
-//                        self.present(alertController, animated: true)
-                        
+                        UserDefaults.standard.set(email, forKey: .username)
                         
                         if self.userType == .users {
                             self.performSegue(withIdentifier: "UserOnboardingSegue", sender: self)
@@ -101,6 +97,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                 } else {
                     DispatchQueue.main.async {
+                        
+                        UserDefaults.standard.set(email, forKey: .username)
+                        
                         self.dismiss(animated: true, completion: nil)
                     }
                 }

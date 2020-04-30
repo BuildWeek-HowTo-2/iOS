@@ -33,12 +33,17 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        if UserDefaults.standard.string(forKey: .bearerToken) == nil {
-            performSegue(withIdentifier: "Onboarding", sender: self)
+        if let username = UserDefaults.standard.string(forKey: .username) {
+            title = "Welcome, \(username.capitalized)"
         } else {
-            if let username = UserDefaults.standard.string(forKey: .username) {
-                title = "Welcome, \(username.capitalized)"
-            }
+            performSegue(withIdentifier: "Onboarding", sender: self)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let username = UserDefaults.standard.string(forKey: .username) {
+            title = "Welcome, \(username.capitalized)"
         }
     }
     
@@ -47,11 +52,11 @@ class ProfileViewController: UIViewController {
     }
     
     // MARK: - IBActions
-    @IBAction func unwindFromUserOnboarding(_ sender: Any) {
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set(nil, forKey: .username)
+        performSegue(withIdentifier: "Onboarding", sender: self)
     }
     
-    @IBAction func logoutButtonTapped(_ sender: Any) {
-    }
     /*
     // MARK: - Navigation
 
