@@ -26,24 +26,16 @@ enum NetworkError: Error {
 }
 
 class APIController {
-    
-   // TODO: Add CoreData code
-    
+        
+    // MARK: - Properties
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     typealias CompletionHandlerTitles = (Result<[Tutorial], NetworkError>) -> Void
     typealias CompletionHandlerSummaries = (Result<[TutorialSteps], NetworkError>) -> Void
-    
-    // TODO: fill in URL path and components
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
     private(set) var tutorials: [Tutorial] = []
     
-    var bearer: Bearer? {
-        didSet {
-            UserDefaults.standard.set(bearer, forKey: .bearerToken)
-        }
-    }
+    var bearer: Bearer?
     
-    // create signUp
     func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
         
         let userSignUpURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/register")
