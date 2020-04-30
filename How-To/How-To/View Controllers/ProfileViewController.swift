@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         if let username = UserDefaults.standard.string(forKey: .username) {
-            title = "Welcome, \(username.capitalized)"
+            self.navigationItem.title = "Welcome, \(username.capitalized)"
         } else {
             performSegue(withIdentifier: "Onboarding", sender: self)
         }
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let username = UserDefaults.standard.string(forKey: .username) {
-            title = "Welcome, \(username.capitalized)"
+            self.navigationItem.title = "Welcome, \(username.capitalized)"
         }
     }
     
