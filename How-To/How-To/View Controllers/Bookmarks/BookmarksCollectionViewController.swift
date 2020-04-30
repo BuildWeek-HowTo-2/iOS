@@ -34,7 +34,11 @@ class BookmarksCollectionViewController: UICollectionViewController {
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "likes", cacheName: nil)
         frc.delegate = self
-        try! frc.performFetch()
+        do {
+            try frc.performFetch()
+        } catch {
+            NSLog("Error fetching \(error)")
+        }
         return frc
     }()
 

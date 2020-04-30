@@ -46,7 +46,7 @@ class FeedViewController: UIViewController {
     
     // MARK: - Private Methods
     @objc private func refreshCollectionView(refreshControl: UIRefreshControl) {
-        apiController.fetchAllTutorialTitles { (_) in
+        apiController.fetchAllTutorialTitles { _ in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -104,8 +104,11 @@ extension FeedViewController: HowToCellDelegate {
     func addBookmark(for cell: HowToCollectionViewCell) {
         guard let tutorial = cell.tutorial else { return }
 
-        let alert = UIAlertController(title: "Add Bookmark", message: "Would you like to add this How-To tutorial to your bookmarks for offline viewing?", preferredStyle: .actionSheet)
-        let addBookmarkAction = UIAlertAction(title: "Add Bookmark", style: .default) { (_) in
+        let title = "Add Bookmark"
+        let message = "Would you like to add this How-To tutorial to your bookmarks for offline viewing?"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let addBookmarkAction = UIAlertAction(title: title, style: .default) { _ in
             Guide(tutorial: tutorial)
             
             do {
@@ -121,5 +124,3 @@ extension FeedViewController: HowToCellDelegate {
         present(alert, animated: true)
     }
 }
-
-

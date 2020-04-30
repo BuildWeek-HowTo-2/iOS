@@ -11,10 +11,12 @@ import UIKit
 class ViewHowToViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var detailStackView: UIStackView!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var summaryLabel: UILabel!
+    @IBOutlet private weak var detailStackView: UIStackView!
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var summaryView: UIView!
     
     // MARK: - Properties
     var steps: [TutorialSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
@@ -30,6 +32,7 @@ class ViewHowToViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        setupViews()
         updateViews()
     }
     
@@ -37,13 +40,11 @@ class ViewHowToViewController: UIViewController {
         super.viewWillAppear(animated)
         fetchSteps()
     }
-    
-    //view will appear
-    
+        
     // MARK: - Private Methods
     private func fetchSteps() {
         guard let tutorial = tutorial else { return }
-        apiController?.fetchTutorialSteps(for: tutorial, completion: { (result) in
+        apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
             do {
                 let steps = try result.get()
                 self.steps = steps
@@ -56,6 +57,19 @@ class ViewHowToViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    private func setupViews() {
+        titleView.layer.cornerRadius = 8
+        summaryView.layer.cornerRadius = 8
+        titleView.layer.shadowColor = UIColor.lightGray.cgColor
+        titleView.layer.shadowOpacity = 0.3
+        titleView.layer.shadowOffset = .zero
+        titleView.layer.shadowRadius = 5
+        summaryView.layer.shadowColor = UIColor.lightGray.cgColor
+        summaryView.layer.shadowOpacity = 0.3
+        summaryView.layer.shadowOffset = .zero
+        summaryView.layer.shadowRadius = 5
     }
     
     private func updateViews() {
@@ -74,28 +88,48 @@ class ViewHowToViewController: UIViewController {
         stepsStack.axis = .vertical
         stepsStack.distribution = .fill
         stepsStack.spacing = 16
-        
         let stackLeadingConstraint = stepsStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         let stackTopConstraint = stepsStack.topAnchor.constraint(equalTo: detailStackView.bottomAnchor, constant: 8)
         let stackTrailingConstraint = stepsStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
-        let stackBottomConstraint = stepsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 2)
-        
+        let stackBottomConstraint = stepsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         NSLayoutConstraint.activate([stackLeadingConstraint, stackTopConstraint, stackTrailingConstraint, stackBottomConstraint])
-        
         for step in steps {
+            let stepView = UIView()
+            stepView.translatesAutoresizingMaskIntoConstraints = false
+            stepView.backgroundColor = UIColor.white
+            view.addSubview(stepView)
+            stepView.layer.cornerRadius = 8
+            stepView.layer.shadowColor = UIColor.lightGray.cgColor
+            stepView.layer.shadowOpacity = 0.3
+            stepView.layer.shadowOffset = .zero
+            stepView.layer.shadowRadius = 5
             let stepNumberLabel = UILabel()
-            stepNumberLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption1)
-            stepNumberLabel.text = "Step \(step.step_number)"
+            stepNumberLabel.text = "\(step.step_number):"
+            stepNumberLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
             stepNumberLabel.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(stepNumberLabel)
-            stepsStack.addArrangedSubview(stepNumberLabel)
+            stepNumberLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
             let instruction = UILabel()
+            instruction.numberOfLines = 0
             instruction.text = step.instructions
             instruction.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(instruction)
-            stepsStack.addArrangedSubview(instruction)
+            let individualStepStack = UIStackView()
+            individualStepStack.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(individualStepStack)
+            individualStepStack.alignment = .fill
+            individualStepStack.axis = .horizontal
+            individualStepStack.distribution = .fillProportionally
+            individualStepStack.spacing = 8
+            individualStepStack.addArrangedSubview(stepNumberLabel)
+            individualStepStack.addArrangedSubview(instruction)
+            stepView.addSubview(individualStepStack)
+            individualStepStack.topAnchor.constraint(equalTo: stepView.topAnchor, constant: 8).isActive = true
+            individualStepStack.bottomAnchor.constraint(equalTo: stepView.bottomAnchor, constant: -8).isActive = true
+            individualStepStack.leadingAnchor.constraint(equalTo: stepView.leadingAnchor, constant: 8).isActive = true
+            individualStepStack.trailingAnchor.constraint(equalTo: stepView.trailingAnchor, constant: -8).isActive = true
+            stepsStack.addArrangedSubview(stepView)
         }
-        
     }
     
     /*
