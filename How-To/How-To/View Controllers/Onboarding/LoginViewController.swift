@@ -30,8 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var verifyStackView: UIStackView!
     
     // MARK: - Properties
-    var apiController = APIController()
-    #warning("Needs to be sent in through dependency injection")
+    var apiController = APIController() //TODO: NEED TO SEND THROUGH DEPENDENCY INJECTION
     var userType = UserType.users
     var loginType = LoginType.signUp
    
@@ -100,15 +99,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
-        
-        
-        if userTypeSegmentedControl.selectedSegmentIndex == 0,
-            loginType == .signUp {
-            performSegue(withIdentifier: "UserOnboardingSegue", sender: sender)
-        } else if userTypeSegmentedControl.selectedSegmentIndex == 1,
-            loginType == .signUp {
-            performSegue(withIdentifier: "InstructorOnboardingSegue", sender: sender)
-        }
     }
     
     @IBAction func loginTypeChanged(_ sender: UISegmentedControl) {
@@ -136,3 +126,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
 }
+
+
+//TODO: NEED TO SHOW ONBOARDING
+//        if userTypeSegmentedControl.selectedSegmentIndex == 0,
+//            loginType == .signUp {
+//            performSegue(withIdentifier: "UserOnboardingSegue", sender: sender)
+//        } else if userTypeSegmentedControl.selectedSegmentIndex == 1,
+//            loginType == .signUp {
+//            performSegue(withIdentifier: "InstructorOnboardingSegue", sender: sender)
+//        }

@@ -17,6 +17,7 @@ class ViewHowToViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     
     // MARK: - Properties
+    var steps: [TutorialSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
     var stepsStack = UIStackView()
     var apiController: APIController?
     var tutorial: Tutorial? {
@@ -24,9 +25,6 @@ class ViewHowToViewController: UIViewController {
            updateViews()
        }
     }
-    
-    #warning("Need to find a way to add these to the tutorial object itself")
-    var steps: [TutorialSteps]?
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
