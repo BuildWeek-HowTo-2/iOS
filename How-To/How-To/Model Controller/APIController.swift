@@ -32,8 +32,8 @@ class APIController {
     typealias CompletionHandlerTitles = (Result<[Tutorial], NetworkError>) -> Void
     typealias CompletionHandlerSummaries = (Result<[TutorialSteps], NetworkError>) -> Void
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
+    
     private(set) var tutorials: [Tutorial] = []
-
     var bearer: Bearer?
     
     func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
@@ -118,7 +118,7 @@ class APIController {
         request.httpMethod = HTTPMethod.get.rawValue
 //        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error receiving tutorial title data: \(error)")
                 return completion(.failure(.otherError))
@@ -149,7 +149,7 @@ class APIController {
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error receiving tutorial summary data: \(error)")
                 return completion(.failure(.otherError))
@@ -180,7 +180,7 @@ class APIController {
        
         //// JSONEncoder with coredata
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 NSLog("Error sending task to server: \(error)")
                 return completion(.failure(.otherError))
@@ -196,7 +196,7 @@ class APIController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.delete.rawValue
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 NSLog("Error deleting task from server: \(error)")
                 return completion(.failure(.otherError))
@@ -220,7 +220,7 @@ class APIController {
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error receiving tutorial summary data: \(error)")
                 return completion(.failure(.otherError))

@@ -11,12 +11,12 @@ import UIKit
 class ViewHowToViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var detailStackView: UIStackView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var summaryView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var summaryLabel: UILabel!
+    @IBOutlet private weak var detailStackView: UIStackView!
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var summaryView: UIView!
     
     // MARK: - Properties
     var steps: [TutorialSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
@@ -44,7 +44,7 @@ class ViewHowToViewController: UIViewController {
     // MARK: - Private Methods
     private func fetchSteps() {
         guard let tutorial = tutorial else { return }
-        apiController?.fetchTutorialSteps(for: tutorial, completion: { (result) in
+        apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
             do {
                 let steps = try result.get()
                 self.steps = steps
@@ -88,14 +88,11 @@ class ViewHowToViewController: UIViewController {
         stepsStack.axis = .vertical
         stepsStack.distribution = .fill
         stepsStack.spacing = 16
-        
         let stackLeadingConstraint = stepsStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         let stackTopConstraint = stepsStack.topAnchor.constraint(equalTo: detailStackView.bottomAnchor, constant: 8)
         let stackTrailingConstraint = stepsStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         let stackBottomConstraint = stepsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
-        
         NSLayoutConstraint.activate([stackLeadingConstraint, stackTopConstraint, stackTrailingConstraint, stackBottomConstraint])
-        
         for step in steps {
             let stepView = UIView()
             stepView.translatesAutoresizingMaskIntoConstraints = false
@@ -106,20 +103,17 @@ class ViewHowToViewController: UIViewController {
             stepView.layer.shadowOpacity = 0.3
             stepView.layer.shadowOffset = .zero
             stepView.layer.shadowRadius = 5
-            
             let stepNumberLabel = UILabel()
             stepNumberLabel.text = "\(step.step_number):"
             stepNumberLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
             stepNumberLabel.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(stepNumberLabel)
             stepNumberLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
-            
             let instruction = UILabel()
             instruction.numberOfLines = 0
             instruction.text = step.instructions
             instruction.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(instruction)
-            
             let individualStepStack = UIStackView()
             individualStepStack.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(individualStepStack)
@@ -129,16 +123,13 @@ class ViewHowToViewController: UIViewController {
             individualStepStack.spacing = 8
             individualStepStack.addArrangedSubview(stepNumberLabel)
             individualStepStack.addArrangedSubview(instruction)
-            
             stepView.addSubview(individualStepStack)
             individualStepStack.topAnchor.constraint(equalTo: stepView.topAnchor, constant: 8).isActive = true
             individualStepStack.bottomAnchor.constraint(equalTo: stepView.bottomAnchor, constant: -8).isActive = true
             individualStepStack.leadingAnchor.constraint(equalTo: stepView.leadingAnchor, constant: 8).isActive = true
             individualStepStack.trailingAnchor.constraint(equalTo: stepView.trailingAnchor, constant: -8).isActive = true
-            
             stepsStack.addArrangedSubview(stepView)
         }
-        
     }
     
     /*
