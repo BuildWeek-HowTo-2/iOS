@@ -181,7 +181,6 @@
 			children = (
 				134E79D42458989F002F3AE6 /* FeedViewController.swift */,
 				134E79D2245886C2002F3AE6 /* ProfileViewController.swift */,
-				13D6F6322458FD5300E63D71 /* LoginViewController.swift */,
 				13D6F654245A610000E63D71 /* Onboarding */,
 				13D6F62F2458ABAA00E63D71 /* Bookmarks */,
 				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
@@ -239,6 +238,7 @@
 		13D6F654245A610000E63D71 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				13D6F6322458FD5300E63D71 /* LoginViewController.swift */,
 				1570556E2458C37700E4E625 /* UserOnboardingViewController.swift */,
 				154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */,
 			);
