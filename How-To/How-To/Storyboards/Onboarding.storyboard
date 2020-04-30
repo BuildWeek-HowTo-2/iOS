@@ -305,6 +305,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
+                        <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="3jS-eQ-e7a" firstAttribute="leading" secondItem="YMD-1J-8jt" secondAttribute="leading" constant="20" id="2c2-q3-uwm"/>
                             <constraint firstAttribute="trailing" secondItem="WcL-C0-NWk" secondAttribute="trailing" constant="20" id="79Q-e4-obO"/>
@@ -370,6 +371,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="Background Color"/>
+                        <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="os7-Az-iWr" firstAttribute="trailing" secondItem="NdY-Ep-Blw" secondAttribute="trailing" id="0EI-3R-7Xu"/>
                             <constraint firstAttribute="trailing" secondItem="cf1-dv-hQ8" secondAttribute="trailing" constant="20" id="276-6I-KdR"/>
@@ -566,7 +568,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="Background Color"/>
+                        <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="cVo-zn-5cW" firstAttribute="leading" secondItem="17A-K4-95n" secondAttribute="leading" constant="20" id="6N4-4h-RHz"/>
                             <constraint firstItem="hFh-jf-DPN" firstAttribute="leading" secondItem="17A-K4-95n" secondAttribute="leading" id="CFC-qh-ak5"/>

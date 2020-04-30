@@ -63,7 +63,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="Background Color"/>
                         <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="83H-6i-5fc" firstAttribute="leading" secondItem="QvX-yR-J25" secondAttribute="leading" constant="20" id="0jd-2q-DNM"/>
@@ -90,11 +90,11 @@
             </objects>
             <point key="canvasLocation" x="1002.8985507246377" y="75"/>
         </scene>
-        <!--Profile-->
+        <!--Home-->
         <scene sceneID="lQN-Fv-bOQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="euw-BB-QYd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="fZr-3n-al1"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="person.fill" catalog="system" id="fZr-3n-al1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="K42-Mi-LMh">

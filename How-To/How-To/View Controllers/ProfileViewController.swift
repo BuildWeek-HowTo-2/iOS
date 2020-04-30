@@ -54,7 +54,6 @@ class ProfileViewController: UIViewController {
     private func setupViews() {
         composeButton.layer.cornerRadius = 8
         if let userType = UserDefaults.standard.string(forKey: .userType) {
-            print(userType)
             if userType == "users" {
                 iAmLabel.text = "I am a"
                 userTypeLabel.text = "User"
