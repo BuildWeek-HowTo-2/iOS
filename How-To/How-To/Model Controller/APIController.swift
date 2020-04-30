@@ -190,12 +190,33 @@ class APIController {
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.delete.rawValue
         
-        URLSession.shared.dataTask(with: request) { _, response, error in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 NSLog("Error deleting task from server: \(error)")
                 return completion(.failure(.otherError))
             }
-            completion(.success(true))
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                NSLog("Response Error - Cannot Delete ")
+                return completion(.failure(.otherError))
+            }
+            
+            guard let data = data else {
+                NSLog("Sever responded with no data to decode")
+                return completion(.failure(.badData))
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let deleteSuccess = try decoder.decode(String.self, from: data)
+                NSLog("DATA RETURNED FROM SERVER ::: \(deleteSuccess)")
+                completion(.success(true))
+            } catch {
+                NSLog("Error decoding response from server \(tutorial.id): \(error)")
+                completion(.failure(.noDecode))
+            }
+    
         }.resume()
     }
     

@@ -318,7 +318,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oc5-Hu-rQ2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="How-To" id="Obl-ni-VzJ"/>
+                    <navigationItem key="navigationItem" title="How-To" id="Obl-ni-VzJ">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="5uM-aE-wwG">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="deleteTutorialTapped:" destination="sAw-Sh-O4q" id="hdE-Pc-QPs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="lMv-4S-oSd" id="jFs-a1-LqH"/>
                         <outlet property="detailStackView" destination="1O7-VS-O1p" id="pkn-LX-NZC"/>

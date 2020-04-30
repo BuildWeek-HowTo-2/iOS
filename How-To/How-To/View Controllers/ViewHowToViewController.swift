@@ -144,4 +144,31 @@ class ViewHowToViewController: UIViewController {
     }
     */
 
+    // MARK: - IBActions
+    @IBAction func deleteTutorialTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete Tutorial", message: "Are you sure you want to delete this tutorial?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete Tutorial", style: .destructive) { _ in
+            guard let tutorial = self.tutorial else { return }
+
+            self.apiController?.deleteTutorial(tutorial: tutorial, completion: { result in
+
+                do {
+                    let resultBool = try result.get()
+                    if resultBool == true {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                } catch {
+                    if let error = error as? NetworkError {
+                        NSLog("😂 \(error) error deleting tutorial")
+                    }
+                }
+            })
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        present(alert, animated: true)
+    }
 }
