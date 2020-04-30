@@ -251,13 +251,6 @@ class APIController {
         }.resume()
     }
     
-    
-    
-    
-    
-    
-    
-    
     // create createTutorial method
     func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
 
@@ -284,7 +277,4 @@ class APIController {
     private func update() {
         
     }
-    
-    
-
 }
