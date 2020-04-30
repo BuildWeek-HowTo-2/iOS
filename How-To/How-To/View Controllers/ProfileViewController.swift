@@ -26,8 +26,13 @@ extension String {
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var myHowToLabel: UILabel!
+    @IBOutlet weak var numOfHowTos: UILabel!
+    @IBOutlet weak var myBookmarks: UILabel!
+    @IBOutlet weak var numOfBookmarks: UILabel!
     
-    
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +40,17 @@ class ProfileViewController: UIViewController {
         if UserDefaults.standard.string(forKey: .bearerToken) == nil {
             performSegue(withIdentifier: "Onboarding", sender: self)
         }
+        
+        profileNameLabel.text = "Hi \(user?.username)!"
+//        numOfHowTos.text = instructor.guides.count -- something like this
+//        numOfBookmarks
     }
     
      @IBAction func unwindToProfile(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func exploreHowTosTapped(_ sender: UIButton) {
         
     }
     

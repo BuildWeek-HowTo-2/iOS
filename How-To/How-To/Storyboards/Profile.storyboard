@@ -77,6 +77,9 @@ Bookmarks</string>
                                 <state key="normal" title="Explore How-To's">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="exploreHowTosTapped:" destination="sHf-DH-hgl" eventType="touchUpInside" id="hQy-BL-1sx"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNx-Qy-rEZ">
                                 <rect key="frame" x="28" y="385" width="358" height="2"/>
@@ -110,6 +113,12 @@ Bookmarks</string>
                     </view>
                     <navigationItem key="navigationItem" id="7Yh-lz-gP5"/>
                     <connections>
+                        <outlet property="lineView" destination="SNx-Qy-rEZ" id="RgB-QH-4MV"/>
+                        <outlet property="myBookmarks" destination="8k7-DR-4RA" id="ACK-r3-GLw"/>
+                        <outlet property="myHowToLabel" destination="cBM-HF-vCH" id="j61-mX-rue"/>
+                        <outlet property="numOfBookmarks" destination="5jz-uc-0Dg" id="WxV-jr-ckh"/>
+                        <outlet property="numOfHowTos" destination="fGM-yR-1cl" id="eCW-9o-NpN"/>
+                        <outlet property="profileNameLabel" destination="r9h-V2-jNa" id="qAP-6E-MhQ"/>
                         <segue destination="F7b-VZ-7vl" kind="presentation" identifier="Onboarding" modalPresentationStyle="fullScreen" id="6wC-fu-VKN"/>
                     </connections>
                 </viewController>
