@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol DeleteBookmarkDelegate: class {
+protocol DeleteBookmarkDelegate: AnyObject {
     func deleteBookmark(for cell: BookmarkCollectionViewCell)
 }
 
 class BookmarkCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var bookmarkButton: UIButton!
-    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var captionLabel: UILabel!
+    @IBOutlet private weak var bookmarkButton: UIButton!
+    @IBOutlet private weak var likesLabel: UILabel!
     
     weak var delegate: DeleteBookmarkDelegate?
     var tutorial: Guide? {

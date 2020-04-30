@@ -28,9 +28,9 @@ extension String {
 class ProfileViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var composeButton: UIButton!
-    @IBOutlet weak var iAmLabel: UILabel!
-    @IBOutlet weak var userTypeLabel: UILabel!
+    @IBOutlet private weak var composeButton: UIButton!
+    @IBOutlet private weak var iAmLabel: UILabel!
+    @IBOutlet private weak var userTypeLabel: UILabel!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {

@@ -59,15 +59,17 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return apiController.tutorials.count
+        apiController.tutorials.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else {
+            return UICollectionViewCell()
+        }
     
         let tutorial = apiController.tutorials[indexPath.item]
         cell.tutorial = tutorial
@@ -79,7 +81,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width - 16, height: 100)
+        CGSize(width: self.view.frame.width - 16, height: 100)
     }
 }
 

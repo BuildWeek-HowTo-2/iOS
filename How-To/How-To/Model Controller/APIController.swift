@@ -31,12 +31,13 @@ class APIController {
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     typealias CompletionHandlerTitles = (Result<[Tutorial], NetworkError>) -> Void
     typealias CompletionHandlerSummaries = (Result<[TutorialSteps], NetworkError>) -> Void
+    
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
     
     private(set) var tutorials: [Tutorial] = []
     var bearer: Bearer?
     
-    func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
+    func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
         
         let userSignUpURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/register")
         var request = URLRequest(url: userSignUpURL)
@@ -66,7 +67,7 @@ class APIController {
     }
     
     // create signIn
-    func login(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
+    func login(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
         
         let userLoginURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/login")
         

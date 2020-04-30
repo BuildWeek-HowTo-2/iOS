@@ -80,6 +80,7 @@ class ViewHowToViewController: UIViewController {
         }
     }
     
+    // swiftlint:disable line_length
     private func buildSteps() {
         guard let steps = steps else { return }
         stepsStack.translatesAutoresizingMaskIntoConstraints = false

@@ -16,11 +16,11 @@ protocol HowToCellDelegate: class {
 class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var bookmarkButton: UIButton!
-    @IBOutlet weak var likesLabel: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var captionLabel: UILabel!
+    @IBOutlet private weak var bookmarkButton: UIButton!
+    @IBOutlet private weak var likesLabel: UILabel!
+    @IBOutlet private weak var likeButton: UIButton!
     
     // MARK: - Properties
     weak var delegate: HowToCellDelegate?
