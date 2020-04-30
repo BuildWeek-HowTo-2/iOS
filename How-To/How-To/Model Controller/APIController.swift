@@ -33,7 +33,7 @@ class APIController {
     typealias CompletionHandlerSummaries = (Result<[TutorialSteps], NetworkError>) -> Void
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
     private(set) var tutorials: [Tutorial] = []
-    
+
     var bearer: Bearer?
     
     func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {

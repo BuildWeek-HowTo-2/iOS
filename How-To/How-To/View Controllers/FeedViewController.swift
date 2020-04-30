@@ -21,6 +21,8 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        self.hideKeyboardWhenTappedAround()
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
         collectionView.refreshControl = refreshControl
@@ -87,6 +89,7 @@ extension FeedViewController: UISearchBarDelegate {
         apiController.searchTutorialsByID(for: search) { (result) in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                searchBar.resignFirstResponder()
             }
         }
     }
