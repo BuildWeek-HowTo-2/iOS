@@ -37,6 +37,11 @@ class APIController {
     private(set) var tutorials: [Tutorial] = []
     var bearer: Bearer?
     
+    /// SignUp
+    /// - Parameters:
+    ///   - user: User will be used to pass username and password
+    ///   - userType: userType is used to determine type of user or instructor
+    ///   - completion: nil
     func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
         
         let userSignUpURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/register")
@@ -66,7 +71,10 @@ class APIController {
         }.resume()
     }
     
-    // create signIn
+    /// Login
+    /// - Parameters:
+    ///   - user: User will be used to pass username and password
+    ///   - userType: userType is used to determine type of user or instructor
     func login(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
         
         let userLoginURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/login")
@@ -111,13 +119,14 @@ class APIController {
         }.resume()
     }
     
-    // create fetching tutorials method
+    /// Fetch all tutorial titles
+    /// - Parameters:
     func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
         
         let allTutorialsURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: allTutorialsURL)
         request.httpMethod = HTTPMethod.get.rawValue
-//        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
+        //request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
@@ -141,11 +150,11 @@ class APIController {
         }.resume()
     }
     
-    // create fetching tutorial Details
-
+    /// Fetch all tutorial steps
+    /// - Parameters:
+    ///   - tutorial: Used to get tutorial id
     func fetchTutorialSteps(for tutorial: Tutorial, completion: @escaping CompletionHandlerSummaries = { _ in }) {
 
-        
         let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)/directions")
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.get.rawValue
@@ -172,32 +181,16 @@ class APIController {
         }.resume()
     }
     
-    // create createTutorial method
-    func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-
-        let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(tutorial.id)").appendingPathExtension("json") //// need component
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
-       
-        //// JSONEncoder with coredata
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                NSLog("Error sending task to server: \(error)")
-                return completion(.failure(.otherError))
-            }
-            completion(.success(true))
-        }.resume()
-    }
-    
+    /// Delete a tutorial
+    /// - Parameters:
+    ///   - tutorial: Used to get tutorial ID
     func deleteTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-        ///// guard let id code
         
-        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension("json") /// need component
-        var request = URLRequest(url: requestURL)
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)")
+        var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.delete.rawValue
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 NSLog("Error deleting task from server: \(error)")
                 return completion(.failure(.otherError))
@@ -206,16 +199,9 @@ class APIController {
         }.resume()
     }
     
-    // TODO: build out CoreData methods
-    private func updateTutorials() {
-        
-    }
-    
-    private func update() {
-        
-    }
-    
-    
+    /// Search tutorial by ID
+    /// - Parameters:
+    ///   - tutorialId: tutorialId
     func searchTutorialsByID(for tutorialId: String, completion: @escaping CompletionHandlerTitles = { _ in }) {
         let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialId)")
         var request = URLRequest(url: tutorialURL)
@@ -243,4 +229,41 @@ class APIController {
             }
         }.resume()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    // create createTutorial method
+    func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
+
+        let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(tutorial.id)").appendingPathExtension("json") //// need component
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+       
+        //// JSONEncoder with coredata
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error sending task to server: \(error)")
+                return completion(.failure(.otherError))
+            }
+            completion(.success(true))
+        }.resume()
+    }
+    
+    // TODO: build out CoreData methods
+    private func updateTutorials() {
+        
+    }
+    
+    private func update() {
+        
+    }
+    
+    
+
 }
