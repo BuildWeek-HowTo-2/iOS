@@ -53,10 +53,11 @@ class CreateHowToViewController: UIViewController {
         let buttonTopConstraint = addStepButton.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor, constant: 8)
         let buttonLeadingConstraint = addStepButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         let buttonTrailingConstraint = addStepButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
-        let buttonBottomConstraint = addStepButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 2)
+        let buttonBottomConstraint = addStepButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         let buttonHeightConstraint = addStepButton.heightAnchor.constraint(equalToConstant: 50)
         
-        NSLayoutConstraint.activate([stackLeadingConstraint, stackBottomConstraint, stackTrailingConstraint, buttonTopConstraint, buttonLeadingConstraint, buttonTrailingConstraint, buttonBottomConstraint, buttonHeightConstraint])
+        NSLayoutConstraint.activate([stackLeadingConstraint, stackBottomConstraint, stackTrailingConstraint, buttonTopConstraint])
+        NSLayoutConstraint.activate([buttonLeadingConstraint, buttonTrailingConstraint, buttonBottomConstraint, buttonHeightConstraint])
         
         addTextField()
     }
