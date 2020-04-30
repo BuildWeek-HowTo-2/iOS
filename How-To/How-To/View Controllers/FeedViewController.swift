@@ -11,8 +11,8 @@ import UIKit
 class FeedViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Properties
     let apiController = APIController()
@@ -27,7 +27,7 @@ class FeedViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
         collectionView.refreshControl = refreshControl
         
-        apiController.fetchAllTutorialTitles { (_) in
+        apiController.fetchAllTutorialTitles { _ in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -88,7 +88,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension FeedViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let search = searchBar.text else { return }
-        apiController.searchTutorialsByID(for: search) { (result) in
+        apiController.searchTutorialsByID(for: search) { _ in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 searchBar.resignFirstResponder()

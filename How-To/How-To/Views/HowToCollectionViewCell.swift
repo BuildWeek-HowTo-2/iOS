@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol HowToCellDelegate: class {
+protocol HowToCellDelegate: AnyObject {
     func addBookmark(for cell: HowToCollectionViewCell)
     func likeTutorial(for cell: HowToCollectionViewCell)
 }

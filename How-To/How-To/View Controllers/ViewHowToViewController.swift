@@ -80,7 +80,7 @@ class ViewHowToViewController: UIViewController {
         }
     }
     
-    // swiftlint:disable line_length
+    // swiftlint:disable function_body_length
     private func buildSteps() {
         guard let steps = steps else { return }
         stepsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +132,7 @@ class ViewHowToViewController: UIViewController {
             stepsStack.addArrangedSubview(stepView)
         }
     }
+    // swiftlint:enable function_body_length
     
     /*
     // MARK: - Navigation
