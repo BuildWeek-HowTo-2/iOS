@@ -26,13 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.one" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-8J-V3h">
-                                <rect key="frame" x="264" y="646" width="225" height="225"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="Lj8-vh-bSk"/>
-                                    <constraint firstAttribute="width" constant="225" id="pJ0-hd-Jmb"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="83H-6i-5fc">
                                 <rect key="frame" x="20" y="160" width="374" height="281"/>
                                 <subviews>
@@ -103,8 +96,6 @@
                         <color key="tintColor" name="Primary Color"/>
                         <constraints>
                             <constraint firstItem="83H-6i-5fc" firstAttribute="top" secondItem="QvX-yR-J25" secondAttribute="top" constant="20" id="QFD-1l-c9C"/>
-                            <constraint firstAttribute="trailing" secondItem="kbr-8J-V3h" secondAttribute="trailing" constant="-75" id="iHZ-Tt-v18"/>
-                            <constraint firstAttribute="bottom" secondItem="kbr-8J-V3h" secondAttribute="bottom" constant="25" id="kSf-fn-zoE"/>
                             <constraint firstItem="QvX-yR-J25" firstAttribute="trailing" secondItem="83H-6i-5fc" secondAttribute="trailing" constant="20" id="ylI-8h-xf9"/>
                             <constraint firstItem="83H-6i-5fc" firstAttribute="leading" secondItem="QvX-yR-J25" secondAttribute="leading" constant="20" id="ylv-QX-iee"/>
                         </constraints>
@@ -289,7 +280,6 @@
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="profile" width="313" height="313"/>
-        <image name="profile.one" width="317" height="346"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <namedColor name="Background Color">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
