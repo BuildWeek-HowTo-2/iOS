@@ -11,7 +11,8 @@ import UIKit
 class ViewHowToViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var summaryTextView: UITextView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var detailStackView: UIStackView!
     @IBOutlet weak var contentView: UIView!
     
@@ -30,7 +31,6 @@ class ViewHowToViewController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
         updateViews()
     }
     
@@ -59,15 +59,11 @@ class ViewHowToViewController: UIViewController {
         })
     }
     
-    private func setupViews() {
-        summaryTextView.layer.cornerRadius = 8
-    }
-    
     private func updateViews() {
         guard let tutorial = tutorial else { return }
-        title = tutorial.title
         if isViewLoaded {
-            summaryTextView.text = "\(tutorial.summary)"
+            titleLabel.text = tutorial.title
+            summaryLabel.text = "\(tutorial.summary)"
         }
     }
     
