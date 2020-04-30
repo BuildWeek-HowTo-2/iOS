@@ -26,9 +26,16 @@
 		13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */; };
 		13D6F62E2458AA9500E63D71 /* ViewBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */; };
 		13D6F6332458FD5300E63D71 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6322458FD5300E63D71 /* LoginViewController.swift */; };
+
+		154C239E2459DF940012752C /* InstructorOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */; };
+
 		13D6F6352459DF2A00E63D71 /* InstructorOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */; };
+
 		13D6F63D2459ED3000E63D71 /* How_ToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F63C2459ED3000E63D71 /* How_ToTests.swift */; };
 		13D6F64B2459ED3E00E63D71 /* How_ToUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F64A2459ED3E00E63D71 /* How_ToUITests.swift */; };
+
+
+
 		1570556F2458C37700E4E625 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570556E2458C37700E4E625 /* OnboardingViewController.swift */; };
 		158AE607245914D700FDA0BC /* Tutorial+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */; };
 		158AE609245919A000FDA0BC /* tutorialRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE608245919A000FDA0BC /* tutorialRepresentation.swift */; };
@@ -77,13 +84,18 @@
 		13CCBEBB2457A96E00AE23BC /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		13D6F62D2458AA9500E63D71 /* ViewBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBookmarkViewController.swift; sourceTree = "<group>"; };
 		13D6F6322458FD5300E63D71 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+
+		154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorOnboardingViewController.swift; sourceTree = "<group>"; };
+
 		13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorOnboardingViewController.swift; sourceTree = "<group>"; };
+
 		13D6F63A2459ED3000E63D71 /* How-ToTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "How-ToTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D6F63C2459ED3000E63D71 /* How_ToTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = How_ToTests.swift; sourceTree = "<group>"; };
 		13D6F63E2459ED3000E63D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13D6F6482459ED3E00E63D71 /* How-ToUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "How-ToUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D6F64A2459ED3E00E63D71 /* How_ToUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = How_ToUITests.swift; sourceTree = "<group>"; };
 		13D6F64C2459ED3E00E63D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+
 		1570556E2458C37700E4E625 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tutorial+Convenience.swift"; sourceTree = "<group>"; };
 		158AE608245919A000FDA0BC /* tutorialRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialRepresentation.swift; sourceTree = "<group>"; };
@@ -183,7 +195,11 @@
 				134E79D2245886C2002F3AE6 /* ProfileViewController.swift */,
 				13D6F6322458FD5300E63D71 /* LoginViewController.swift */,
 				1570556E2458C37700E4E625 /* OnboardingViewController.swift */,
+
+				154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */,
+
 				13D6F6342459DF2A00E63D71 /* InstructorOnboardingViewController.swift */,
+
 				13D6F62F2458ABAA00E63D71 /* Bookmarks */,
 				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
 				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
@@ -426,6 +442,7 @@
 				13CCBEAD24575F5800AE23BC /* HowToCollectionViewCell.swift in Sources */,
 				13CCBEB024576B3800AE23BC /* CreateHowToViewController.swift in Sources */,
 				1378E8FB245746520032931E /* AppDelegate.swift in Sources */,
+				154C239E2459DF940012752C /* InstructorOnboardingViewController.swift in Sources */,
 				15F70FBA245765B10087B428 /* Bearer.swift in Sources */,
 				158AE609245919A000FDA0BC /* tutorialRepresentation.swift in Sources */,
 				13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */,
