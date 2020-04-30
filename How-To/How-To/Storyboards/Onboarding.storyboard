@@ -120,6 +120,7 @@
                                 </state>
                                 <connections>
                                     <action selector="submit:" destination="MSe-Z4-bkV" eventType="touchUpInside" id="FrH-0o-Kw1"/>
+                                    <segue destination="CMe-PM-aFQ" kind="unwind" unwindAction="unwindToProfileWithUnwindSegue:" id="gSS-yw-sYs"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding.logo" translatesAutoresizingMaskIntoConstraints="NO" id="P7v-fu-fWE">
@@ -160,6 +161,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIj-tc-RS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="CMe-PM-aFQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="908.69565217391312" y="134.59821428571428"/>
         </scene>
