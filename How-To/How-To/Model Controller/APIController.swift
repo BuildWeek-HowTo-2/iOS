@@ -295,7 +295,7 @@ class APIController {
        
         let jsonEncoder = JSONEncoder()
         do {
-            let jsonData = try jsonEncoder.encode(tutorial)
+            let jsonData = try jsonEncoder.encode(tutorialSteps)
             let str = String(decoding: jsonData, as: UTF8.self)
             print("DATA: \(str)")
             request.httpBody = jsonData

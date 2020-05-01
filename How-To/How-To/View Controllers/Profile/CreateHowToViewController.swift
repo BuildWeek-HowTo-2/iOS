@@ -80,15 +80,14 @@ class CreateHowToViewController: UIViewController {
     @IBAction func createButtonTapped(_ sender: Any) {
         guard let title = titleTextField.text, !title.isEmpty, let summary = summaryTextView.text, !summary.isEmpty else { return }
         let instructorID = UserDefaults.standard.integer(forKey: .userid)
+        print(instructorID)
         let tut = Tut(title: title, summary: summary, instructor_id: instructorID)
         var returnedTutorial: Tutorial?
-        
-        
-        
         
         let queue = OperationQueue()
         
         let createTutorialOpertation = BlockOperation {
+            print("Creating Tutorial...")
             self.apiController.createTutorial(tutorial: tut) { tutorial, error in
                 if let error = error {
                     NSLog("Error creating tutorial \(error)")
@@ -104,27 +103,27 @@ class CreateHowToViewController: UIViewController {
             return
         }
         
-        
-        for i in 0..<numberOfSteps {
-            
-            guard let instructions = textFields[i].text, !instructions.isEmpty else { return }
-            
-            let steps = TutorialSteps(instructions: instructions, step_number: i)
-            
-            self.apiController.createTutorialSteps(tutorialSteps: steps, for: returnedTutorialID) { (tutorial, error) in
-                if let error = error {
-                    NSLog("Error creating tutorial \(error)")
-                }
+        let createStepsOperation = BlockOperation {
+            print("Creating Steps...")
+            for i in 0..<self.numberOfSteps {
+                guard let instructions = self.textFields[i].text, !instructions.isEmpty else { return }
+                let steps = TutorialSteps(instructions: instructions, step_number: i)
                 
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                self.apiController.createTutorialSteps(tutorialSteps: steps, for: returnedTutorialID) { _, error in
+                    if let error = error {
+                        NSLog("Error creating tutorial steps \(error)")
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if i == self.numberOfSteps {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
                 }
             }
         }
         
-        
-        
-        
-        
+        createStepsOperation.addDependency(createTutorialOpertation)
+        queue.addOperations([createTutorialOpertation, createStepsOperation], waitUntilFinished: true)
     }
 }
