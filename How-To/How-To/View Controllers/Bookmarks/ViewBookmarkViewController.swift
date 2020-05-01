@@ -19,7 +19,7 @@ class ViewBookmarkViewController: UIViewController {
     @IBOutlet private weak var summaryView: UIView!
     
     // MARK: - Properties
-    var steps: [TutorialSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
+    var steps: [GuideSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
     var stepsStack = UIStackView()
     var apiController: APIController?
     var tutorial: Guide? {
@@ -105,7 +105,7 @@ class ViewBookmarkViewController: UIViewController {
             stepView.layer.shadowOffset = .zero
             stepView.layer.shadowRadius = 5
             let stepNumberLabel = UILabel()
-            stepNumberLabel.text = "\(step.step_number):"
+            stepNumberLabel.text = "\(step.stepNumber):"
             stepNumberLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
             stepNumberLabel.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(stepNumberLabel)
@@ -133,16 +133,6 @@ class ViewBookmarkViewController: UIViewController {
         }
     }
     // swiftlint:enable function_body_length
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - IBActions
     @IBAction func deleteTutorialTapped(_ sender: Any) {

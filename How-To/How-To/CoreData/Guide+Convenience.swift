@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension Guide {
-
     @discardableResult convenience init?(tutorial: Tutorial, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
@@ -19,6 +18,6 @@ extension Guide {
         self.likes = Int16(tutorial.likes ?? 0)
         self.summary = tutorial.summary
         self.title = tutorial.title
-        //self.guideSteps = tutorial.tutorialSteps 
+        // self.guideSteps = tutorial.tutorialSteps
     }
 }

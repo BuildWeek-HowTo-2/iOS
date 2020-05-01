@@ -23,6 +23,7 @@ extension String {
     static let bearerToken = "bearerToken"
     static let username = "username"
     static let userType = "userType"
+    static let userid = "userid"
 }
 
 class ProfileViewController: UIViewController {
