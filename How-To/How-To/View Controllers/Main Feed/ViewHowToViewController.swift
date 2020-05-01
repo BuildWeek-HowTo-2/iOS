@@ -20,6 +20,7 @@ class ViewHowToViewController: UIViewController {
     
     // MARK: - Properties
     var steps: [TutorialSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
+    var didLoad: Bool = false
     var stepsStack = UIStackView()
     var apiController: APIController?
     var tutorial: Tutorial? {
@@ -43,20 +44,23 @@ class ViewHowToViewController: UIViewController {
         
     // MARK: - Private Methods
     private func fetchSteps() {
-        guard let tutorial = tutorial else { return }
-        apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
-            do {
-                let steps = try result.get()
-                self.steps = steps
-                DispatchQueue.main.async {
-                    self.buildSteps()
+        if didLoad == false {
+            guard let tutorial = tutorial else { return }
+            apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
+                do {
+                    let steps = try result.get()
+                    self.steps = steps
+                    DispatchQueue.main.async {
+                        self.buildSteps()
+                    }
+                } catch {
+                    if let error = error as? NetworkError {
+                        NSLog("😂 \(error) error fetching steps")
+                    }
                 }
-            } catch {
-                if let error = error as? NetworkError {
-                    NSLog("😂 \(error) error fetching steps")
-                }
-            }
-        })
+            })
+            didLoad = true
+        }
     }
     
     private func setupViews() {

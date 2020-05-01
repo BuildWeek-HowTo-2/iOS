@@ -22,7 +22,7 @@ class ViewBookmarkViewController: UIViewController {
     var steps: [TutorialSteps]? //TODO: NEED TO ADD THIS TO THE TUTORIAL OBJECT ITSELF
     var stepsStack = UIStackView()
     var apiController: APIController?
-    var tutorial: Tutorial? {
+    var tutorial: Guide? {
        didSet {
            updateViews()
        }
@@ -43,20 +43,20 @@ class ViewBookmarkViewController: UIViewController {
         
     // MARK: - Private Methods
     private func fetchSteps() {
-        guard let tutorial = tutorial else { return }
-        apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
-            do {
-                let steps = try result.get()
-                self.steps = steps
-                DispatchQueue.main.async {
-                    self.buildSteps()
-                }
-            } catch {
-                if let error = error as? NetworkError {
-                    NSLog("😂 \(error) error fetching steps")
-                }
-            }
-        })
+//        guard let tutorial = tutorial else { return }
+//        apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
+//            do {
+//                let steps = try result.get()
+//                self.steps = steps
+//                DispatchQueue.main.async {
+//                    self.buildSteps()
+//                }
+//            } catch {
+//                if let error = error as? NetworkError {
+//                    NSLog("😂 \(error) error fetching steps")
+//                }
+//            }
+//        })
     }
     
     private func setupViews() {
@@ -73,10 +73,10 @@ class ViewBookmarkViewController: UIViewController {
     }
     
     private func updateViews() {
-        guard let tutorial = tutorial else { return }
+        guard let tutorial = tutorial, let summary = tutorial.summary else { return }
         if isViewLoaded {
             titleLabel.text = tutorial.title
-            summaryLabel.text = "\(tutorial.summary)"
+            summaryLabel.text = "\(summary)"
         }
     }
     
@@ -146,30 +146,6 @@ class ViewBookmarkViewController: UIViewController {
 
     // MARK: - IBActions
     @IBAction func deleteTutorialTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Delete Tutorial", message: "Are you sure you want to delete this tutorial?", preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "Delete Tutorial", style: .destructive) { _ in
-            guard let tutorial = self.tutorial else { return }
-
-            self.apiController?.deleteTutorial(tutorial: tutorial, completion: { result in
-
-                do {
-                    let resultBool = try result.get()
-                    if resultBool == true {
-                        DispatchQueue.main.async {
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
-                } catch {
-                    if let error = error as? NetworkError {
-                        NSLog("😂 \(error) error deleting tutorial")
-                    }
-                }
-            })
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(deleteAction)
-        present(alert, animated: true)
     }
 
 }

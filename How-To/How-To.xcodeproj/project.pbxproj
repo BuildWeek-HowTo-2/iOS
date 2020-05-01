@@ -174,15 +174,31 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		13CCBEAB2457515800AE23BC /* View Controllers */ = {
+		1383F09C245BA961003D5826 /* Main Feed */ = {
 			isa = PBXGroup;
 			children = (
 				134E79D42458989F002F3AE6 /* FeedViewController.swift */,
+				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
+			);
+			path = "Main Feed";
+			sourceTree = "<group>";
+		};
+		1383F09D245BA978003D5826 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
 				134E79D2245886C2002F3AE6 /* ProfileViewController.swift */,
+				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		13CCBEAB2457515800AE23BC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1383F09C245BA961003D5826 /* Main Feed */,
+				1383F09D245BA978003D5826 /* Profile */,
 				13D6F654245A610000E63D71 /* Onboarding */,
 				13D6F62F2458ABAA00E63D71 /* Bookmarks */,
-				13CCBEAF24576B3800AE23BC /* CreateHowToViewController.swift */,
-				13CCBEB124576B4A00AE23BC /* ViewHowToViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

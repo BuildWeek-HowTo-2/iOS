@@ -123,7 +123,7 @@
                                     <outlet property="captionLabel" destination="OfH-gE-tB4" id="00i-Jj-BNF"/>
                                     <outlet property="likesLabel" destination="KgO-9v-0io" id="ibj-XD-c4K"/>
                                     <outlet property="titleLabel" destination="Yma-ky-pSm" id="MeA-6C-uBn"/>
-                                    <segue destination="kjh-Jk-gFn" kind="show" id="KVr-rH-n6J"/>
+                                    <segue destination="kjh-Jk-gFn" kind="show" identifier="ViewBookmarkSegue" id="KVr-rH-n6J"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

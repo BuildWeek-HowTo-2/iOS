@@ -11,20 +11,24 @@ import CoreData
 
 class BookmarksCollectionViewController: UICollectionViewController {
 
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ViewBookmarkSegue" {
+            guard let ViewBookmarkVC = segue.destination as? ViewBookmarkViewController else { return }
+            guard let selected = collectionView.indexPathsForSelectedItems else { return }
+            ViewBookmarkVC.tutorial = fetchedResultsController.object(at: selected[0])
+        }
     }
-    */
     
+    // MARK: - Properties
     var blockOperations: [BlockOperation] = []
     
     lazy var fetchedResultsController: NSFetchedResultsController<Guide> = {
