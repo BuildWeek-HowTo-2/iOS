@@ -99,7 +99,7 @@ extension FeedViewController: UISearchBarDelegate {
 
 extension FeedViewController: HowToCellDelegate {
     func likeTutorial(for cell: HowToCollectionViewCell) {
-        print("LIKED")
+        print("LIKED") // Never got the endpoint for this
     }
     
     func addBookmark(for cell: HowToCollectionViewCell) {
@@ -110,7 +110,24 @@ extension FeedViewController: HowToCellDelegate {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let addBookmarkAction = UIAlertAction(title: title, style: .default) { _ in
-            Guide(tutorial: tutorial)
+            let guide = Guide(tutorial: tutorial)
+            
+            var tutorialSteps: [TutorialSteps] = []
+            self.apiController.fetchTutorialSteps(for: tutorial, completion: { result in
+                do {
+                    let steps = try result.get()
+                    tutorialSteps = steps
+                } catch {
+                    if let error = error as? NetworkError {
+                        NSLog("😂 \(error) error fetching steps")
+                    }
+                }
+            })
+            
+            for step in tutorialSteps {
+                print(step.instructions)
+                guide?.addToGuideSteps(GuideSteps(tutorialSteps: step)!)
+            }
             
             do {
                 try CoreDataStack.shared.save()

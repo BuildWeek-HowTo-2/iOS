@@ -81,7 +81,7 @@ class CreateHowToViewController: UIViewController {
         guard let title = titleTextField.text, !title.isEmpty, let summary = summaryTextView.text, !summary.isEmpty else { return }
         
         let instructorID = UserDefaults.standard.integer(forKey: .userid)
-        
+        print(instructorID)
         let tut = Tut(title: title, summary: summary, instructor_id: instructorID)
         apiController.createTutorial(tutorial: tut) { tutorial, error in
             if let error = error {
@@ -92,5 +92,6 @@ class CreateHowToViewController: UIViewController {
                 print(tutorial)
             }
         }
+        //navigationController?.popViewController(animated: true)
     }
 }

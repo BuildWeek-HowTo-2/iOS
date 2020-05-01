@@ -219,7 +219,6 @@
         <!--How-To-->
         <scene sceneID="8ht-21-zUs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eJW-Vq-dwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="sAw-Sh-O4q" customClass="ViewHowToViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hXR-g5-Tqe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -336,6 +335,7 @@
                         <outlet property="titleView" destination="ju7-ok-aIS" id="RzV-4V-d8W"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eJW-Vq-dwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2811.594202898551" y="371.65178571428572"/>
         </scene>
