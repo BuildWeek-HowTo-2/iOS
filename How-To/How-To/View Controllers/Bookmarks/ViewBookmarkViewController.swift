@@ -63,7 +63,6 @@ class ViewBookmarkViewController: UIViewController {
         }
     }
     
-    // swiftlint:disable function_body_length
     private func updateSteps() {
         guard let steps = tutorial?.guideSteps else { return }
         stepsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +120,6 @@ class ViewBookmarkViewController: UIViewController {
         }
          */
     }
-    // swiftlint:enable function_body_length
 
     // MARK: - IBActions
     @IBAction func deleteTutorialTapped(_ sender: Any) {

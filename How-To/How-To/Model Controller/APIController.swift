@@ -253,6 +253,7 @@ class APIController {
         let requestURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
        
         let jsonEncoder = JSONEncoder()
         do {
