@@ -248,11 +248,50 @@ class APIController {
         }.resume()
     }
     
-
     func createTutorial(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
         let requestURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+       
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(tutorial)
+            let str = String(decoding: jsonData, as: UTF8.self)
+            print("DATA: \(str)")
+            request.httpBody = jsonData
+        } catch {
+            NSLog("Error encoding user object: \(error)")
+            return completion(nil, error)
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("Error sending task to server: \(error)")
+                return completion(nil, error)
+            }
+            
+            guard let data = data else {
+                NSLog("Sever responded with no data to decode")
+                return completion(nil, error)
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let tut = try decoder.decode(Tutorial.self, from: data)
+                completion(tut, nil)
+            } catch {
+                NSLog("Error decoding tutorial object: \(error)")
+                completion(nil, error)
+            }
+        }.resume()
+    }
+    
+    func createTutorialSteps(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
+        let requestURL = baseURL.appendingPathComponent("api/tutorials")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
        
         let jsonEncoder = JSONEncoder()
         do {

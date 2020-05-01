@@ -117,23 +117,25 @@ extension FeedViewController: HowToCellDelegate {
                 do {
                     let steps = try result.get()
                     tutorialSteps = steps
+                    
+                    for step in tutorialSteps {
+                        print(step.instructions)
+                        guide?.addToGuideSteps(GuideSteps(tutorialSteps: step)!)
+                    }
+                    
+                    do {
+                        try CoreDataStack.shared.save()
+                    } catch {
+                        NSLog("Error saving managed object context: \(error)")
+                    }
+                    
                 } catch {
                     if let error = error as? NetworkError {
                         NSLog("😂 \(error) error fetching steps")
                     }
                 }
             })
-            
-            for step in tutorialSteps {
-                print(step.instructions)
-                guide?.addToGuideSteps(GuideSteps(tutorialSteps: step)!)
-            }
-            
-            do {
-                try CoreDataStack.shared.save()
-            } catch {
-                NSLog("Error saving managed object context: \(error)")
-            }
+
         }
         let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
