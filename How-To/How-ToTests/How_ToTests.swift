@@ -51,6 +51,68 @@ class HowToTests: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
     
+    func testFetchingTutorialSteps() {
+        let apiController = APIController()
+        let expectationTuts = XCTestExpectation(description: "Fetching Tutorials")
+        let expectationSteps = XCTestExpectation(description: "Fetching Steps")
+        
+        var tuts: [Tutorial] = []
+        
+        apiController.fetchAllTutorialTitles { result in
+            do {
+                let tutorials = try result.get()
+                XCTAssertNotNil(tutorials)
+                tuts = tutorials
+            } catch {
+                XCTAssertNil(error)
+            }
+            expectationTuts.fulfill()
+        }
+        wait(for: [expectationTuts], timeout: 10)
+        
+        apiController.fetchTutorialSteps(for: tuts[0]) { result in
+            do {
+                let tutorialSteps = try result.get()
+                XCTAssertNotNil(tutorialSteps)
+            } catch {
+                XCTAssertNil(error)
+            }
+            expectationSteps.fulfill()
+        }
+        wait(for: [expectationSteps], timeout: 10)
+    }
+    
+    func testDeletingTutorial() {
+        let apiController = APIController()
+        let expectationTuts = XCTestExpectation(description: "Fetching Tutorials")
+        let expectationDelete = XCTestExpectation(description: "Deleting Tutorial")
+        
+        var tuts: [Tutorial] = []
+        
+        apiController.fetchAllTutorialTitles { result in
+            do {
+                let tutorials = try result.get()
+                XCTAssertNotNil(tutorials)
+                tuts = tutorials
+            } catch {
+                XCTAssertNil(error)
+            }
+            expectationTuts.fulfill()
+        }
+        wait(for: [expectationTuts], timeout: 10)
+        
+        apiController.deleteTutorial(tutorial: tuts[0]) { result in
+            do {
+                let tutorialDeletedBool = try result.get()
+                XCTAssertTrue(tutorialDeletedBool)
+            } catch {
+                XCTAssertNil(error)
+            }
+            expectationDelete.fulfill()
+        }
+        wait(for: [expectationDelete], timeout: 10)
+    }
+    
     func testUserLogin() {
         let apiController = APIController()
         let expectation = XCTestExpectation(description: "User Login")
@@ -118,10 +180,5 @@ class HowToTests: XCTestCase {
         
         wait(for: [expectation], timeout: 10)
     }
-    
-    func testFetchingTutorialSteps() {
-        let apiController = APIController()
-        let expectation = XCTestExpectation(description: "Fetching Steps")
-        
-    }
+
 }
