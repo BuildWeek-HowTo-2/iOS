@@ -66,6 +66,7 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIZ-CY-z7B">
                                             <rect key="frame" x="342.5" y="-2" width="17.5" height="22"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="BookmarkVC.BookmarkButton"/>
                                             <state key="normal" image="bookmark.fill" catalog="system"/>
                                             <connections>
                                                 <action selector="bookmarkButtonTapped:" destination="faG-2N-Fc1" eventType="touchUpInside" id="AQm-Yb-ts3"/>

@@ -257,6 +257,8 @@ class APIController {
         let jsonEncoder = JSONEncoder()
         do {
             let jsonData = try jsonEncoder.encode(tutorial)
+            let str = String(decoding: jsonData, as: UTF8.self)
+            print("DATA: \(str)")
             request.httpBody = jsonData
         } catch {
             NSLog("Error encoding user object: \(error)")

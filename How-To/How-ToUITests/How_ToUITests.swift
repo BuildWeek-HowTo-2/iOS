@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import How_To
+@testable import How_To
 
 class HowToUITests: XCTestCase {
 
@@ -35,8 +35,16 @@ class HowToUITests: XCTestCase {
         app.textFields["Onboarding.VerifyPasswordTextField"]
     }
     
+    private var bookmarkButton: XCUIElement {
+        app.buttons["BookmarkVC.BookmarkButton"]
+    }
+    
     private var signUpButton: XCUIElement {
         app.buttons["Onboarding.SignUpButton"]
+    }
+    
+    private var createPost: XCUIElement {
+        app.buttons["ProfileVC.CreatePost"]
     }
     
     override func setUpWithError() throws {
@@ -50,9 +58,7 @@ class HowToUITests: XCTestCase {
     override func setUp() {
         super.setUp()
         UserDefaults.standard.set(nil, forKey: "username")
-
     }
-    
     
     func testLoginAsUser() throws {
     
@@ -61,6 +67,7 @@ class HowToUITests: XCTestCase {
         */
 
         setUp()
+        
         
         app.launch()
         app.wait(for: .unknown, timeout: 2)
@@ -79,35 +86,55 @@ class HowToUITests: XCTestCase {
     }
     
     func testLoginAsInstructor() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-    }
     
-    func testSignInAsUser() throws {
-        let app = XCUIApplication()
-        app.launch()
+        /*
+         USER MUST BE LOGGED OUT FOR THIS TO PASS
+        */
 
-    }
-    
-    func testSignInAsInstrucor() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-    }
-    
-
-    
-    func testViewingTutorial() throws {
+        setUp()
         
+        app.launch()
+        app.wait(for: .unknown, timeout: 2)
+        app.segmentedControls.buttons["Instructor"].tap()
+        usernameTextField.tap()
+        usernameTextField.typeText("Jasmine")
+        
+        app.secureTextFields["Onboarding.PasswordTextField"].tap()
+        app.secureTextFields["Onboarding.PasswordTextField"].typeText("testing123")
+        app.segmentedControls.buttons["Login"].tap()
+        
+        signUpButton.tap()
+        app.wait(for: .unknown, timeout: 2)
+
+        app.staticTexts["Jasmine"].tap()
+    }
+     
+    /*
+     USER MUST BE LOGGED IN FOR THESE TO PASS
+    */
+    
+    func testSearching() throws {
+        app.launch()
+        app.tabBars.buttons["Tutorials"].tap()
+        app.searchFields["Search by instructor id:"].tap()
+        app.typeText("3\n")
+    }
+    
+    func testFetchingTutorials() throws {
+        app.launch()
+        app.tabBars.buttons["Tutorials"].tap()
+        app.swipeDown()
+    }
+    
+    func testAddingSteps() throws {
+        app.launch()
+        createPost.tap()
+        // swiftlint:disable line_length
+        let addStepStaticText = XCUIApplication()/*@START_MENU_TOKEN@*/.staticTexts["+ Add Step"]/*[[".buttons[\"+ Add Step\"].staticTexts[\"+ Add Step\"]",".staticTexts[\"+ Add Step\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        // swiftlint:enable line_length
+        addStepStaticText.tap()
+        addStepStaticText.tap()
+        addStepStaticText.tap()
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }

@@ -80,7 +80,7 @@ class ViewBookmarkViewController: UIViewController {
         
         print(steps.allObjects)
         print(steps.count)
-        
+                
         /*
         for step in steps {
             let stepView = UIView()

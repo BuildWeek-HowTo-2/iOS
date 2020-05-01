@@ -92,7 +92,6 @@ class CreateHowToViewController: UIViewController {
                 print(tutorial)
             }
         }
-        
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
     }
 }
