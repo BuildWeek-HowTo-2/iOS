@@ -92,6 +92,13 @@ class CreateHowToViewController: UIViewController {
                 print(tutorial)
             }
         }
-        //navigationController?.popViewController(animated: true)
+        
+        for i in 0..<numberOfSteps {
+            
+        }
+        
+        
+        
+        navigationController?.popViewController(animated: true)
     }
 }
