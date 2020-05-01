@@ -43,7 +43,6 @@ class APIController {
     ///   - userType: userType is used to determine type of user or instructor
     ///   - completion: nil
     func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
-        
         let userSignUpURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/register")
         var request = URLRequest(url: userSignUpURL)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -76,9 +75,7 @@ class APIController {
     ///   - user: User will be used to pass username and password
     ///   - userType: userType is used to determine type of user or instructor
     func login(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
-        
         let userLoginURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/login")
-        
         var request = URLRequest(url: userLoginURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -93,7 +90,6 @@ class APIController {
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
                 return completion(NSError(domain: response.description, code: response.statusCode, userInfo: nil))
@@ -109,8 +105,9 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                self.bearer = try decoder.decode(Bearer.self, from: data)
-                
+                let a = try decoder.decode(UserReturned.self, from: data)
+                print("USER ID IS \(a.id)")
+                //TODO: save to userdef
                 completion(nil)
             } catch {
                 NSLog("Error decoding bearer object: \(error)")
@@ -122,7 +119,6 @@ class APIController {
     /// Fetch all tutorial titles
     /// - Parameters:
     func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
-        
         let allTutorialsURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: allTutorialsURL)
         request.httpMethod = HTTPMethod.get.rawValue
@@ -154,8 +150,8 @@ class APIController {
     /// - Parameters:
     ///   - tutorial: Used to get tutorial id
     func fetchTutorialSteps(for tutorial: Tutorial, completion: @escaping CompletionHandlerSummaries = { _ in }) {
-
-        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)/directions")
+        guard let tutorialID = tutorial.id else { return }
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialID)/directions")
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
@@ -175,7 +171,7 @@ class APIController {
                 let tutorialSteps = try decoder.decode([TutorialSteps].self, from: data)
                 completion(.success(tutorialSteps))
             } catch {
-                NSLog("Error decoding tutorial object \(tutorial.id): \(error)")
+                NSLog("Error decoding tutorial object \(tutorialID): \(error)")
                 completion(.failure(.noDecode))
             }
         }.resume()
@@ -185,8 +181,8 @@ class APIController {
     /// - Parameters:
     ///   - tutorial: Used to get tutorial ID
     func deleteTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-        
-        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)")
+        guard let tutorialID = tutorial.id else { return }
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialID)")
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.delete.rawValue
         
@@ -213,7 +209,7 @@ class APIController {
                 NSLog("DATA RETURNED FROM SERVER ::: \(deleteSuccess)")
                 completion(.success(true))
             } catch {
-                NSLog("Error decoding response from server \(tutorial.id): \(error)")
+                NSLog("Error decoding response from server \(tutorialID): \(error)")
                 completion(.failure(.noDecode))
             }
     
@@ -252,20 +248,39 @@ class APIController {
     }
     
     // create createTutorial method
-    func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-
-        let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(tutorial.id)").appendingPathExtension("json") //// need component
+    func createTutorial(tutorial: Tutorial, completion: @escaping (Tutorial?, Error?) -> Void) {
+        let requestURL = baseURL.appendingPathComponent("api/tutorials/")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
        
-        //// JSONEncoder with coredata
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(tutorial)
+            request.httpBody = jsonData
+        } catch {
+            NSLog("Error encoding user object: \(error)")
+            return completion(nil, error)
+        }
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error sending task to server: \(error)")
-                return completion(.failure(.otherError))
+                return completion(nil, error)
             }
-            completion(.success(true))
+            
+            guard let data = data else {
+                NSLog("Sever responded with no data to decode")
+                return completion(nil, error)
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let tut = try decoder.decode(Tutorial.self, from: data)
+                completion(tut, nil)
+            } catch {
+                NSLog("Error decoding tutorial object: \(error)")
+                completion(nil, error)
+            }
         }.resume()
     }
     

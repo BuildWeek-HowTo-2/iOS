@@ -35,7 +35,7 @@ class HowToCollectionViewCell: UICollectionViewCell {
         guard let tutorial = tutorial else { return }
         titleLabel.text = tutorial.title
         captionLabel.text = tutorial.summary
-        likesLabel.text = "\(tutorial.likes)"
+        likesLabel.text = "\(tutorial.likes ?? 0)"
     }
     
     // MARK: - IBActions

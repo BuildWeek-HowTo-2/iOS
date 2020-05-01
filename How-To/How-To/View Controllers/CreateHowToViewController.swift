@@ -17,6 +17,7 @@ class CreateHowToViewController: UIViewController {
     @IBOutlet private weak var contentView: UIView!
     
     // MARK: - Properties
+    let apiController = APIController()
     var textFields: [UITextField] = []
     var textFieldsStack = UIStackView()
     var numberOfSteps = 1

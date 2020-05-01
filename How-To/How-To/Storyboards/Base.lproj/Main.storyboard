@@ -101,7 +101,7 @@
                                                         <constraint firstItem="7Tu-37-h0v" firstAttribute="centerX" secondItem="yzf-a2-0np" secondAttribute="centerX" id="z73-Gx-JTz"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfP-cl-N3O">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfP-cl-N3O">
                                                     <rect key="frame" x="337.5" y="44" width="20.5" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20.5" id="M21-wt-Oae"/>
