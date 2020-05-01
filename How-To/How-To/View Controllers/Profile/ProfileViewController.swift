@@ -28,9 +28,10 @@ extension String {
 class ProfileViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var composeButton: UIButton!
-    @IBOutlet weak var iAmLabel: UILabel!
-    @IBOutlet weak var userTypeLabel: UILabel!
+    @IBOutlet private weak var composeButton: UIButton!
+    @IBOutlet private weak var iAmLabel: UILabel!
+    @IBOutlet private weak var userTypeLabel: UILabel!
+    @IBOutlet private weak var usernameLabel: UILabel!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -63,6 +64,10 @@ class ProfileViewController: UIViewController {
                 userTypeLabel.text = "Instructor"
                 composeButton.isHidden = false
             }
+        }
+        
+        if let username = UserDefaults.standard.string(forKey: .username) {
+            usernameLabel.text = "\(username.capitalized)"
         }
     }
     

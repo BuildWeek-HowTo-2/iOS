@@ -19,3 +19,8 @@ struct User: Codable {
         self.id = 0
     }
 }
+
+struct UserReturned: Codable {
+    var id: Int
+    var token: String
+}
