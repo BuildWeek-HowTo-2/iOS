@@ -146,6 +146,7 @@
         <!--Create a How-To-->
         <scene sceneID="WEY-U6-ylY">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aNa-WI-H0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="mAo-Ur-SmA" customClass="CreateHowToViewController" customModule="How_To" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Wk-OC-sPF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -274,9 +275,8 @@
                         <outlet property="titleTextField" destination="vUP-fc-bUz" id="UhI-Rv-vu1"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aNa-WI-H0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="11"/>
+            <point key="canvasLocation" x="1794" y="-20"/>
         </scene>
     </scenes>
     <resources>
