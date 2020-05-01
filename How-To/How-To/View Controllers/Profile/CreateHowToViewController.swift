@@ -17,9 +17,11 @@ class CreateHowToViewController: UIViewController {
     @IBOutlet private weak var contentView: UIView!
     
     // MARK: - Properties
+    let queue = OperationQueue()
     let apiController = APIController()
     var textFields: [UITextField] = []
     var textFieldsStack = UIStackView()
+    var instruc: [String] = []
     var numberOfSteps = 1
     
     // MARK: - View Lifecycle
@@ -75,17 +77,25 @@ class CreateHowToViewController: UIViewController {
         textFieldsStack.addArrangedSubview(textField)
         numberOfSteps += 1
     }
+    
+    private func getResponses() {
+        for i in 0..<self.numberOfSteps - 1 {
+            guard let instructions = self.textFields[i].text, !instructions.isEmpty else { return }
+            instruc.append(instructions)
+        }
+    }
 
     // MARK: - IBActions
     @IBAction func createButtonTapped(_ sender: Any) {
+        print("Number of steps \(numberOfSteps)")
+        getResponses()
         guard let title = titleTextField.text, !title.isEmpty, let summary = summaryTextView.text, !summary.isEmpty else { return }
         let instructorID = UserDefaults.standard.integer(forKey: .userid)
         print(instructorID)
+
         let tut = Tut(title: title, summary: summary, instructor_id: instructorID)
         var returnedTutorial: Tutorial?
-        
-        let queue = OperationQueue()
-        
+            
         let createTutorialOpertation = BlockOperation {
             print("Creating Tutorial...")
             self.apiController.createTutorial(tutorial: tut) { tutorial, error in
@@ -95,21 +105,18 @@ class CreateHowToViewController: UIViewController {
                 
                 if let tutorial = tutorial {
                     returnedTutorial = tutorial
+                    print("Tut id:  \(tutorial.id)")
                 }
             }
         }
         
-        guard let returnedTutorialID = returnedTutorial?.id else {
-            return
-        }
-        
         let createStepsOperation = BlockOperation {
             print("Creating Steps...")
-            for i in 0..<self.numberOfSteps {
-                guard let instructions = self.textFields[i].text, !instructions.isEmpty else { return }
-                let steps = TutorialSteps(instructions: instructions, step_number: i)
+            for i in 0..<self.numberOfSteps - 1 {
+
+                let steps = TutorialSteps(instructions: self.instruc[i], step_number: i)
                 
-                self.apiController.createTutorialSteps(tutorialSteps: steps, for: returnedTutorialID) { _, error in
+                self.apiController.createTutorialSteps(tutorialSteps: steps, for: returnedTutorial?.id ?? 0) { _, error in
                     if let error = error {
                         NSLog("Error creating tutorial steps \(error)")
                     }

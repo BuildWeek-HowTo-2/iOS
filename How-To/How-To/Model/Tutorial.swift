@@ -30,3 +30,11 @@ struct Tut: Codable {
     var summary: String
     var instructor_id: Int
 }
+
+
+struct Test: Codable {
+    var id: Int
+    var step_number: Int
+    var instructions: String
+    var tutorial_id: Int
+}
