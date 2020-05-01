@@ -23,3 +23,10 @@ struct TutorialSteps: Codable {
     var instructions: String
     let step_number: Int
 }
+
+
+struct Tut: Codable {
+    var title: String
+    var summary: String
+    var instructor_id: Int
+}
