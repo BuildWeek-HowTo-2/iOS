@@ -248,6 +248,9 @@ class APIController {
         }.resume()
     }
     
+    /// Create a new tutorial
+    /// - Parameters:
+    ///   - tutorial: New tutorial to create
     func createTutorial(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
         let requestURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: requestURL)
@@ -287,6 +290,10 @@ class APIController {
         }.resume()
     }
     
+    /// Creat tutorial steps
+    /// - Parameters:
+    ///   - tutorialSteps: steps from textfields
+    ///   - id: id returned from create tutorial
     func createTutorialSteps(tutorialSteps: TutorialSteps, for id: Int, completion: @escaping (Test?, Error?) -> Void) {
         let requestURL = baseURL.appendingPathComponent("api/tutorials/\(id)/directions")
         var request = URLRequest(url: requestURL)
