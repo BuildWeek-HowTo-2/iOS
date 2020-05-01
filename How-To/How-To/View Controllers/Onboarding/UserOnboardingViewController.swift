@@ -11,7 +11,7 @@ import UIKit
 class UserOnboardingViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var getStartedButton: UIButton!
+    @IBOutlet private weak var getStartedButton: UIButton!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {

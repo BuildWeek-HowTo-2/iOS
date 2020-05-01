@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol HowToCellDelegate: class {
+protocol HowToCellDelegate: AnyObject {
     func addBookmark(for cell: HowToCollectionViewCell)
     func likeTutorial(for cell: HowToCollectionViewCell)
 }
@@ -16,11 +16,11 @@ protocol HowToCellDelegate: class {
 class HowToCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var bookmarkButton: UIButton!
-    @IBOutlet weak var likesLabel: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var captionLabel: UILabel!
+    @IBOutlet private weak var bookmarkButton: UIButton!
+    @IBOutlet private weak var likesLabel: UILabel!
+    @IBOutlet private weak var likeButton: UIButton!
     
     // MARK: - Properties
     weak var delegate: HowToCellDelegate?
@@ -35,7 +35,7 @@ class HowToCollectionViewCell: UICollectionViewCell {
         guard let tutorial = tutorial else { return }
         titleLabel.text = tutorial.title
         captionLabel.text = tutorial.summary
-        likesLabel.text = "\(tutorial.likes)"
+        likesLabel.text = "\(tutorial.likes ?? 0)"
     }
     
     // MARK: - IBActions

@@ -31,13 +31,18 @@ class APIController {
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     typealias CompletionHandlerTitles = (Result<[Tutorial], NetworkError>) -> Void
     typealias CompletionHandlerSummaries = (Result<[TutorialSteps], NetworkError>) -> Void
+    
     private let baseURL = URL(string: "https://how2s.herokuapp.com")!
     
     private(set) var tutorials: [Tutorial] = []
     var bearer: Bearer?
     
-    func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
-        
+    /// SignUp
+    /// - Parameters:
+    ///   - user: User will be used to pass username and password
+    ///   - userType: userType is used to determine type of user or instructor
+    ///   - completion: nil
+    func signUp(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
         let userSignUpURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/register")
         var request = URLRequest(url: userSignUpURL)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -65,11 +70,12 @@ class APIController {
         }.resume()
     }
     
-    // create signIn
-    func login(with user: User, userType: UserType, completion: @escaping (Error?) -> ()) {
-        
+    /// Login
+    /// - Parameters:
+    ///   - user: User will be used to pass username and password
+    ///   - userType: userType is used to determine type of user or instructor
+    func login(with user: User, userType: UserType, completion: @escaping (Error?) -> Void) {
         let userLoginURL = baseURL.appendingPathComponent("/api/\(userType.rawValue)/login")
-        
         var request = URLRequest(url: userLoginURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -84,7 +90,6 @@ class APIController {
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
                 return completion(NSError(domain: response.description, code: response.statusCode, userInfo: nil))
@@ -100,8 +105,9 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                self.bearer = try decoder.decode(Bearer.self, from: data)
-                
+                let a = try decoder.decode(UserReturned.self, from: data)
+                print("USER ID IS \(a.id)")
+                //TODO: save to userdef
                 completion(nil)
             } catch {
                 NSLog("Error decoding bearer object: \(error)")
@@ -110,13 +116,13 @@ class APIController {
         }.resume()
     }
     
-    // create fetching tutorials method
+    /// Fetch all tutorial titles
+    /// - Parameters:
     func fetchAllTutorialTitles(completion: @escaping CompletionHandlerTitles = { _ in }) {
-        
         let allTutorialsURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: allTutorialsURL)
         request.httpMethod = HTTPMethod.get.rawValue
-//        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
+        //request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
@@ -140,12 +146,12 @@ class APIController {
         }.resume()
     }
     
-    // create fetching tutorial Details
-
+    /// Fetch all tutorial steps
+    /// - Parameters:
+    ///   - tutorial: Used to get tutorial id
     func fetchTutorialSteps(for tutorial: Tutorial, completion: @escaping CompletionHandlerSummaries = { _ in }) {
-
-        
-        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorial.id)/directions")
+        guard let tutorialID = tutorial.id else { return }
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialID)/directions")
         var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
@@ -165,56 +171,54 @@ class APIController {
                 let tutorialSteps = try decoder.decode([TutorialSteps].self, from: data)
                 completion(.success(tutorialSteps))
             } catch {
-                NSLog("Error decoding tutorial object \(tutorial.id): \(error)")
+                NSLog("Error decoding tutorial object \(tutorialID): \(error)")
                 completion(.failure(.noDecode))
             }
         }.resume()
     }
     
-    // create createTutorial method
-    func createTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-
-        let requestURL = baseURL.appendingPathComponent("api/tutorials/:\(tutorial.id)").appendingPathExtension("json") //// need component
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
-       
-        //// JSONEncoder with coredata
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                NSLog("Error sending task to server: \(error)")
-                return completion(.failure(.otherError))
-            }
-            completion(.success(true))
-        }.resume()
-    }
-    
+    /// Delete a tutorial
+    /// - Parameters:
+    ///   - tutorial: Used to get tutorial ID
     func deleteTutorial(tutorial: Tutorial, completion: @escaping CompletionHandler = { _ in }) {
-        ///// guard let id code
-        
-        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension("json") /// need component
-        var request = URLRequest(url: requestURL)
+        guard let tutorialID = tutorial.id else { return }
+        let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialID)")
+        var request = URLRequest(url: tutorialURL)
         request.httpMethod = HTTPMethod.delete.rawValue
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 NSLog("Error deleting task from server: \(error)")
                 return completion(.failure(.otherError))
             }
-            completion(.success(true))
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                NSLog("Response Error - Cannot Delete ")
+                return completion(.failure(.otherError))
+            }
+            
+            guard let data = data else {
+                NSLog("Sever responded with no data to decode")
+                return completion(.failure(.badData))
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let deleteSuccess = try decoder.decode(String.self, from: data)
+                NSLog("DATA RETURNED FROM SERVER ::: \(deleteSuccess)")
+                completion(.success(true))
+            } catch {
+                NSLog("Error decoding response from server \(tutorialID): \(error)")
+                completion(.failure(.noDecode))
+            }
+    
         }.resume()
     }
     
-    // TODO: build out CoreData methods
-    private func updateTutorials() {
-        
-    }
-    
-    private func update() {
-        
-    }
-    
-    
+    /// Search tutorial by ID
+    /// - Parameters:
+    ///   - tutorialId: tutorialId
     func searchTutorialsByID(for tutorialId: String, completion: @escaping CompletionHandlerTitles = { _ in }) {
         let tutorialURL = baseURL.appendingPathComponent("api/tutorials/\(tutorialId)")
         var request = URLRequest(url: tutorialURL)
@@ -241,5 +245,51 @@ class APIController {
                 completion(.failure(.noDecode))
             }
         }.resume()
+    }
+    
+    // create createTutorial method
+    func createTutorial(tutorial: Tutorial, completion: @escaping (Tutorial?, Error?) -> Void) {
+        let requestURL = baseURL.appendingPathComponent("api/tutorials/")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+       
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(tutorial)
+            request.httpBody = jsonData
+        } catch {
+            NSLog("Error encoding user object: \(error)")
+            return completion(nil, error)
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("Error sending task to server: \(error)")
+                return completion(nil, error)
+            }
+            
+            guard let data = data else {
+                NSLog("Sever responded with no data to decode")
+                return completion(nil, error)
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let tut = try decoder.decode(Tutorial.self, from: data)
+                completion(tut, nil)
+            } catch {
+                NSLog("Error decoding tutorial object: \(error)")
+                completion(nil, error)
+            }
+        }.resume()
+    }
+    
+    // TODO: build out CoreData methods
+    private func updateTutorials() {
+        
+    }
+    
+    private func update() {
+        
     }
 }

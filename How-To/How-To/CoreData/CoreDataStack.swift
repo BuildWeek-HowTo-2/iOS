@@ -15,7 +15,7 @@ class CoreDataStack {
     
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "How-To")
-        container.loadPersistentStores { (_, error) in
+        container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("failed to load persistent stores: \(error)")
             }
@@ -24,7 +24,7 @@ class CoreDataStack {
     }()
     
     var mainContext: NSManagedObjectContext {
-        return container.viewContext
+        container.viewContext
     }
     
     func save(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) throws {

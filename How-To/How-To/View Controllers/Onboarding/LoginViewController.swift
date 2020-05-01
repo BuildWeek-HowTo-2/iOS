@@ -21,13 +21,13 @@ enum UserType: String {
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var verifyTextField: UITextField!
-    @IBOutlet weak var userTypeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var loginTypeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var verifyStackView: UIStackView!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var verifyTextField: UITextField!
+    @IBOutlet private weak var userTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var loginTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var verifyStackView: UIStackView!
     
     // MARK: - Properties
     var apiController = APIController() //TODO: NEED TO SEND THROUGH DEPENDENCY INJECTION
@@ -53,7 +53,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submit(_ sender: UIButton) {
         
         if loginType == .signUp {
-            guard let email = usernameTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty, let verifyPassword = verifyTextField.text, !verifyPassword.isEmpty else { return }
+            guard let email = usernameTextField.text,
+                !email.isEmpty,
+                let password = passwordTextField.text,
+                !password.isEmpty,
+                let verifyPassword = verifyTextField.text,
+                !verifyPassword.isEmpty else { return }
             let user = User(username: email, password: password)
             
             apiController.signUp(with: user, userType: userType, completion: { error in

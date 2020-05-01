@@ -50,6 +50,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  USERNAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9S-8Z-YZw">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="backgroundColor" name="Text Field Background Color"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.UsernameTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="N74-9P-9Dj"/>
                                                 </constraints>
@@ -71,6 +72,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  PASSWORD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="osO-g9-WfI">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="backgroundColor" name="Text Field Background Color"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.PasswordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="ttm-xP-DDU"/>
                                                 </constraints>
@@ -92,6 +94,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  VERIFY PASSWORD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I3m-kk-E1A">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="backgroundColor" name="Text Field Background Color"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.VerifyPasswordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="dFp-uk-cfT"/>
                                                 </constraints>
@@ -112,6 +115,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ned-C2-uay">
                                 <rect key="frame" x="100" y="762" width="214" height="50"/>
                                 <color key="backgroundColor" name="Primary Color"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Onboarding.SignUpButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xGG-o3-ibe"/>
                                 </constraints>
@@ -197,14 +201,14 @@
                                     <segue destination="hf5-ds-2y4" kind="show" id="pbM-ky-44J"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="DCK-xC-mPV">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.one" translatesAutoresizingMaskIntoConstraints="NO" id="DCK-xC-mPV">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="IGL-lC-Tvb"/>
+                                    <constraint firstAttribute="height" constant="250" id="IGL-lC-Tvb"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Arr-z8-CIx">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to How-To!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Tt-ydg">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -280,14 +284,14 @@
                                     <segue destination="JUN-qT-Su8" kind="show" id="oHf-WQ-W2y"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="DEd-UJ-tGu">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.three" translatesAutoresizingMaskIntoConstraints="NO" id="DEd-UJ-tGu">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="rPV-ez-CpN"/>
+                                    <constraint firstAttribute="height" constant="250" id="rPV-ez-CpN"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WcL-C0-NWk">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Inspired!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT7-lu-IkX">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -346,14 +350,14 @@
                                     <action selector="getStartedButtonTapped:" destination="JUN-qT-Su8" eventType="touchUpInside" id="Zck-Xg-IEF"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="os7-Az-iWr">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.two" translatesAutoresizingMaskIntoConstraints="NO" id="os7-Az-iWr">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="YsZ-wu-xsJ"/>
+                                    <constraint firstAttribute="height" constant="250" id="YsZ-wu-xsJ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cf1-dv-hQ8">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmark to Read Later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hal-hn-uqc">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -361,7 +365,7 @@
                                         <color key="textColor" name="Primary Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easily add a tutorial to our bookmarks for offline viewing." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-zt-Q4z">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easily add a tutorial to your bookmarks for offline viewing." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-zt-Q4z">
                                         <rect key="frame" x="0.0" y="38" width="374" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -402,10 +406,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="VBy-k6-hmk">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.one" translatesAutoresizingMaskIntoConstraints="NO" id="VBy-k6-hmk">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="88c-Kz-MbV"/>
+                                    <constraint firstAttribute="height" constant="250" id="88c-Kz-MbV"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVD-rA-Ixm">
@@ -421,7 +425,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="McM-70-cCw">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to How-To!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrE-DU-Dsy">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -479,14 +483,14 @@
                                     <segue destination="Xkj-LZ-3vK" kind="show" id="VwC-wR-OXW"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="aCp-7C-pzu">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.four" translatesAutoresizingMaskIntoConstraints="NO" id="aCp-7C-pzu">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="SRr-9d-IfW"/>
+                                    <constraint firstAttribute="height" constant="250" id="SRr-9d-IfW"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OxQ-zF-x9S">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your Tutorials!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvD-DR-XY9">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -532,14 +536,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="hFh-jf-DPN">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.three" translatesAutoresizingMaskIntoConstraints="NO" id="hFh-jf-DPN">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="0IJ-Fe-2oL"/>
+                                    <constraint firstAttribute="height" constant="250" id="0IJ-Fe-2oL"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5hu-za-Aw1">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Inspired!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jum-ma-3bG">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -610,14 +614,14 @@
                                     <action selector="getStartedTapped:" destination="ZfZ-Pm-geD" eventType="touchUpInside" id="upH-3a-1tz"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="diy" translatesAutoresizingMaskIntoConstraints="NO" id="Hf3-DP-kUN">
-                                <rect key="frame" x="0.0" y="163" width="414" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="onboarding.two" translatesAutoresizingMaskIntoConstraints="NO" id="Hf3-DP-kUN">
+                                <rect key="frame" x="0.0" y="163" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="61C-rv-ltA"/>
+                                    <constraint firstAttribute="height" constant="250" id="61C-rv-ltA"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SqA-v6-7qp">
-                                <rect key="frame" x="20" y="383" width="374" height="86"/>
+                                <rect key="frame" x="20" y="433" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmark to Read Later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gS-15-aFe">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -625,7 +629,7 @@
                                         <color key="textColor" name="Primary Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easily add a tutorial to our bookmarks for offline viewing." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abw-xX-RKK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easily add a tutorial to your bookmarks for offline viewing." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abw-xX-RKK">
                                         <rect key="frame" x="0.0" y="38" width="374" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -661,8 +665,11 @@
     </scenes>
     <resources>
         <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="diy" width="414" height="276"/>
+        <image name="onboarding.four" width="313" height="351"/>
         <image name="onboarding.logo" width="243" height="243"/>
+        <image name="onboarding.one" width="313" height="313"/>
+        <image name="onboarding.three" width="313" height="313"/>
+        <image name="onboarding.two" width="313" height="313"/>
         <namedColor name="Background Color">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

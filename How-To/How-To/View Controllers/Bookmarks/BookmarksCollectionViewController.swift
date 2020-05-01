@@ -11,20 +11,24 @@ import CoreData
 
 class BookmarksCollectionViewController: UICollectionViewController {
 
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ViewBookmarkSegue" {
+            guard let ViewBookmarkVC = segue.destination as? ViewBookmarkViewController else { return }
+            guard let selected = collectionView.indexPathsForSelectedItems else { return }
+            ViewBookmarkVC.tutorial = fetchedResultsController.object(at: selected[0])
+        }
     }
-    */
     
+    // MARK: - Properties
     var blockOperations: [BlockOperation] = []
     
     lazy var fetchedResultsController: NSFetchedResultsController<Guide> = {
@@ -55,15 +59,17 @@ class BookmarksCollectionViewController: UICollectionViewController {
 extension BookmarksCollectionViewController: UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return fetchedResultsController.sections?.count ?? 1
+        fetchedResultsController.sections?.count ?? 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookmarkCell", for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookmarkCell", for: indexPath) as? BookmarkCollectionViewCell else {
+            return UICollectionViewCell()
+        }
     
         cell.tutorial = fetchedResultsController.object(at: indexPath)
         cell.delegate = self
@@ -104,12 +110,16 @@ extension BookmarksCollectionViewController: UICollectionViewDelegateFlowLayout 
     */
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width - 16, height: 100)
+        CGSize(width: self.view.frame.width - 16, height: 100)
     }
 }
 
 extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
     
         if type == NSFetchedResultsChangeType.insert {
             blockOperations.append(
@@ -135,8 +145,7 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
                     }
                     })
             )
-        }
-        else if type == NSFetchedResultsChangeType.delete {
+        } else if type == NSFetchedResultsChangeType.delete {
             blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
@@ -147,7 +156,10 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
         }
     }
     
-    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                           didChange sectionInfo: NSFetchedResultsSectionInfo,
+                           atSectionIndex sectionIndex: Int,
+                           for type: NSFetchedResultsChangeType) {
         if type == NSFetchedResultsChangeType.insert {
             print("Insert Section: \(sectionIndex)")
             
@@ -158,8 +170,7 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
                     }
                     })
             )
-        }
-        else if type == NSFetchedResultsChangeType.update {
+        } else if type == NSFetchedResultsChangeType.update {
             print("Update Section: \(sectionIndex)")
             blockOperations.append(
                 BlockOperation(block: { [weak self] in
@@ -168,8 +179,7 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
                     }
                 })
             )
-        }
-        else if type == NSFetchedResultsChangeType.delete {
+        } else if type == NSFetchedResultsChangeType.delete {
             print("Delete Section: \(sectionIndex)")
             
             blockOperations.append(
@@ -187,7 +197,7 @@ extension BookmarksCollectionViewController: NSFetchedResultsControllerDelegate 
             for operation: BlockOperation in self.blockOperations {
                 operation.start()
             }
-            }, completion: { (finished) -> Void in
+            }, completion: { _ -> Void in
                 self.blockOperations.removeAll(keepingCapacity: false)
         })
     }
@@ -197,8 +207,10 @@ extension BookmarksCollectionViewController: DeleteBookmarkDelegate {
     func deleteBookmark(for cell: BookmarkCollectionViewCell) {
         guard let bookmark = cell.tutorial else { return }
         
-        let alert = UIAlertController(title: "Remove Bookmark", message: "Are you sure you want to remove this How-To tutorial from your bookmarks?", preferredStyle: .actionSheet)
-        let addBookmarkAction = UIAlertAction(title: "Remove Bookmark", style: .destructive) { (_) in
+        let alert = UIAlertController(title: "Remove Bookmark",
+                                      message: "Are you sure you want to remove this How-To tutorial from your bookmarks?",
+                                      preferredStyle: .actionSheet)
+        let addBookmarkAction = UIAlertAction(title: "Remove Bookmark", style: .destructive) { _ in
             let context = CoreDataStack.shared.mainContext
             context.delete(bookmark)
             

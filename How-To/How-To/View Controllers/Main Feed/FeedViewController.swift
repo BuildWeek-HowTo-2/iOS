@@ -11,8 +11,8 @@ import UIKit
 class FeedViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Properties
     let apiController = APIController()
@@ -27,7 +27,7 @@ class FeedViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
         collectionView.refreshControl = refreshControl
         
-        apiController.fetchAllTutorialTitles { (_) in
+        apiController.fetchAllTutorialTitles { _ in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -59,15 +59,17 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return apiController.tutorials.count
+        apiController.tutorials.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCell", for: indexPath) as? HowToCollectionViewCell else {
+            return UICollectionViewCell()
+        }
     
         let tutorial = apiController.tutorials[indexPath.item]
         cell.tutorial = tutorial
@@ -79,14 +81,14 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width - 16, height: 100)
+        CGSize(width: self.view.frame.width - 16, height: 100)
     }
 }
 
 extension FeedViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let search = searchBar.text else { return }
-        apiController.searchTutorialsByID(for: search) { (result) in
+        apiController.searchTutorialsByID(for: search) { _ in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 searchBar.resignFirstResponder()
@@ -97,7 +99,6 @@ extension FeedViewController: UISearchBarDelegate {
 
 extension FeedViewController: HowToCellDelegate {
     func likeTutorial(for cell: HowToCollectionViewCell) {
-        guard let _ = cell.tutorial else { return }
         print("LIKED")
     }
     

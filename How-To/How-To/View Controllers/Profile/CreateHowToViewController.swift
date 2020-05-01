@@ -11,12 +11,13 @@ import UIKit
 class CreateHowToViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var summaryTextView: UITextView!
-    @IBOutlet weak var detailStackView: UIStackView!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var summaryTextView: UITextView!
+    @IBOutlet private weak var detailStackView: UIStackView!
+    @IBOutlet private weak var contentView: UIView!
     
     // MARK: - Properties
+    let apiController = APIController()
     var textFields: [UITextField] = []
     var textFieldsStack = UIStackView()
     var numberOfSteps = 1
