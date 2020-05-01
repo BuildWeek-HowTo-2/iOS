@@ -135,16 +135,29 @@ class HowToTests: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
     
-    func testUserSignup() {
+    func testCreatingTutorial() {
         let apiController = APIController()
-        let expectation = XCTestExpectation(description: "User Signup")
+        let expectation = XCTestExpectation(description: "Creating Tutorial")
         
-        apiController.signUp(with: User(username: "Lilly2", password: "testing123"), userType: .users) { error in
+        apiController.createTutorial(tutorial: Tut(title: "Test", summary: "Testing", instructor_id: 3), completion: { tutorial, error in
+            XCTAssertNotNil(tutorial)
             XCTAssertNil(error)
             expectation.fulfill()
-        }
+        })
         
         wait(for: [expectation], timeout: 10)
+    }
+    
+    func testCreatingTutorialSteps() {
+        let apiController = APIController()
+        let expectation2 = XCTestExpectation(description: "Creating Tutorial Steps")
+        
+        apiController.createTutorialSteps(tutorialSteps: TutorialSteps(instructions: "", step_number: 3), for: 4, completion: { (test, error) in
+            XCTAssertNil(error)
+        })
+        
+        wait(for: [expectation2], timeout: 150)
+        
     }
     
     func testInstructorLogin() {
@@ -168,17 +181,31 @@ class HowToTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10)
     }
-    
+
+    /*
     func testInstructorSignup() {
         let apiController = APIController()
         let expectation = XCTestExpectation(description: "Instructor Signup")
         
-        apiController.signUp(with: User(username: "Lilly2", password: "testing123"), userType: .instructors) { error in
+        apiController.signUp(with: User(username: "Lilly\(Int.random(in: 0...100))", password: "testing123"), userType: .instructors) { error in
             XCTAssertNil(error)
             expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 10)
     }
+    
+    func testUserSignup() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "User Signup")
+        
+        apiController.signUp(with: User(username: "Lilly\(Int.random(in: 0...100))", password: "testing123"), userType: .users) { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
+     */
 
 }

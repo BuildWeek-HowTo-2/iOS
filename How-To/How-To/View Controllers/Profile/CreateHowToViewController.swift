@@ -17,9 +17,11 @@ class CreateHowToViewController: UIViewController {
     @IBOutlet private weak var contentView: UIView!
     
     // MARK: - Properties
+    let queue = OperationQueue()
     let apiController = APIController()
     var textFields: [UITextField] = []
     var textFieldsStack = UIStackView()
+    var instruc: [String] = []
     var numberOfSteps = 1
     
     // MARK: - View Lifecycle
@@ -75,30 +77,60 @@ class CreateHowToViewController: UIViewController {
         textFieldsStack.addArrangedSubview(textField)
         numberOfSteps += 1
     }
+    
+    private func getResponses() {
+        for i in 0..<self.numberOfSteps - 1 {
+            guard let instructions = self.textFields[i].text, !instructions.isEmpty else { return }
+            instruc.append(instructions)
+        }
+    }
 
     // MARK: - IBActions
     @IBAction func createButtonTapped(_ sender: Any) {
+        print("Number of steps \(numberOfSteps)")
+        getResponses()
         guard let title = titleTextField.text, !title.isEmpty, let summary = summaryTextView.text, !summary.isEmpty else { return }
-        
         let instructorID = UserDefaults.standard.integer(forKey: .userid)
         print(instructorID)
+
         let tut = Tut(title: title, summary: summary, instructor_id: instructorID)
-        apiController.createTutorial(tutorial: tut) { tutorial, error in
-            if let error = error {
-                NSLog("Error creating tutorial \(error)")
-            }
+        var returnedTutorial: Tutorial?
             
-            if let tutorial = tutorial {
-                print(tutorial)
+        let createTutorialOpertation = BlockOperation {
+            print("Creating Tutorial...")
+            self.apiController.createTutorial(tutorial: tut) { tutorial, error in
+                if let error = error {
+                    NSLog("Error creating tutorial \(error)")
+                }
+                
+                if let tutorial = tutorial {
+                    returnedTutorial = tutorial
+                    print("Tut id:  \(tutorial.id)")
+                }
             }
         }
         
-        for i in 0..<numberOfSteps {
-            
+        let createStepsOperation = BlockOperation {
+            print("Creating Steps...")
+            for i in 0..<self.numberOfSteps - 1 {
+
+                let steps = TutorialSteps(instructions: self.instruc[i], step_number: i)
+                
+                self.apiController.createTutorialSteps(tutorialSteps: steps, for: returnedTutorial?.id ?? 0) { _, error in
+                    if let error = error {
+                        NSLog("Error creating tutorial steps \(error)")
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if i == self.numberOfSteps {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
+            }
         }
         
-        
-        
-        navigationController?.popViewController(animated: true)
+        createStepsOperation.addDependency(createTutorialOpertation)
+        queue.addOperations([createTutorialOpertation, createStepsOperation], waitUntilFinished: true)
     }
 }

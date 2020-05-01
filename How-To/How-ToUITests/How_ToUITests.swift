@@ -60,6 +60,7 @@ class HowToUITests: XCTestCase {
         UserDefaults.standard.set(nil, forKey: "username")
     }
     
+    /*
     func testLoginAsUser() throws {
     
         /*
@@ -108,6 +109,7 @@ class HowToUITests: XCTestCase {
 
         app.staticTexts["Jasmine"].tap()
     }
+     */
      
     /*
      USER MUST BE LOGGED IN FOR THESE TO PASS
@@ -135,6 +137,28 @@ class HowToUITests: XCTestCase {
         addStepStaticText.tap()
         addStepStaticText.tap()
         addStepStaticText.tap()
+    }
+    
+    func testAddingStepsAndTestDynamicScrollView() throws {
+        app.launch()
+        createPost.tap()
+        
+        let addStepStaticText = app.staticTexts["+ Add Step"]
+        addStepStaticText.tap()
+        addStepStaticText.tap()
+        addStepStaticText.tap()
+        addStepStaticText.tap()
+        addStepStaticText.tap()
+        app.swipeUp()
+    }
+    
+    func testDeletingRecord() throws {
+        app.launch()
+        app.tabBars.buttons["Tutorials"].tap()
+        app.tap()
+        app.tap()
+        app.navigationBars["How-To"].buttons["Delete"].tap()
+        app.sheets["Delete Tutorial"].scrollViews.otherElements.buttons["Delete Tutorial"].tap()
     }
 
 }
