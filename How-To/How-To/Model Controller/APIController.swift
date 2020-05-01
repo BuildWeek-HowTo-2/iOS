@@ -287,8 +287,8 @@ class APIController {
         }.resume()
     }
     
-    func createTutorialSteps(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
-        let requestURL = baseURL.appendingPathComponent("api/tutorials")
+    func createTutorialSteps(tutorialSteps: TutorialSteps, for id: Int, completion: @escaping (Tutorial?, Error?) -> Void) {
+        let requestURL = baseURL.appendingPathComponent("api/tutorials/\(id)/directions")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

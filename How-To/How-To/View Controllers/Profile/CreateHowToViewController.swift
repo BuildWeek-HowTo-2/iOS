@@ -79,26 +79,52 @@ class CreateHowToViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func createButtonTapped(_ sender: Any) {
         guard let title = titleTextField.text, !title.isEmpty, let summary = summaryTextView.text, !summary.isEmpty else { return }
-        
         let instructorID = UserDefaults.standard.integer(forKey: .userid)
-        print(instructorID)
         let tut = Tut(title: title, summary: summary, instructor_id: instructorID)
-        apiController.createTutorial(tutorial: tut) { tutorial, error in
-            if let error = error {
-                NSLog("Error creating tutorial \(error)")
-            }
-            
-            if let tutorial = tutorial {
-                print(tutorial)
+        var returnedTutorial: Tutorial?
+        
+        
+        
+        
+        let queue = OperationQueue()
+        
+        let createTutorialOpertation = BlockOperation {
+            self.apiController.createTutorial(tutorial: tut) { tutorial, error in
+                if let error = error {
+                    NSLog("Error creating tutorial \(error)")
+                }
+                
+                if let tutorial = tutorial {
+                    returnedTutorial = tutorial
+                }
             }
         }
+        
+        guard let returnedTutorialID = returnedTutorial?.id else {
+            return
+        }
+        
         
         for i in 0..<numberOfSteps {
             
+            guard let instructions = textFields[i].text, !instructions.isEmpty else { return }
+            
+            let steps = TutorialSteps(instructions: instructions, step_number: i)
+            
+            self.apiController.createTutorialSteps(tutorialSteps: steps, for: returnedTutorialID) { (tutorial, error) in
+                if let error = error {
+                    NSLog("Error creating tutorial \(error)")
+                }
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
         
         
         
-        navigationController?.popViewController(animated: true)
+        
+        
     }
 }
