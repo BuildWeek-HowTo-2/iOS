@@ -248,6 +248,9 @@ class APIController {
         }.resume()
     }
     
+    /// Create a new tutorial
+    /// - Parameters:
+    ///   - tutorial: New tutorial to create
     func createTutorial(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
         let requestURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: requestURL)
@@ -287,15 +290,19 @@ class APIController {
         }.resume()
     }
     
-    func createTutorialSteps(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
-        let requestURL = baseURL.appendingPathComponent("api/tutorials")
+    /// Creat tutorial steps
+    /// - Parameters:
+    ///   - tutorialSteps: steps from textfields
+    ///   - id: id returned from create tutorial
+    func createTutorialSteps(tutorialSteps: TutorialSteps, for id: Int, completion: @escaping (Test?, Error?) -> Void) {
+        let requestURL = baseURL.appendingPathComponent("api/tutorials/\(id)/directions")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
        
         let jsonEncoder = JSONEncoder()
         do {
-            let jsonData = try jsonEncoder.encode(tutorial)
+            let jsonData = try jsonEncoder.encode(tutorialSteps)
             let str = String(decoding: jsonData, as: UTF8.self)
             print("DATA: \(str)")
             request.httpBody = jsonData
@@ -317,7 +324,7 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                let tut = try decoder.decode(Tutorial.self, from: data)
+                let tut = try decoder.decode(Test.self, from: data)
                 completion(tut, nil)
             } catch {
                 NSLog("Error decoding tutorial object: \(error)")
