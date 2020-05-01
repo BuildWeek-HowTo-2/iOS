@@ -38,27 +38,9 @@ class ViewBookmarkViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchSteps()
     }
         
     // MARK: - Private Methods
-    private func fetchSteps() {
-//        guard let tutorial = tutorial else { return }
-//        apiController?.fetchTutorialSteps(for: tutorial, completion: { result in
-//            do {
-//                let steps = try result.get()
-//                self.steps = steps
-//                DispatchQueue.main.async {
-//                    self.buildSteps()
-//                }
-//            } catch {
-//                if let error = error as? NetworkError {
-//                    NSLog("😂 \(error) error fetching steps")
-//                }
-//            }
-//        })
-    }
-    
     private func setupViews() {
         titleView.layer.cornerRadius = 8
         summaryView.layer.cornerRadius = 8
@@ -77,12 +59,13 @@ class ViewBookmarkViewController: UIViewController {
         if isViewLoaded {
             titleLabel.text = tutorial.title
             summaryLabel.text = "\(summary)"
+            updateSteps()
         }
     }
     
     // swiftlint:disable function_body_length
-    private func buildSteps() {
-        guard let steps = steps else { return }
+    private func updateSteps() {
+        guard let steps = tutorial?.guideSteps else { return }
         stepsStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stepsStack)
         stepsStack.alignment = .fill
@@ -94,6 +77,11 @@ class ViewBookmarkViewController: UIViewController {
         let stackTrailingConstraint = stepsStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         let stackBottomConstraint = stepsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         NSLayoutConstraint.activate([stackLeadingConstraint, stackTopConstraint, stackTrailingConstraint, stackBottomConstraint])
+        
+        print(steps.allObjects)
+        print(steps.count)
+        
+        /*
         for step in steps {
             let stepView = UIView()
             stepView.translatesAutoresizingMaskIntoConstraints = false
@@ -131,6 +119,7 @@ class ViewBookmarkViewController: UIViewController {
             individualStepStack.trailingAnchor.constraint(equalTo: stepView.trailingAnchor, constant: -8).isActive = true
             stepsStack.addArrangedSubview(stepView)
         }
+         */
     }
     // swiftlint:enable function_body_length
 
