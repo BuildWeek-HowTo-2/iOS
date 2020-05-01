@@ -78,6 +78,19 @@ class CreateHowToViewController: UIViewController {
 
     // MARK: - IBActions
     @IBAction func createButtonTapped(_ sender: Any) {
+        guard let title = titleTextField.text, !title.isEmpty, let summary = summaryTextView.text, !summary.isEmpty else { return }
+        
+        let instructorID = UserDefaults.standard.integer(forKey: .userid)
+        
+        let tut = Tut(title: title, summary: summary, instructor_id: instructorID)
+        apiController.createTutorial(tutorial: tut) { tutorial, error in
+            if let error = error {
+                NSLog("Error creating tutorial \(error)")
+            }
+            
+            if let tutorial = tutorial {
+                print(tutorial)
+            }
+        }
     }
-
 }

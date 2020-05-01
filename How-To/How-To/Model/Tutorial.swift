@@ -23,3 +23,10 @@ struct TutorialSteps: Codable {
     var instructions: String
     let step_number: Int
 }
+
+// This was just for me checking my sanity when I was getting HTML back as a response from the backend
+struct Tut: Codable {
+    var title: String
+    var summary: String
+    var instructor_id: Int
+}

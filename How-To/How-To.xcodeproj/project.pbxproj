@@ -14,6 +14,7 @@
 		1378E902245746520032931E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1378E900245746520032931E /* Main.storyboard */; };
 		1378E904245746560032931E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1378E903245746560032931E /* Assets.xcassets */; };
 		1378E907245746560032931E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1378E905245746560032931E /* LaunchScreen.storyboard */; };
+		1383F09F245BBEBD003D5826 /* GuideSteps+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1383F09E245BBEBD003D5826 /* GuideSteps+Convenience.swift */; };
 		13CCBEA424574FE600AE23BC /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA324574FE600AE23BC /* Profile.storyboard */; };
 		13CCBEA62457500000AE23BC /* Bookmarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA52457500000AE23BC /* Bookmarks.storyboard */; };
 		13CCBEA8245750D300AE23BC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CCBEA7245750D300AE23BC /* Onboarding.storyboard */; };
@@ -30,7 +31,7 @@
 		13D6F64B2459ED3E00E63D71 /* How_ToUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6F64A2459ED3E00E63D71 /* How_ToUITests.swift */; };
 		154C239E2459DF940012752C /* InstructorOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */; };
 		1570556F2458C37700E4E625 /* UserOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570556E2458C37700E4E625 /* UserOnboardingViewController.swift */; };
-		158AE607245914D700FDA0BC /* Tutorial+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */; };
+		158AE607245914D700FDA0BC /* Guide+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE606245914D700FDA0BC /* Guide+Convenience.swift */; };
 		15F70FB5245764670087B428 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB4245764670087B428 /* APIController.swift */; };
 		15F70FB82457658F0087B428 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB72457658F0087B428 /* User.swift */; };
 		15F70FBA245765B10087B428 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F70FB9245765B10087B428 /* Bearer.swift */; };
@@ -64,6 +65,7 @@
 		1378E903245746560032931E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1378E906245746560032931E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1378E908245746560032931E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1383F09E245BBEBD003D5826 /* GuideSteps+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GuideSteps+Convenience.swift"; sourceTree = "<group>"; };
 		13CCBEA324574FE600AE23BC /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		13CCBEA52457500000AE23BC /* Bookmarks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bookmarks.storyboard; sourceTree = "<group>"; };
 		13CCBEA7245750D300AE23BC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -84,7 +86,7 @@
 		13D6F64C2459ED3E00E63D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		154C239D2459DF940012752C /* InstructorOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructorOnboardingViewController.swift; sourceTree = "<group>"; };
 		1570556E2458C37700E4E625 /* UserOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOnboardingViewController.swift; sourceTree = "<group>"; };
-		158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tutorial+Convenience.swift"; sourceTree = "<group>"; };
+		158AE606245914D700FDA0BC /* Guide+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide+Convenience.swift"; sourceTree = "<group>"; };
 		15F70FB4245764670087B428 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		15F70FB72457658F0087B428 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15F70FB9245765B10087B428 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
@@ -217,7 +219,8 @@
 			children = (
 				13CCBEB32457809900AE23BC /* How-To.xcdatamodeld */,
 				13CCBEB7245780CC00AE23BC /* CoreDataStack.swift */,
-				158AE606245914D700FDA0BC /* Tutorial+Convenience.swift */,
+				158AE606245914D700FDA0BC /* Guide+Convenience.swift */,
+				1383F09E245BBEBD003D5826 /* GuideSteps+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -452,11 +455,12 @@
 				13CCBEBC2457A96E00AE23BC /* BookmarkCollectionViewCell.swift in Sources */,
 				13CCBEB224576B4A00AE23BC /* ViewHowToViewController.swift in Sources */,
 				134E79D52458989F002F3AE6 /* FeedViewController.swift in Sources */,
-				158AE607245914D700FDA0BC /* Tutorial+Convenience.swift in Sources */,
+				158AE607245914D700FDA0BC /* Guide+Convenience.swift in Sources */,
 				13CCBEB52457809900AE23BC /* How-To.xcdatamodeld in Sources */,
 				15F70FB82457658F0087B428 /* User.swift in Sources */,
 				15F70FBC2457668C0087B428 /* Tutorial.swift in Sources */,
 				134E79D3245886C2002F3AE6 /* ProfileViewController.swift in Sources */,
+				1383F09F245BBEBD003D5826 /* GuideSteps+Convenience.swift in Sources */,
 				1378E8FD245746520032931E /* SceneDelegate.swift in Sources */,
 				13CCBEB8245780CC00AE23BC /* CoreDataStack.swift in Sources */,
 			);

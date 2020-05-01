@@ -62,6 +62,8 @@ class APIController {
                 response.statusCode != 200 {
                 return completion(NSError(domain: response.description, code: response.statusCode, userInfo: nil))
             }
+        
+            //TODO: UserDefaults.standard.set(returnedUser.id, forKey: .userid)
             
             if let error = error {
                 return completion(error)
@@ -105,9 +107,8 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                let a = try decoder.decode(UserReturned.self, from: data)
-                print("USER ID IS \(a.id)")
-                //TODO: save to userdef
+                let returnedUser = try decoder.decode(UserReturned.self, from: data)
+                UserDefaults.standard.set(returnedUser.id, forKey: .userid)
                 completion(nil)
             } catch {
                 NSLog("Error decoding bearer object: \(error)")
@@ -247,9 +248,9 @@ class APIController {
         }.resume()
     }
     
-    // create createTutorial method
-    func createTutorial(tutorial: Tutorial, completion: @escaping (Tutorial?, Error?) -> Void) {
-        let requestURL = baseURL.appendingPathComponent("api/tutorials/")
+
+    func createTutorial(tutorial: Tut, completion: @escaping (Tutorial?, Error?) -> Void) {
+        let requestURL = baseURL.appendingPathComponent("api/tutorials")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
        
@@ -284,12 +285,4 @@ class APIController {
         }.resume()
     }
     
-    // TODO: build out CoreData methods
-    private func updateTutorials() {
-        
-    }
-    
-    private func update() {
-        
-    }
 }
