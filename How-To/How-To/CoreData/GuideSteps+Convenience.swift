@@ -10,11 +10,9 @@ import Foundation
 import CoreData
 
 extension GuideSteps {
-
     @discardableResult convenience init?(tutorialSteps: TutorialSteps, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.instructions = tutorialSteps.instructions
         self.stepNumber = Int16(tutorialSteps.step_number)
-        
     }
 }

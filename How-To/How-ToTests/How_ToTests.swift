@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import How_To
 
 class HowToTests: XCTestCase {
 
@@ -17,17 +18,110 @@ class HowToTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    
+    func testFetchingTutorials() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Fetching Tutorials")
+        
+        apiController.fetchAllTutorialTitles { result in
+            do {
+                let tutorials = try result.get()
+                XCTAssertNotNil(tutorials)
+            } catch {
+                XCTAssertNil(error)
+            }
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 10)
     }
+    
+    func testSearchingTutorials() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Searching Tutorials")
 
+        apiController.searchTutorialsByID(for: "1") { result in
+            do {
+                let tutorials = try result.get()
+                XCTAssertNotNil(tutorials)
+            } catch {
+                XCTAssertNil(error)
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testUserLogin() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "User Login")
+        
+        apiController.login(with: User(username: "Lilly", password: "testing123"), userType: .users) { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testUserInvalidLogin() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Invalid User Login")
+        
+        apiController.login(with: User(username: "Lilly", password: "ergigerh"), userType: .users) { error in
+            XCTAssertNotNil(error)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testUserSignup() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "User Signup")
+        
+        apiController.signUp(with: User(username: "Lilly2", password: "testing123"), userType: .users) { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testInstructorLogin() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Instructor Login")
+        
+        apiController.login(with: User(username: "Jasmine", password: "testing123"), userType: .instructors) { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testInstructorInvalidLogin() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Instructor Invalid Login")
+        
+        apiController.login(with: User(username: "Jasmine", password: "ergigerh"), userType: .instructors) { error in
+            XCTAssertNotNil(error)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testInstructorSignup() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Instructor Signup")
+        
+        apiController.signUp(with: User(username: "Lilly2", password: "testing123"), userType: .instructors) { error in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10)
+    }
+    
+    func testFetchingTutorialSteps() {
+        let apiController = APIController()
+        let expectation = XCTestExpectation(description: "Fetching Steps")
+        
+    }
 }

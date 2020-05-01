@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension Guide {
-
     @discardableResult convenience init?(tutorial: Tutorial, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
