@@ -63,6 +63,7 @@ class ViewBookmarkViewController: UIViewController {
         }
     }
     
+    // swiftlint:disable function_body_length
     private func updateSteps() {
         guard let steps = tutorial?.guideSteps else { return }
         stepsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +77,6 @@ class ViewBookmarkViewController: UIViewController {
         let stackTrailingConstraint = stepsStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         let stackBottomConstraint = stepsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         NSLayoutConstraint.activate([stackLeadingConstraint, stackTopConstraint, stackTrailingConstraint, stackBottomConstraint])
-        
         
         for myAnyObject in steps.allObjects {
             if let step = myAnyObject as? GuideSteps {
@@ -117,50 +117,6 @@ class ViewBookmarkViewController: UIViewController {
                 stepsStack.addArrangedSubview(stepView)
             }
         }
-                
-        /*
-        for step in steps {
-            let stepView = UIView()
-            stepView.translatesAutoresizingMaskIntoConstraints = false
-            stepView.backgroundColor = UIColor.white
-            view.addSubview(stepView)
-            stepView.layer.cornerRadius = 8
-            stepView.layer.shadowColor = UIColor.lightGray.cgColor
-            stepView.layer.shadowOpacity = 0.3
-            stepView.layer.shadowOffset = .zero
-            stepView.layer.shadowRadius = 5
-            let stepNumberLabel = UILabel()
-            stepNumberLabel.text = "\(step.stepNumber):"
-            stepNumberLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
-            stepNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(stepNumberLabel)
-            stepNumberLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
-            let instruction = UILabel()
-            instruction.numberOfLines = 0
-            instruction.text = step.instructions
-            instruction.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(instruction)
-            let individualStepStack = UIStackView()
-            individualStepStack.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(individualStepStack)
-            individualStepStack.alignment = .fill
-            individualStepStack.axis = .horizontal
-            individualStepStack.distribution = .fillProportionally
-            individualStepStack.spacing = 8
-            individualStepStack.addArrangedSubview(stepNumberLabel)
-            individualStepStack.addArrangedSubview(instruction)
-            stepView.addSubview(individualStepStack)
-            individualStepStack.topAnchor.constraint(equalTo: stepView.topAnchor, constant: 8).isActive = true
-            individualStepStack.bottomAnchor.constraint(equalTo: stepView.bottomAnchor, constant: -8).isActive = true
-            individualStepStack.leadingAnchor.constraint(equalTo: stepView.leadingAnchor, constant: 8).isActive = true
-            individualStepStack.trailingAnchor.constraint(equalTo: stepView.trailingAnchor, constant: -8).isActive = true
-            stepsStack.addArrangedSubview(stepView)
-        }
-         */
+        // swiftlint:enable function_body_length
     }
-
-    // MARK: - IBActions
-    @IBAction func deleteTutorialTapped(_ sender: Any) {
-    }
-
 }
