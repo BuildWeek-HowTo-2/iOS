@@ -19,6 +19,6 @@ extension Guide {
         self.likes = Int16(tutorial.likes ?? 0)
         self.summary = tutorial.summary
         self.title = tutorial.title
-        //self.guideSteps = tutorial.tutorialSteps 
+        // self.guideSteps = tutorial.tutorialSteps
     }
 }
